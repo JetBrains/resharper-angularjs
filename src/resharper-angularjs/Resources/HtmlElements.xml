@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<htmlPsi xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Define common attributes. The name of the element under attributes doesn't matter,
+       but is used in /htmlPsi/tags/tag[@common-attributes] should a tag want to include
+       common attributes. We're including this file such that our common attributes are
+       included by default -->
+  <attributes>
+    <angularjs>
+      <!-- Set the type and default value with values used when specifying attributes in a DTD
+           Mostly, this will mean using CDATA to mean character data, and #IMPLIED to mean the
+           data is not required (see also #REQUIRED and #FIXED). You can also use %Blah to refer
+           to an element in /htmlPsi/attributeTypes/attributeType, or a simple choice with
+           (one|two) -->
+      <attribute name="ng-app" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-bind" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-bind-html" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-bind-html-unsafe" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-bind-template" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-change" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-checked" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-class" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-class-even" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-class-odd" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-click" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-cloak" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-controller" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-csp" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-dblclick" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-disabled" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-form" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-href" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-include" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-init" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-list" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-model" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mousedown" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mouseenter" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mouseleave" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mousemove" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mouseover" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-mouseup" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-multiple" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-non-bindable" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-pluralize" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-readonly" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-repeat" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-selected" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-show" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-src" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-style" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-submit" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-switch" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-transclude" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-view" type="CDATA" defaultValueType="#IMPLIED" />
+
+    </angularjs>
+  </attributes>
+  
+  <!-- Elements:
+       ng-change
+       ng-form
+       ng-include
+       ng-pluralize
+       ng-switch
+       ng-view
+       -->
+  <!-- See "select" in the docs -->
+  <!-- <attribute name="ng-options" type="CDATA" defaultValueType="#IMPLIED" />-->
+</htmlPsi>
