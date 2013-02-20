@@ -47,9 +47,16 @@
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Updates\PluginLocalEnvironmentInfo.cs" />
+    <Compile Include="Updates\UpdatesNotifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\HtmlElements.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\updates.xslt">
+      <Link>updates.xslt</Link>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v7.1</ReSharperSdkTargets>
