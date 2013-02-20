@@ -56,6 +56,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS
         private static HtmlDescriptionsCache.AttributeDescription GetAttributeDescription(string shortName)
         {
             HtmlDescriptionsCache.AttributeDescription attributeDescription;
+            if (shortName.StartsWith("data-"))
+            {
+                shortName = shortName.Substring("data-".Length);
+            }
             AttributeDescriptions.TryGetValue(shortName, out attributeDescription);
             return attributeDescription;
         }
