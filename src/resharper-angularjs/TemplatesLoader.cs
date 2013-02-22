@@ -1,6 +1,13 @@
 ﻿using JetBrains.Application;
+using JetBrains.Application.FileSystemTracker;
+using JetBrains.Application.Settings.Storage;
 using JetBrains.Application.Settings.Storage.DefaultFileStorages;
+using JetBrains.Application.Settings.Storage.Persistence;
+using JetBrains.Application.Settings.Store.Implementation;
+using JetBrains.Application.Settings.UserInterface;
 using JetBrains.Application.Settings.UserInterface.FileInjectedLayers;
+using JetBrains.DataFlow;
+using JetBrains.Threading;
 using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS
@@ -8,35 +15,46 @@ namespace JetBrains.ReSharper.Plugins.AngularJS
     // For such a small piece of code, there's a lot to say about it. This will add the
     // angularjs-templates.dotSettings to the This Computer layer. Pros and Cons:
     //
-    // Con #1: If the plugin is disabled, the templates will still be loaded. The file can
-    //         be unchecked, but it's still a separate step
-    // Con #2: If the plugin is uninstalled, and the dotSettings file deleted, ReSharper will
-    //         recreate it rather than removing it
-    // Con #3: Since the file is registered in the global settings, which is roaming, the
-    //         file will be recreated on machines that don't have the plugin installed
+    // Con #1: Can reset the settings, leading to an empty file
+    // Con #2: Remove is still in the context menu, but it does nothing (because I pass an empty OnDelete action)
+    // 
+    // Pro #1: If the plugin is disabled, then doesn't get loaded. (I don't think plugins get disabled
+    //         on the fly)
+    // Pro #2: Customisations are persistent - remembers checked status
+    // Pro #3: Disappears when plugin is uninstalled
+    // Pro #4: The customisations are in the roaming global file, but the link isn't. No file gets
+    //         created if the plugin isn't installed
+    // Pro #5: Changes to the templates are saved to This Computer by default, rather than this file
     //
-    // Pro #1: The file and enabled state are persistent, so ReSharper remembers if you've
-    //         unchecked it
-    // Pro #2: Unless specifically selected, changes to the templates are saved into the
-    //         This Copmuter layer (%APPDATA%\JetBrains\ReSharper\vAny\GlobalSettings.dotSettings)
-    //         rather than changing the file in the plugin folder
-    // Pro #3: Changes saved to the This Computer layer are not applied if the original file
-    //         is removed (this is good, you can customise the plugin's templates, but uninstalling
-    //         the plugin doesn't leave you with only the customised templates)
+    // Could have a readonly xml file so changes (such as resetting or saving to) have no effect.
+    // Would be nicer if we could then flag the storage/mount point as read only, so no-one would
+    // try. Perhaps a suggestion for 8.0?
+    // And if we're using a readonly file, we could just as easily make it a resource
     //
+    // Could we augment the FileSettingsStorageBehaviour to prevent the file getting trashed?
+    //
+    // How about displaying a message box in the delete function, to say it can't be deleted?
     [ShellComponent]
     public class TemplatesLoader
     {
-        public TemplatesLoader(GlobalSettings globalSettings, FileInjectedLayers fileInjectedLayers)
-        {
-            var host = globalSettings.ProductGlobalLayerId;
-            var settingsFile = GetSettingsFile();
+        // This value just needs to be unique so that any customisations to the layer are persistent
+        private const string AngularJsInjectedLayerId = "resharper-angularjs";
 
-            // Be careful. This needs to be the same case as the filename in the injected layer, and
-            // that is the case of the file on the disk, not the casing we give in the call to
-            // InjectLayer
-            if (settingsFile.ExistsFile && !fileInjectedLayers.IsLayerInjected(host, settingsFile))
-                fileInjectedLayers.InjectLayer(host, settingsFile);
+        public TemplatesLoader(Lifetime lifetime, GlobalSettings globalSettings, UserInjectedSettingsLayers userInjectedSettingsLayers,
+            IThreading threading, IFileSystemTracker filetracker, FileSettingsStorageBehavior behavior)
+        {
+            var path = GetSettingsFile();
+
+            var pathAsProperty = new Property<FileSystemPath>(lifetime, "InjectedFileStoragePath", path);
+            var serialization = new XmlFileSettingsStorage(lifetime, "angularjs-templates::" + path.FullPath.QuoteIfNeeded(), pathAsProperty,
+                SettingsStoreSerializationToXmlDiskFile.SavingEmptyContent.DeleteFile, threading, filetracker, behavior);
+            var persistentId = new UserInjectedSettingsLayers.InjectedLayerPersistentIdentity(AngularJsInjectedLayerId);
+            var descriptor = new UserInjectedSettingsLayers.UserInjectedLayerDescriptor(lifetime, globalSettings.ProductGlobalLayerId,
+                persistentId, serialization.Storage, SettingsStorageMountPoint.MountPath.Default, () => { });
+            descriptor.InitialMetadata.Set(UserFriendlySettingsLayers.DisplayName, "angularjs-templates");
+            descriptor.InitialMetadata.Set(UserFriendlySettingsLayers.Origin, "Angular JS templates");
+
+            userInjectedSettingsLayers.RegisterUserInjectedLayer(lifetime, descriptor);
         }
 
         private FileSystemPath GetSettingsFile()
