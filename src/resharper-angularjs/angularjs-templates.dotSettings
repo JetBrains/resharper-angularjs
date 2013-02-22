@@ -1,0 +1,14 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Description/@EntryValue">A compile function</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Scope/=0FC5D7331749CF4293F31310DBE1C7B3/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Scope/=0FC5D7331749CF4293F31310DBE1C7B3/Type/@EntryValue">InJavaScriptExpression</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Shortcut/@EntryValue">ngcdf</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=C299366F0FFE574194D1B9B252453624/Text/@EntryValue">function compile(tElement, tAttrs, transclude) {&#xD;
+    $END$&#xD;
+	return function (scope, element, attrs) {&#xD;
+	}&#xD;
+}</s:String></wpf:ResourceDictionary>
