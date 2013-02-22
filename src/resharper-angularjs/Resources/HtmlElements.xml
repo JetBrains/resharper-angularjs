@@ -55,6 +55,49 @@
       <attribute name="ng-transclude" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-view" type="CDATA" defaultValueType="#IMPLIED" />
 
+      <attribute name="data-ng-app" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-bind" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-bind-html" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-bind-html-unsafe" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-bind-template" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-change" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-checked" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-class" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-class-even" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-class-odd" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-click" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-cloak" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-controller" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-csp" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-dblclick" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-disabled" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-form" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-href" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-include" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-init" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-list" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-model" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mousedown" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mouseenter" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mouseleave" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mousemove" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mouseover" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-mouseup" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-multiple" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-non-bindable" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-pluralize" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-readonly" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-repeat" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-selected" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-show" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-src" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-style" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-submit" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-switch" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-transclude" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-view" type="CDATA" defaultValueType="#IMPLIED" />
+
     </angularjs>
   </attributes>
   
