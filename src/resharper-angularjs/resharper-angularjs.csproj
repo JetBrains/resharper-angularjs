@@ -46,7 +46,10 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
-    <Compile Include="TemplatesLoader.cs" />
+    <Compile Include="Settings\ActionOverrideRegistrar.cs" />
+    <Compile Include="Settings\PreventDeleteInjectedLayerAction.cs" />
+    <Compile Include="Settings\PreventResetSelectedSettingsLayerAction.cs" />
+    <Compile Include="Settings\TemplatesLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Updates\PluginLocalEnvironmentInfo.cs" />
     <Compile Include="Updates\UpdatesNotifier.cs" />
