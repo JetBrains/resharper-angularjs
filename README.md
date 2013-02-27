@@ -1,12 +1,24 @@
 # resharper-angularjs
 
-A plugin for ReSharper that adds support for AngularJS. It currently only supports ReSharper 7.1.
+A plugin for ReSharper 7.1 that adds support for AngularJS. 
 
 ## What does it do? ##
 
-The plugin is in very early stages of development. Currently it provides code completion intellisense for AngularJS attributes in HTML files.
+This plugin provides code completion for AngularJS attributes in HTML files. It supports the standard "ng-" sytnax, as well as the "data-ng-" syntax.
 
-There is currently no download, one will be made available soon.
+The plugin also installs a set of Live Templates for frequently used constructs, grouped into helpers for module, directive, scope, global, html and routing. They can be seen and edited in the Templates Explorer.
 
-Any and all feature suggestions are welcome, please post enough details to the Issues sections.
+The Live Templates are based on the IntelliJ templates by [Pawel Kozlowski](https://github.com/angularjs-livetpls/angularjs-webstorm-livetpls).
+
+## How do I get it? ##
+
+If you wish to just install a copy of the plugins without building yourself:
+
+- Download the latest zip file: [resharper-angularjs.1.0.zip](http://download.jetbrains.com/resharper/plugins/resharper-angularjs.1.0.zip)
+- Extract everything
+- Run the Install-AngularJS.7.1.bat file
+
+## Building ##
+
+To build the source, you need the [ReSharper 7.1 SDK](http://www.jetbrains.com/resharper/download/index.html) installed. Then just open the src\resharper-angularjs.sln file and build.
 
