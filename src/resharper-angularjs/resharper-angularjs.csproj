@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
+    <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
+    <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
     <Compile Include="Settings\ActionOverrideRegistrar.cs" />
     <Compile Include="Settings\PreventDeleteInjectedLayerAction.cs" />
     <Compile Include="Settings\PreventResetSelectedSettingsLayerAction.cs" />
