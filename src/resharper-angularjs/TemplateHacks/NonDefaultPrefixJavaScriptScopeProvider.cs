@@ -48,7 +48,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
 
         public IEnumerable<ITemplateScopePoint> ProvideScopePoints(TemplateAcceptanceContext context)
         {
-            var prefix = LiveTemplatesManager.GetPrefix(context.Document, context.CaretOffset, JsAllowedPrefixes.Chars);
+            var prefix = context.Document != null ? LiveTemplatesManager.GetPrefix(context.Document, context.CaretOffset, JsAllowedPrefixes.Chars) : string.Empty;
             return from scopePoint in javaScriptScopeProvider.ProvideScopePoints(context)
                    select (ITemplateScopePoint) new ScopePoint(scopePoint, prefix);
         }

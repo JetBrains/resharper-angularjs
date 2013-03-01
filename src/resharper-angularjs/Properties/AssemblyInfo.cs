@@ -28,7 +28,7 @@ using JetBrains.Application.PluginSupport;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: AssemblyVersion("1.0.0.*")]
+[assembly: AssemblyVersion("1.0.1.*")]
 
 // The following information is displayed by ReSharper in the Plugins dialog
 [assembly: PluginTitle("AngularJS")]
