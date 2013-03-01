@@ -27,7 +27,7 @@
           </Title>
           <Description>A minor upgrade is available.</Description>
           <DownloadUri>
-            <xsl:value-of select="concat('http://download.jetbrains.com/resharper/plugins/resharper-angularjs.', $LatestMajor, '.', $LatestMinor, '.', LatestBuild, '.zip')" />
+            <xsl:value-of select="concat('http://download.jetbrains.com/resharper/plugins/resharper-angularjs.', $LatestMajor, '.', $LatestMinor, '.', $LatestBuild, '.zip')" />
           </DownloadUri>
           <CompanyName>JetBrains</CompanyName>
           <ProductName>AngularJS</ProductName>
