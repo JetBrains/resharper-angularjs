@@ -14,7 +14,7 @@ The Live Templates are based on the IntelliJ templates by [Pawel Kozlowski](http
 
 If you wish to just install a copy of the plugins without building yourself:
 
-- Download the latest zip file: [resharper-angularjs.1.0.zip](http://download.jetbrains.com/resharper/plugins/resharper-angularjs.1.0.zip)
+- Download the latest zip file: [resharper-angularjs.1.0.1.zip](http://download.jetbrains.com/resharper/plugins/resharper-angularjs.1.0.1.zip)
 - Extract everything
 - Run the Install-AngularJS.7.1.bat file
 
