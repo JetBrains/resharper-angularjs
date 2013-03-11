@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
     <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Settings\PreventResetSelectedSettingsLayerAction.cs" />
     <Compile Include="Settings\TemplatesLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.cs" />
     <Compile Include="Updates\PluginLocalEnvironmentInfo.cs" />
     <Compile Include="Updates\UpdatesNotifier.cs" />
   </ItemGroup>

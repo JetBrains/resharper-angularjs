@@ -30,7 +30,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
     // declares itself unavailable, we check to see if the prefix is one that should be
     // handled, declare ourselves available, and let IncludeTemplatesRule do the rest of
     // the work
-    [Language(typeof(KnownLanguage))]
+    [Language(typeof(KnownLanguage)), Language(typeof(UnknownLanguage))]
     public class TemplateWithNonDefaultPrefixesItemsProvider : ItemsProviderOfSpecificContext<ISpecificCodeCompletionContext>
     {
         private readonly ICodeCompletionItemsProvider includeTemplatesRule;
