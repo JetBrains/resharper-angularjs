@@ -7,8 +7,8 @@
 
   <!-- This is the latest version available -->
   <xsl:variable name="LatestMajor" select="1" />
-  <xsl:variable name="LatestMinor" select="0" />
-  <xsl:variable name="LatestBuild" select="1" />
+  <xsl:variable name="LatestMinor" select="1" />
+  <xsl:variable name="LatestBuild" select="0" />
 
   <!-- Match the PluginLocalInfo element created by serialising the data from the category -->
   <xsl:template match="/PluginLocalInfo">
