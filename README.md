@@ -12,7 +12,9 @@ The Live Templates are based on the IntelliJ templates by [Pawel Kozlowski](http
 
 ## How do I get it? ##
 
-If you wish to just install a copy of the plugins without building yourself:
+For ReSharper 8.0, launch the Extension Manager from the ReSharper menu, and search for angularjs in the "Online" section. Note that until 8.0 is released, the package is marked as pre-release, so make sure "Include Prerelease" is selected in the dialog.
+
+For ReSharper 7.1:
 
 - Download the latest zip file: [resharper-angularjs.1.1.0.zip](http://download.jetbrains.com/resharper/plugins/resharper-angularjs.1.1.0.zip)
 - Extract everything
