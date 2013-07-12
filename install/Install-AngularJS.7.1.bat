@@ -8,6 +8,15 @@ set PLUGIN=AngularJS
 
 set INSTALL_SOURCEDIR=%~dp0\%PLUGIN%.%VERSION%
 
+REM LOCALAPPDATA is only supported since Windows Vista
+if "%LOCALAPPDATA%"=="" set LOCALAPPDATA=%USERPROFILE%\Local Settings\Application Data
+if not exist "%LOCALAPPDATA%" (
+    echo Unable to find local application data directory
+    echo %LOCALAPPDATA%
+    echo Please check the LOCALAPPDATA environment variable and try again
+    goto :end
+)
+
 set PER_USER_PLUGINDIR=%LOCALAPPDATA%\%BASEDIR%\plugins\%PLUGIN%
 
 if exist "%PER_USER_PLUGINDIR%" goto do_clean
