@@ -21,6 +21,10 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html.Html;
 using JetBrains.UI.RichText;
 
+#if RESHARPER_8
+using JetBrains.ReSharper.Psi.Modules;
+#endif
+
 namespace JetBrains.ReSharper.Plugins.AngularJS
 {
     [DeclaredElementDescriptionProvider]
