@@ -4,7 +4,7 @@ A plugin for ReSharper 7.1 and 8.0 that adds support for AngularJS.
 
 ## What does it do? ##
 
-This plugin provides code completion for AngularJS attributes in HTML files. It supports the standard "ng-" sytnax, as well as the "data-ng-" syntax.
+This plugin provides code completion for AngularJS attributes in HTML files. It supports the standard "ng-" syntax, as well as the "data-ng-" syntax.
 
 * Code completion for AngularJS attributes in HTML files. It supports the standard "ng-" syntax, as well as the "data-ng-" form.
 * Live Templates for HTML, JavaScript and TypeScript. The templates are grouped into helpers for module, directive, scope, global, html and routing. They can be seen and edited in the Templates Explorer.
