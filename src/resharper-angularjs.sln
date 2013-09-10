@@ -5,6 +5,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.7.1", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.8.0", "resharper-angularjs\resharper-angularjs.8.0.csproj", "{F11FEAE0-0B1B-4D41-BFAB-A3685513EE99}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.1", "7.1", "{670EE92D-2D29-4CAE-A171-9273DFBB3635}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "8.0", "8.0", "{1487BDE4-245C-49A0-B292-E90D0B2AD3B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.8.0", "tests\tests.8.0.csproj", "{506568A3-0598-4604-95A4-B644356F247A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +25,17 @@ Global
 		{F11FEAE0-0B1B-4D41-BFAB-A3685513EE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F11FEAE0-0B1B-4D41-BFAB-A3685513EE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F11FEAE0-0B1B-4D41-BFAB-A3685513EE99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506568A3-0598-4604-95A4-B644356F247A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506568A3-0598-4604-95A4-B644356F247A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506568A3-0598-4604-95A4-B644356F247A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506568A3-0598-4604-95A4-B644356F247A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ABEF4568-7276-41FD-96A7-96138A689765} = {670EE92D-2D29-4CAE-A171-9273DFBB3635}
+		{F11FEAE0-0B1B-4D41-BFAB-A3685513EE99} = {1487BDE4-245C-49A0-B292-E90D0B2AD3B7}
+		{506568A3-0598-4604-95A4-B644356F247A} = {1487BDE4-245C-49A0-B292-E90D0B2AD3B7}
 	EndGlobalSection
 EndGlobal
