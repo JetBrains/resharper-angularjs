@@ -93,7 +93,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Settings
 
         private FileSystemPath GetSettingsFile()
         {
-            return new FileSystemPath(GetType().Assembly.Location).Directory.Combine("angularjs-templates.dotSettings");
+            return new FileSystemPath(GetType().Assembly.Location).Directory.Combine("templates.dotSettings");
         }
 
         public static readonly PropertyId<bool> PreventDeletion = new PropertyId<bool>("AngularJS-PreventDeletion");

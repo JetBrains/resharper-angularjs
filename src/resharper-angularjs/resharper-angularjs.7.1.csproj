@@ -68,7 +68,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="angularjs-templates.dotSettings">
+    <None Include="templates.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
