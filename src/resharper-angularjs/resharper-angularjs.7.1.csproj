@@ -48,6 +48,8 @@
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
+    <Compile Include="TemplateHacks\NonDefaultPrefixWrappingScopeProvider.cs" />
+    <Compile Include="TemplateHacks\ReplacingAllowedPrefixCharsScopePoint.cs" />
     <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
     <Compile Include="Settings\ActionOverrideRegistrar.cs" />
@@ -68,9 +70,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="templates.dotSettings">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="templates-7.1-8.0.dotSettings" />
   </ItemGroup>
   <PropertyGroup>
     <ReSharperSdkTargets Condition=" '$(ReSharperSdkTargets)' == '' ">$(MSBuildExtensionsPath)\JetBrains\ReSharper.SDK\v7.1</ReSharperSdkTargets>

@@ -20,10 +20,10 @@ using JetBrains.ReSharper.LiveTemplates.JavaScript.LiveTemplates;
 namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
 {
     [ShellComponent]
-    public class NonDefaultPrefixJavaScriptScopeProvider : NonDefaultPrefixWrappingScopeProvider<JavaScriptScopeProvider>
+    public class TypeScriptFilePrefixScopeProvider : NonDefaultPrefixWrappingScopeProvider<TypeScriptScopeProvider>
     {
-        public NonDefaultPrefixJavaScriptScopeProvider(JavaScriptScopeProvider javaScriptScopeProvider) 
-            : base(javaScriptScopeProvider)
+        public TypeScriptFilePrefixScopeProvider(TypeScriptScopeProvider typeScriptScopeProvider)
+            : base(typeScriptScopeProvider)
         {
         }
     }

@@ -50,6 +50,8 @@
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
     <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
+    <Compile Include="TemplateHacks\NonDefaultPrefixWrappingScopeProvider.cs" />
+    <Compile Include="TemplateHacks\ReplacingAllowedPrefixCharsScopePoint.cs" />
     <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
     <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.cs" />
   </ItemGroup>
@@ -57,7 +59,7 @@
     <None Include="..\..\install\resharper-angularjs.nuspec">
       <Link>resharper-angularjs.nuspec</Link>
     </None>
-    <None Include="templates.dotSettings">
+    <None Include="templates-7.1-8.0.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

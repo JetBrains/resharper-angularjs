@@ -13,32 +13,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
-using JetBrains.Application;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Context;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Scope;
 using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
 {
-    // ReSharper doesn't yet support TypeScript, but templates can still work in
-    // TypeScript files if you use the *.ts file map. Unfortunately, that means
-    // we get the default prefix chars (just '_'), and our templates starting 
-    // with '$' don't work, this scope provider wraps the InFileWithMask provider
-    // and adds extra prefixes
-    [ShellComponent]
-    public class TypeScriptFilePrefixScopeProvider : IScopeProvider
+    // ReSharper doesn't correctly handle templates with a non-default prefix, i.e.
+    // it only correctly handles templates that start with characters, digits or '_'.
+    // We have templates that start with '$'
+    // This class allows ReSharper to expand templates with the tab key. The default
+    // JavaScript scope provider creates scopes that represent the current context in
+    // a JS file, but doesn't provide any custom prefixes, so defaults to '_'. Here
+    // we create the same scopes, but wrap them, and create a prefix that includes
+    // the '$' character, so we can better match against the template shortcut
+    public abstract class NonDefaultPrefixWrappingScopeProvider<T> : IScopeProvider
+        where T : IScopeProvider
     {
+        private readonly T originalScopeProvider;
+
+        protected NonDefaultPrefixWrappingScopeProvider(T originalScopeProvider)
+        {
+            this.originalScopeProvider = originalScopeProvider;
+        }
+
         public IEnumerable<ITemplateScopePoint> ProvideScopePoints(TemplateAcceptanceContext context)
         {
-            if (context.ProjectFile != null && context.ProjectFile.Name.EndsWith(".ts", StringComparison.InvariantCultureIgnoreCase))
-            {
-                var scopePoint = new InFileWithMask("*.ts");
-                return new[] { new ReplacingAllowedPrefixCharsScopePoint(scopePoint, context.Document, context.CaretOffset, JsAllowedPrefixes.Chars) };
-            }
-            return EmptyList<ITemplateScopePoint>.InstanceList;
+            return from scopePoint in originalScopeProvider.ProvideScopePoints(context)
+                select (ITemplateScopePoint) new ReplacingAllowedPrefixCharsScopePoint(scopePoint, context.Document, context.CaretOffset, JsAllowedPrefixes.Chars);
         }
 
         public ITemplateScopePoint ReadFromXml(XmlElement scopeElement)

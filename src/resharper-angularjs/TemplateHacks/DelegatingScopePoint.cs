@@ -1,60 +1,73 @@
+#region license
+// Copyright 2013 JetBrains s.r.o.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+#endregion
+
 using System;
 using System.Collections.Generic;
 using System.Xml;
 using JetBrains.DocumentModel;
-using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Scope;
 using JetBrains.ReSharper.Psi;
 using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
 {
-    internal class DelegatingScopePoint : ITemplateScopePoint
+    internal abstract class DelegatingScopePoint : ITemplateScopePoint
     {
         private readonly ITemplateScopePoint innerScopePoint;
 
-        public DelegatingScopePoint(ITemplateScopePoint innerScopePoint, IDocument document, int caretOffset)
+        protected DelegatingScopePoint(ITemplateScopePoint innerScopePoint)
         {
             this.innerScopePoint = innerScopePoint;
-
-            Prefix = CalcPrefix(document, caretOffset);
         }
 
-        public bool IsSubsetOf(ITemplateScopePoint other)
+        public virtual bool IsSubsetOf(ITemplateScopePoint other)
         {
             return innerScopePoint.IsSubsetOf(other);
         }
 
-        public string CalcPrefix(IDocument document, int caretOffset)
+        public virtual string CalcPrefix(IDocument document, int caretOffset)
         {
-            return document == null ? string.Empty : LiveTemplatesManager.GetPrefix(document, caretOffset, JsAllowedPrefixes.Chars);
+            return innerScopePoint.CalcPrefix(document, caretOffset);
         }
 
-        public XmlElement WriteToXml(XmlElement element)
+        public virtual XmlElement WriteToXml(XmlElement element)
         {
             return innerScopePoint.WriteToXml(element);
         }
 
-        public Guid GetDefaultUID()
+        public virtual Guid GetDefaultUID()
         {
             return innerScopePoint.GetDefaultUID();
         }
 
-        public string GetTagName()
+        public virtual string GetTagName()
         {
             return innerScopePoint.GetTagName();
         }
 
-        public IEnumerable<Pair<string, string>> EnumerateCustomProperties()
+        public virtual IEnumerable<Pair<string, string>> EnumerateCustomProperties()
         {
             return innerScopePoint.EnumerateCustomProperties();
         }
 
-        public string Prefix { get; private set; }
-        public string PresentableShortName { get { return innerScopePoint.PresentableShortName; } }
-        public PsiLanguageType RelatedLanguage { get { return innerScopePoint.RelatedLanguage; } }
+        public virtual string Prefix { get; protected set; }
+        public virtual string PresentableShortName { get { return innerScopePoint.PresentableShortName; } }
+        public virtual PsiLanguageType RelatedLanguage { get { return innerScopePoint.RelatedLanguage; } }
 
-        public Guid UID
+        public virtual Guid UID
         {
             get { return innerScopePoint.UID; }
             set { innerScopePoint.UID = value; }
