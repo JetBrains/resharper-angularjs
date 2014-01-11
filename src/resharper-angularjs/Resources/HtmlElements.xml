@@ -31,6 +31,7 @@
       <attribute name="ng-form" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-href" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-if" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-include" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-init" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-list" type="CDATA" defaultValueType="#IMPLIED" />
@@ -74,6 +75,7 @@
       <attribute name="data-ng-form" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-href" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="data-ng-if" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-include" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-init" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-list" type="CDATA" defaultValueType="#IMPLIED" />
