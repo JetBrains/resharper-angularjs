@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>AngularJS</id>
-    <version>1.1.4-EAP-20131115</version>
+    <version>1.1.4</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,9 +10,9 @@
     <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
-    <releaseNotes>Updated to include ReSharper 8.1 EAP (8.1.12.337) support</releaseNotes>
+    <releaseNotes>ReSharper 8.1 support</releaseNotes>
     <dependencies>
-      <dependency id="ReSharper" version="8.0" />
+      <dependency id="ReSharper" version="[8.0,8.2)" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
