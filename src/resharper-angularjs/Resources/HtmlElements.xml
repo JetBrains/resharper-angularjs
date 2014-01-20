@@ -44,6 +44,7 @@
       <attribute name="ng-mouseup" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-multiple" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-non-bindable" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-options" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-pluralize" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-readonly" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-repeat" type="CDATA" defaultValueType="#IMPLIED" />
