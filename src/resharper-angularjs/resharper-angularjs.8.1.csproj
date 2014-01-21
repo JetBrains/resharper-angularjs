@@ -53,6 +53,11 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsFileLateBoundReference.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsFolderLateBoundReference.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsHtmlDeclaredElementTypes.cs" />
+    <Compile Include="NgIncludeFileReference\IgnoreRootPathFilter.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsUrlAttributeValueReferenceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
@@ -63,7 +68,9 @@
     <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.8.1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\HtmlElements.xml" />
+    <EmbeddedResource Include="Resources\HtmlElements.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\install\resharper-angularjs.nuspec">

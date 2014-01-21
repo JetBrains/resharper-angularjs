@@ -1,17 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <htmlPsi xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
+  <!-- You can use the attributeTypes element to define your own attribute types, specifically
+       enums. E.g.
+       <attributeTypes>
+         <attributeType name="%Shape" values="default|rect|circle|poly" strict="false" />
+       </attributeTypes>
+       
+       This defines a type which you can use in the <attributes> section below, called
+       "%Shape". On usage, the value of the attribute can then only be "default", "rect",
+       "circle" or "poly"
+       
+       If the type isn't found to be pre-defined, it's automatically added to the cache
+       as a simple value type
+       -->
+  
   <!-- Define common attributes. The name of the element under attributes doesn't matter,
        but is used in /htmlPsi/tags/tag[@common-attributes] should a tag want to include
        common attributes. We're including this file such that our common attributes are
        included by default -->
   <attributes>
     <angularjs>
-      <!-- Set the type and default value with values used when specifying attributes in a DTD
-           Mostly, this will mean using CDATA to mean character data, and #IMPLIED to mean the
-           data is not required (see also #REQUIRED and #FIXED). You can also use %Blah to refer
-           to an element in /htmlPsi/attributeTypes/attributeType, or a simple choice with
-           (one|two) -->
+      <!-- Define an attribute with a name and a type. The type should be an enum defined above
+           in /htmlPsi/attributeTypes/attributeType (e.g. "%Blah") or can be a previously undefined
+           value, in which case the type is simply added to the cache of types as a simple identifier.
+           Enums can be defined inline, using bracket and pipe characters ("(one|two)"). Well known
+           type names can be found in IHtmlDeclaredElementTypesBase, including "%InputType",
+           "%Language", "%URL", and "%Bool". "CDATA" is also a common value. The defaultValueType
+           attribute can be "#IMPLIED", which means the value is not required. There is also
+           "#REQUIRED" and "#FIXED". Other attributes include "strict", "obsolete" and "nonStandard" -->
+      <!-- TODO: Might be worth setting up an %AngularExpression attribute type... -->
       <attribute name="ng-app" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-bind" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-bind-html" type="CDATA" defaultValueType="#IMPLIED" />
@@ -32,7 +50,7 @@
       <attribute name="ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-href" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-if" type="CDATA" defaultValueType="#IMPLIED" />
-      <attribute name="ng-include" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="ng-include" type="%AngularJsUrl" defaultValueType="#REQUIRED" />
       <attribute name="ng-init" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-list" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="ng-model" type="CDATA" defaultValueType="#IMPLIED" />
