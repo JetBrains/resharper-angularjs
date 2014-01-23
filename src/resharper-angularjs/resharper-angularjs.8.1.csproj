@@ -59,6 +59,11 @@
     <Compile Include="NgIncludeFileReference\IgnoreRootPathFilter.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsUrlAttributeValueReferenceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Psi\Parsing\AngularJsLexerGenerated.cs" />
+    <Compile Include="Psi\Parsing\Angular_lex.cs">
+      <DependentUpon>Angular.lex</DependentUpon>
+    </Compile>
+    <Compile Include="Psi\Parsing\AngularJsTokenType.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
     <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
@@ -79,6 +84,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <CsLex Include="Psi\Parsing\Angular.lex" />
     <None Include="templates-8.1.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
