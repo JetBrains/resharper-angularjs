@@ -16,16 +16,16 @@
 
 using System.IO;
 using System.Text.RegularExpressions;
+using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.PsiTests.Lexing;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.Text;
-using JetBrains.Util;
 using NUnit.Framework;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 {
-    [TestFileExtension(".js")]
+    [TestFileExtension(JavaScriptProjectFileType.JS_EXTENSION)]
     public class AngularJsLexerTest : LexerTestBase
     {
         protected override string RelativeTestDataPath
