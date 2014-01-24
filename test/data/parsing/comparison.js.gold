@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «false»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -6,6 +7,7 @@ IJavaScriptFile
         IJavaScriptLiteralExpression
           JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
 
+Expression: «!true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -16,6 +18,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
+Expression: «1==1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -28,6 +31,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1==true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -40,6 +44,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
+Expression: «1===1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -52,6 +57,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1==='1'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -64,6 +70,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
 
+Expression: «1===true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -76,6 +83,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
+Expression: «'true'===true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -88,6 +96,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
+Expression: «1!==2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -100,6 +109,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1!=='1'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -112,6 +122,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
 
+Expression: «1!=2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -124,6 +135,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1<2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -136,6 +148,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1<=1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -148,6 +161,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1>2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -160,6 +174,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «2>=1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -172,6 +187,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «true==2<3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -188,6 +204,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «true===2<3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

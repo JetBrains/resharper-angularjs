@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «1 | nonexistent»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -13,6 +14,7 @@ IJavaScriptFile
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:nonexistent)
 
+Expression: «'abcd' | substring:1:offset»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -41,6 +43,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:offset)
 
+Expression: «'abcd' | substring:1:3 | uppercase»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -75,6 +78,7 @@ IJavaScriptFile
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:uppercase)
 
+Expression: «n = (name | lowercase)»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -99,6 +103,7 @@ IJavaScriptFile
                 Identifier(type:IDENTIFIER, text:lowercase)
         JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
+Expression: «name | uppercase:»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

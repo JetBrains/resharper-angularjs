@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «foo in bar»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -12,6 +13,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «(key, value) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -34,6 +36,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «foo in»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -45,6 +48,7 @@ IJavaScriptFile
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         ErrorElement:Identifier expected
 
+Expression: «(key, value) in»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -64,6 +68,7 @@ IJavaScriptFile
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         ErrorElement:Identifier expected
 
+Expression: «(key value) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -86,6 +91,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «(key) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -106,6 +112,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «(key,) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -126,6 +133,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «(, value) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -147,6 +155,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:bar)
 
+Expression: «foo in bar | some»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -168,6 +177,7 @@ IJavaScriptFile
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:some)
 
+Expression: «foo in bar | some:q»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -196,6 +206,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:q)
 
+Expression: «(key, value) in bar | some»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -225,6 +236,7 @@ IJavaScriptFile
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:some)
 
+Expression: «(key, value) in bar | some:q»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -261,6 +273,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:q)
 
+Expression: «foo in bar track by id»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -281,6 +294,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:id)
 
+Expression: «foo in bar | some track by id»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -308,6 +322,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:id)
 
+Expression: «foo in bar track by»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

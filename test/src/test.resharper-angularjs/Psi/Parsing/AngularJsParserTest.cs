@@ -78,6 +78,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 
                         Assert.NotNull(parsedFile);
 
+                        writer.WriteLine("Expression: «{0}»", angularJsExpression);
                         writer.WriteLine("Language: {0}", parsedFile.Language);
                         DebugUtil.DumpPsi(writer, parsedFile);
                         writer.WriteLine();

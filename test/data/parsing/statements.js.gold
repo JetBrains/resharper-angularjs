@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «a=1;b=3;a+b»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IVariableDeclaration
@@ -26,6 +27,7 @@ IJavaScriptFile
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:b)
 
+Expression: «;;1;;»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

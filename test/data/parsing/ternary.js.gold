@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «0?0:2»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -13,6 +14,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -28,10 +30,12 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «0?0?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -54,6 +58,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?0?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -76,6 +81,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?1?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -98,6 +104,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?0?1:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -120,6 +127,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?0?0:2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -142,6 +150,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «1?1?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -164,6 +173,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?1?1:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -186,6 +196,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?1?1:2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -208,6 +219,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «1?1?1:2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -230,10 +242,12 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «0?0:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -256,6 +270,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?0:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -278,6 +293,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?1:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -300,6 +316,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?0:1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -322,6 +339,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?0:0?2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -344,6 +362,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «1?1:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -366,28 +385,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-
+Expression: «1?1:1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -405,11 +403,12 @@ IJavaScriptFile
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
             JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
             IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
             JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
             IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?1:1?2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -432,10 +431,35 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
+Expression: «1?1:1?2:3»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IConditionalTernaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          IConditionalTernaryExpression
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «0&&1?0:1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -455,6 +479,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1||0?0:0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -474,10 +499,12 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «0?0&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -497,6 +524,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?1&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -516,6 +544,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «0?0||0:1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -535,6 +564,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «0?0||1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -554,10 +584,12 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «1?0&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -577,6 +609,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?1&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -596,6 +629,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «1?0||0:1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -615,6 +649,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1?0||1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -634,10 +669,12 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «0?1:0&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -657,6 +694,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «0?2:1&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -676,6 +714,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «0?1:0||0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -695,6 +734,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
+Expression: «0?2:0||1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -714,10 +754,12 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «1?1:0&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -737,6 +779,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1?2:1&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -756,6 +799,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «1?1:0||0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -775,6 +819,7 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
+Expression: «1?2:0||1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -794,10 +839,12 @@ IJavaScriptFile
             IJavaScriptLiteralExpression
               JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
+Expression: «»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
 
+Expression: «returnTrue() ? returnString() : returnInt()»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -829,6 +876,7 @@ IJavaScriptFile
             JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
             JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
+Expression: «returnFalse() ? returnString() : returnInt()»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -860,6 +908,7 @@ IJavaScriptFile
             JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
             JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
+Expression: «returnTrue() ? returnString() : returnInt()»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -891,6 +940,7 @@ IJavaScriptFile
             JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
             JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
+Expression: «identity(returnFalse() ? returnString() : returnInt())»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

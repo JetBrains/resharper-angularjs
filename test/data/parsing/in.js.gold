@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «name in collection»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -12,6 +13,7 @@ IJavaScriptFile
           IIdentifierExpression
             Identifier(type:IDENTIFIER, text:collection)
 
+Expression: «name in»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «{}»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IBlock
@@ -20,6 +21,7 @@ IJavaScriptFile
               JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
       JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
 
+Expression: «{'a':'b'}»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -37,6 +39,7 @@ IJavaScriptFile
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
       JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
 
+Expression: «{"a":'b'}»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -54,6 +57,7 @@ IJavaScriptFile
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
       JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
 
+Expression: «{false:'WC', true:'CC'}[false]»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -88,6 +92,7 @@ IJavaScriptFile
             JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
           JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
+Expression: «[{}]»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -101,6 +106,7 @@ IJavaScriptFile
             JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
           JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
+Expression: «[{a:[]}, {b:1}]»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection

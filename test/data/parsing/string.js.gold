@@ -1,4 +1,5 @@
-﻿Language: PsiLanguageType:AngularJS
+﻿Expression: «'a' + 'b c'»
+Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
@@ -12,6 +13,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b c')
 
+Expression: «'a' + 'b \u0042'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -26,6 +28,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042')
 
+Expression: «'a' + 'b \u'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -40,6 +43,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u')
 
+Expression: «'a' + 'b \u0042»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
@@ -54,6 +58,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042)
 
+Expression: «'a' + 'b \u»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
