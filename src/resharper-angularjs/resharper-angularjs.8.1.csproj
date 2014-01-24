@@ -62,10 +62,13 @@
     <Compile Include="Psi\AngularJsLanguage.cs" />
     <Compile Include="Psi\Parsing\AngularJsLexerGenerated.cs" />
     <Compile Include="Psi\Parsing\AngularJsParser.cs" />
+    <Compile Include="Psi\Parsing\AngularJsTreeBuilder.cs" />
     <Compile Include="Psi\Parsing\Angular_lex.cs">
       <DependentUpon>Angular.lex</DependentUpon>
     </Compile>
     <Compile Include="Psi\Parsing\AngularJsTokenType.cs" />
+    <Compile Include="Psi\Parsing\Tree\AngularJsElementType.cs" />
+    <Compile Include="Psi\Parsing\Tree\RepeatExpression.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
     <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />

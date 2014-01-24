@@ -78,29 +78,26 @@ IJavaScriptFile
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
-    IExpressionStatement - should be variable?
-      ICompoundExpression
-        IBinaryExpression
-          IReferenceExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:n)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IParenthesizedExpression
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            ICompoundExpression
-              IBinaryExpression
-                IReferenceExpression
-                  IIdentifierExpression
-                    Identifier(type:IDENTIFIER, text:name)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-                Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-                IReferenceExpression - AngularJsFilterExpression
-                  IIdentifierExpression
-                    Identifier(type:IDENTIFIER, text:lowercase)
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+    IVariableDeclaration
+      IIdentifierExpression
+        Identifier(type:IDENTIFIER, text:n)
+      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+      JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+      IParenthesizedExpression
+        JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+        ICompoundExpression
+          IBinaryExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:name)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IReferenceExpression - AngularJsFilterExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:lowercase)
+        JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
