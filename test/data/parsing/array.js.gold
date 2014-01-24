@@ -1,0 +1,96 @@
+﻿Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IIndexExpression
+          IArrayLiteral
+            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IIndexExpression
+          IIndexExpression
+            IArrayLiteral
+              JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+              IArrayLiteral
+                JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+                IJavaScriptLiteralExpression
+                  JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+                JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+              JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IReferenceExpression
+          IArrayLiteral
+            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:length)
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IReferenceExpression
+          IArrayLiteral
+            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:length)
+

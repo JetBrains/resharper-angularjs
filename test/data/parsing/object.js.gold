@@ -1,0 +1,137 @@
+﻿Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IBlock
+      JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+      JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IBlock
+      JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+      ILabelledStatement
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:a)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IExpressionStatement
+          ICompoundExpression
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
+      JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IBlock - should be object literal?
+      JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        ErrorElement:; is expected - shouldn't be an error!
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
+      JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IBlock - should be object literal?
+      JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:"a")
+        ErrorElement:; is expected - shouldn't be an error!
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:'b')
+      JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IBlock - should be object literal?
+      JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+        ErrorElement:; is expected
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:'WC')
+          JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          IJavaScriptLiteralExpression
+            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+        ErrorElement:; is expected - shouldn't be an error!
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+      IExpressionStatement
+        ICompoundExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:STRING_LITERAL, text:'CC')
+      JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+    IExpressionStatement
+      ICompoundExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IObjectLiteral
+            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+            IObjectPropertiesList
+            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IObjectLiteral
+            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+            IObjectPropertiesList
+              IObjectPropertyInitializer
+                IPropertyNameIdentifier
+                  IIdentifierExpression
+                    Identifier(type:IDENTIFIER, text:a)
+                JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+                IArrayLiteral
+                  JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+                  JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+          JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          IObjectLiteral
+            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+            IObjectPropertiesList
+              IObjectPropertyInitializer
+                IPropertyNameIdentifier
+                  IIdentifierExpression
+                    Identifier(type:IDENTIFIER, text:b)
+                JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+                IJavaScriptLiteralExpression
+                  JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+

@@ -1,0 +1,29 @@
+﻿Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IBinaryExpression - AngularJsRepeatExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:name)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:collection)
+
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      ICompoundExpression
+        IBinaryExpression - AngularJsRepeatExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:name)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
+          ErrorElement:Identifier expected
+
