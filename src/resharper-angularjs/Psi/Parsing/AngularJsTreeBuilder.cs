@@ -89,6 +89,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
                 var definitionMarker = Mark();
                 Advance();
                 Builder.Done(definitionMarker, REFERENCE_EXPRESSION, null); // ? DEFINITION_EXPRESSION
+                ExpectToken(TokenType.IN_KEYWORD);
             }
             else
             {
@@ -101,10 +102,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
                 }
 
                 Builder.DoneBeforeWhitespaces(keyValueMarker, PARENTHESIZED_EXPRESSION, null);
+                Advance();
             }
-
-            Advance();
-            ExpectToken(TokenType.IN_KEYWORD);
 
             ParseJavaScriptExpression(); // ?? parseExpression
 
@@ -126,28 +125,21 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             if (CanBeIdentifier(GetTokenType()))
             {
                 var definitionMarker = Mark();
-                //buildTokenElement(REFERENCE_EXPRESSION);
-                Builder.DoneBeforeWhitespaces(definitionMarker, IDENTIFIER_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
+                Advance();
+                Builder.DoneBeforeWhitespaces(definitionMarker, REFERENCE_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
             }
             else
             {
                 Builder.Error("Expected identifier (angularjs)");
             }
 
-            if (GetTokenType() == TokenType.COMMA)
-            {
-                Advance();
-            }
-            else
-            {
-                Builder.Error("Expected comma (angularjs)");
-            }
+            ExpectToken(TokenType.COMMA);
 
             if (CanBeIdentifier(GetTokenType()))
             {
                 var definitionMarker = Mark();
-                //buildTokenElement(REFERENCE_EXPRESSION);
-                Builder.DoneBeforeWhitespaces(definitionMarker, IDENTIFIER_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
+                Advance();
+                Builder.DoneBeforeWhitespaces(definitionMarker, REFERENCE_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
             }
             else
             {
@@ -156,14 +148,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 
             Builder.DoneBeforeWhitespaces(commaMarker, COMPOUND_EXPRESSION, null);
 
-            if (GetTokenType() == TokenType.RPARENTH)
-            {
-                Advance();
-            }
-            else
-            {
-                Builder.Error("Expected right parenthesis (angularjs)");
-            }
+            ExpectToken(TokenType.RPARENTH);
         }
     }
 }
