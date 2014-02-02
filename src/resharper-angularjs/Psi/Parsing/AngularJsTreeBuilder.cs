@@ -24,131 +24,326 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             base.InitElementTypes();
         }
 
-        // sets expression parser to be a custom class
-        // sets statement parser to be a custom class
-        // parseAngular(IElementType root)
-        //  builder.mark(), while (!builder.eof) parseStatement
-        //  rootMarker.done(root)
-
         public override void ParseStatement()
         {
+            ParseExpressionStatement();
+        }
+
+        // TODO: This should be in ParseStatment, and everyone who's calling ParseExpressionStatement should be calling ParseStatement (or ParseExpression)
+        private void ParseExpressionStatement()
+        {
             var tokenType = GetTokenType();
-            if (tokenType == TokenType.LBRACE)
+            if (tokenType == TokenType.SEMICOLON)
             {
-                ParseAssignmentExpression();    // ??? parseExpressionStatement
+                ParseEmptyStatement();
+                return;
+            }
+            if (CanBeIdentifier(tokenType))
+            {
+                if (LookAhead(1) == TokenType.EQ)
+                {
+                    ParseVariableStatement();
+                    return;
+                }
+            }
+
+            var mark = Mark();
+            ParseFilterChainExpression();
+            if (GetTokenType() == TokenType.SEMICOLON)
                 ExpectToken(TokenType.SEMICOLON);
-                // ParseSemicolon(StatementFirst);
+            Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
+        }
+
+        private void ParseEmptyStatement()
+        {
+            var mark = Mark();
+            ExpectToken(TokenType.SEMICOLON);
+            Builder.DoneBeforeWhitespaces(mark, EMPTY_STATEMENT, null);
+        }
+
+        protected override void ParseVariableStatement()
+        {
+            var mark = Mark();
+            ParseVariableDeclarationList(false);
+            if (GetTokenType() == TokenType.SEMICOLON)
+                ExpectToken(TokenType.SEMICOLON);
+            Builder.DoneBeforeWhitespaces(mark, VARIABLE_STATEMENT, null);
+        }
+
+        private void ParseFilterChainExpression()
+        {
+            // ParseBinaryExpression
+            //   ParseExpression
+            // ParsePipe
+            // ParseFilterExpression
+
+            ParseAssignmentExpression();
+            // TODO: followed by | and filter. Wrapped in binary expression (and probably expression statement, too)
+        }
+
+        private new void ParseAssignmentExpression()
+        {
+            // TODO: Should this be a variable statement?
+            var mark = Mark();
+            if (!ParseTernaryExpression())
+            {
+                Builder.Drop(mark);
                 return;
             }
 
-            if (CanBeIdentifier(tokenType))
+            if (GetTokenType() != TokenType.EQ)
             {
-                var nextToken = LookAhead(1);
-                if (nextToken == TokenType.EQ)
-                {
-                    ParseVariableDeclaration(false);
-                    ParseSemicolon(StatementFirst);
-                    return;
-                }
-                if (nextToken == TokenType.IN_KEYWORD)
-                {
-                    ParseInStatement();
-                    return;
-                }
+                Builder.Drop(mark);
+                return;
             }
 
-            if (GetTokenType() == TokenType.LPARENTH)
-            {
-                if (ParseInStatement())
-                    return;
-            }
-
-            base.ParseStatement();
+            // TODO: angular checks that leftmost part of expression can be assigned
+            Advance();
+            ParseAssignmentExpression();
+            Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
         }
 
-        private bool ParseInStatement()
+        private bool ParseTernaryExpression()
         {
-            var mark = Mark();
+            if (!ParseLogicalOrExpression())
+                return false;
 
-            if (!ParseInExpression())
+            if (GetTokenType() == JavaScriptTokenType.QUESTION)
             {
+                var mark = Builder.PrecedeCurrent();
+                // This pattern might be wrong - we backtrack too much?
+                // The real JS parser doesn't check return values. Does this handle
+                // parse failures better?
+                if (ExpectToken(JavaScriptTokenType.QUESTION)
+                    && ParseTernaryExpression()
+                    && ExpectToken(JavaScriptTokenType.COLON)
+                    && ParseTernaryExpression())
+                {
+                    Builder.DoneBeforeWhitespaces(mark, CONDITIONAL_TERNARY_EXPRESSION, null);
+                    return true;
+                }
                 Builder.Drop(mark);
                 return false;
             }
 
-            Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
             return true;
         }
 
-        private bool ParseInExpression()
+        private bool ParseLogicalOrExpression()
         {
-            var expressionMarker = Mark();
+            if (!ParseLogicalAndExpression())
+                return false;
 
-            if (CanBeIdentifier(GetTokenType()))
+            if (GetTokenType() == JavaScriptTokenType.PIPE2)
             {
-                var definitionMarker = Mark();
-                Advance();
-                Builder.Done(definitionMarker, REFERENCE_EXPRESSION, null); // ? DEFINITION_EXPRESSION
-                ExpectToken(TokenType.IN_KEYWORD);
-            }
-            else
-            {
-                var keyValueMarker = Mark();
-                ParseKeyValue();
-                if (GetTokenType() != TokenType.IN_KEYWORD)
+                var mark = Builder.PrecedeCurrent();
+                if (ExpectToken(JavaScriptTokenType.PIPE2)
+                    && ParseLogicalOrExpression())    // TODO: AngularJs parser uses a loop instead of recursion
                 {
-                    Builder.RollbackTo(expressionMarker);
-                    return false;
+                    Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+                    return true;
                 }
-
-                Builder.DoneBeforeWhitespaces(keyValueMarker, PARENTHESIZED_EXPRESSION, null);
-                Advance();
+                Builder.Drop(mark);
+                return false;
             }
 
-            ParseJavaScriptExpression(); // ?? parseExpression
-
-            if (GetTokenType() == AngularJsTokenType.TRACK_BY_KEYWORD)
-            {
-                Advance();
-                ParseJavaScriptExpression(); // ?? parseExpression
-            }
-
-            Builder.DoneBeforeWhitespaces(expressionMarker, REPEAT_EXPRESSION, null);
             return true;
         }
 
-        private void ParseKeyValue()
+        private bool ParseLogicalAndExpression()
         {
-            Advance();
+            if (!ParseEqualityExpression())
+                return false;
 
-            var commaMarker = Mark();
-            if (CanBeIdentifier(GetTokenType()))
+            if (GetTokenType() == JavaScriptTokenType.AMPER2)
             {
-                var definitionMarker = Mark();
+                var mark = Builder.PrecedeCurrent();
+                if (ExpectToken(JavaScriptTokenType.AMPER2)
+                    && ParseLogicalAndExpression())    // TODO: AngularJs parser uses a loop instead of recursion
+                {
+                    Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+                    return true;
+                }
+                Builder.Drop(mark);
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ParseEqualityExpression()
+        {
+            if (!ParseRelationalExpression())
+                return false;
+
+            var tokenType = GetTokenType();
+            if (tokenType == JavaScriptTokenType.EQ2 || tokenType == JavaScriptTokenType.NOTEQ
+                || tokenType == JavaScriptTokenType.EQ3 || tokenType == JavaScriptTokenType.NOTEQ2)
+            {
+                var mark = Builder.PrecedeCurrent();
+                Advance();  // Past operator
+                ParseEqualityExpression();
+                Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+            }
+
+            return true;
+        }
+
+        private bool ParseRelationalExpression()
+        {
+            if (!ParseAdditiveExpression())
+                return false;
+
+            var tokenType = GetTokenType();
+            if (tokenType == JavaScriptTokenType.LT || tokenType == JavaScriptTokenType.GT
+                || tokenType == JavaScriptTokenType.LTEQ || tokenType == JavaScriptTokenType.GTEQ)
+            {
+                var mark = Builder.PrecedeCurrent();
+                Advance();  // Past operator
+                ParseRelationalExpression();
+                Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+            }
+
+            return true;
+        }
+
+        private bool ParseAdditiveExpression()
+        {
+            if (!ParseMultiplicativeExpression())
+                return false;
+
+            var tokenType = GetTokenType();
+            if (tokenType == JavaScriptTokenType.PLUS || tokenType == JavaScriptTokenType.MINUS)
+            {
+                var mark = Builder.PrecedeCurrent();
+                Advance();  // Past operator
+                ParseAdditiveExpression();
+                Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+            }
+
+            return true;
+        }
+
+        private bool ParseMultiplicativeExpression()
+        {
+            if (!ParsePrefixExpression())
+                return false;
+
+            var tokenType = GetTokenType();
+            if (tokenType == JavaScriptTokenType.STAR || tokenType == JavaScriptTokenType.DIVIDE
+                || tokenType == JavaScriptTokenType.PERCENT)
+            {
+                var mark = Builder.PrecedeCurrent();
+                Advance(); // Past operator
+                ParseMultiplicativeExpression();
+                Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+            }
+
+            return true;
+        }
+
+        private bool ParsePrefixExpression()
+        {
+            var tokenType = GetTokenType();
+            if (tokenType == TokenType.PLUS)
+            {
                 Advance();
-                Builder.DoneBeforeWhitespaces(definitionMarker, REFERENCE_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
+                ParsePrimaryExpression();
+            }
+            else if (tokenType == TokenType.MINUS)
+            {
+                var mark = Mark();
+                Advance();
+                ParsePrefixExpression();
+                Builder.DoneBeforeWhitespaces(mark, PREFIX_EXPRESSION, null);
+            }
+            else if (tokenType == TokenType.EXCLAMATION)
+            {
+                var mark = Mark();
+                Advance();
+                ParsePrefixExpression();
+                Builder.DoneBeforeWhitespaces(mark, PREFIX_EXPRESSION, null);
             }
             else
             {
-                Builder.Error("Expected identifier (angularjs)");
+                ParsePrimaryExpression();
             }
 
-            ExpectToken(TokenType.COMMA);
+            return true;
+        }
 
-            if (CanBeIdentifier(GetTokenType()))
+        private void ParsePrimaryExpression()
+        {
+            var tokenType = GetTokenType();
+            if (tokenType == TokenType.LPARENTH)
             {
-                var definitionMarker = Mark();
-                Advance();
-                Builder.DoneBeforeWhitespaces(definitionMarker, REFERENCE_EXPRESSION, null);   // ? DEFINITION_EXPRESSION
+                ParseExpressionStatement();
+            }
+            else if (tokenType == TokenType.LBRACKET)
+            {
+                ParseArrayLiteral();
+            }
+            else if (tokenType == TokenType.LBRACE)
+            {
+                ParseObjectLiteral();
+            }
+            else if (JavaScriptTokenType.LITERALS[tokenType])
+            {
+                ParseLiteralExpression();
+            }
+            else if (CanBeIdentifier(tokenType))
+            {
+                ParseIdentifierExpression();
+            }
+            else if (tokenType == TokenType.SEMICOLON)
+            {
+                ParseEmptyStatement();
             }
             else
             {
-                Builder.Error("Expected identifier (angularjs)");
+                // Angular gets current token, expression is fn, which
+                // for a literal will just return the literal
+                // e.g. function() { return number; }
+
+                // Is this right?
+                ParseExpressionStatement();
+            }
+        }
+
+        private void ParseArrayLiteral()
+        {
+            var mark = Mark();
+            ExpectToken(TokenType.LBRACKET);
+
+            // TODO: ExpressionFirst probably needs updating
+            if (!Builder.Eof() && ExpressionFirst[GetTokenType()])
+            {
+                ParseExpressionStatement();
             }
 
-            Builder.DoneBeforeWhitespaces(commaMarker, COMPOUND_EXPRESSION, null);
+            while (GetTokenType() == TokenType.COMMA)
+            {
+                Advance();  // Past the comma
 
-            ExpectToken(TokenType.RPARENTH);
+                if (!Builder.Eof() && ExpressionFirst[GetTokenType()])
+                {
+                    ParseExpressionStatement();
+                }
+            }
+
+            ExpectToken(TokenType.RBRACKET);
+            Builder.DoneBeforeWhitespaces(mark, ARRAY_LITERAL, null);
+        }
+
+        private void ParseLiteralExpression()
+        {
+            // TODO: LITERALS might need altering
+            if (JavaScriptTokenType.LITERALS[GetTokenType()])
+            {
+                var mark = Mark();
+                Advance();
+                Builder.DoneBeforeWhitespaces(mark, LITERAL_EXPRESSION, null);
+            }
         }
     }
 }

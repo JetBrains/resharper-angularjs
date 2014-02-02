@@ -2,30 +2,31 @@
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
-    IVariableDeclaration
-      IIdentifierExpression
-        Identifier(type:IDENTIFIER, text:a)
-      JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-      IJavaScriptLiteralExpression
-        JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-    JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
-    IVariableDeclaration
-      IIdentifierExpression
-        Identifier(type:IDENTIFIER, text:b)
-      JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-      IJavaScriptLiteralExpression
-        JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
-    JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
+    IVariableStatement
+      IVariableDeclarationList
+        IVariableDeclaration
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:a)
+          JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
+    IVariableStatement
+      IVariableDeclarationList
+        IVariableDeclaration
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:b)
+          JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+      JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IReferenceExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:a)
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          IReferenceExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:b)
+      IBinaryExpression
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:a)
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:b)
 
 Expression: «;;1;;»
 Language: PsiLanguageType:AngularJS
@@ -36,9 +37,8 @@ IJavaScriptFile
     IEmptyStatement
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IExpressionStatement
-      ICompoundExpression
-        IJavaScriptLiteralExpression
-          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IJavaScriptLiteralExpression
+        JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IEmptyStatement
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)

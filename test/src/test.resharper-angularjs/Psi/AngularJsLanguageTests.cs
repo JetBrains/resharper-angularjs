@@ -25,7 +25,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi
     public class AngularJsLanguageTests : BaseTest
     {
         [Test]
-        public void Stuff()
+        public void LanguageIsRegistered()
         {
             Assert.NotNull(Languages.Instance.GetLanguageByName(AngularJsLanguage.Name));
         }

@@ -3,41 +3,38 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0||2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0||1&&2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
         IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 

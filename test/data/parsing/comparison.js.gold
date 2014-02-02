@@ -3,221 +3,204 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IJavaScriptLiteralExpression
-          JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+      IJavaScriptLiteralExpression
+        JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
 
 Expression: «!true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IPrefixExpression
-          JavaScriptTokenType+ExclamationTokenElement(type:EXCLAMATION, text:!)
-          IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+      IPrefixExpression
+        JavaScriptTokenType+ExclamationTokenElement(type:EXCLAMATION, text:!)
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
 Expression: «1==1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1==true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
-          IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
 Expression: «1===1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1==='1'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
 
 Expression: «1===true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
-          IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
 Expression: «'true'===true»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'true')
-          JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
-          IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'true')
+        JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
 
 Expression: «1!==2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Noteq2TokenElement(type:NOTEQ2, text:!==)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Noteq2TokenElement(type:NOTEQ2, text:!==)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1!=='1'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+Noteq2TokenElement(type:NOTEQ2, text:!==)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+Noteq2TokenElement(type:NOTEQ2, text:!==)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'1')
 
 Expression: «1!=2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+NoteqTokenElement(type:NOTEQ, text:!=)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+NoteqTokenElement(type:NOTEQ, text:!=)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1<2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+LtTokenElement(type:LT, text:<)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+LtTokenElement(type:LT, text:<)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1<=1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+LteqTokenElement(type:LTEQ, text:<=)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+LteqTokenElement(type:LTEQ, text:<=)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1>2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+GtTokenElement(type:GT, text:>)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+GtTokenElement(type:GT, text:>)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «2>=1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+GteqTokenElement(type:GTEQ, text:>=)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+GteqTokenElement(type:GTEQ, text:>=)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «true==2<3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+        JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
         IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
-          JavaScriptTokenType+Eq2TokenElement(type:EQ2, text:==)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+LtTokenElement(type:LT, text:<)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          JavaScriptTokenType+LtTokenElement(type:LT, text:<)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
 Expression: «true===2<3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
+        JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
         IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptTokenType+TrueKeywordTokenElement(type:TRUE_KEYWORD, text:true)
-          JavaScriptTokenType+Eq3TokenElement(type:EQ3, text:===)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+LtTokenElement(type:LT, text:<)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          JavaScriptTokenType+LtTokenElement(type:LT, text:<)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 

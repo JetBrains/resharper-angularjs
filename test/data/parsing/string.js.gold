@@ -3,73 +3,68 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'b c')
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'b c')
 
 Expression: «'a' + 'b \u0042'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042')
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042')
 
 Expression: «'a' + 'b \u'»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u')
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u')
 
 Expression: «'a' + 'b \u0042»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u0042)
 
 Expression: «'a' + 'b \u»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u)
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'a')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'b \u)
 
