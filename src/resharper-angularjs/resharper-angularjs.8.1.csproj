@@ -68,6 +68,8 @@
     </Compile>
     <Compile Include="Psi\Parsing\AngularJsTokenType.cs" />
     <Compile Include="Psi\Parsing\Tree\AngularJsElementType.cs" />
+    <Compile Include="Psi\Parsing\Tree\FilterArgumentList.cs" />
+    <Compile Include="Psi\Parsing\Tree\FilterExpression.cs" />
     <Compile Include="Psi\Parsing\Tree\RepeatExpression.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />

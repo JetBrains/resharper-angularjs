@@ -10,6 +10,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
     public class AngularJsTreeBuilder : JavaScriptTreeBuilder
     {
 // ReSharper disable InconsistentNaming
+        private CompositeNodeType FILTER_EXPRESSION;
+        private CompositeNodeType FILTER_ARGUMENT_LIST;
         private CompositeNodeType REPEAT_EXPRESSION;
 // ReSharper restore InconsistentNaming
 
@@ -20,6 +22,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 
         protected override void InitElementTypes()
         {
+            FILTER_EXPRESSION = AngularJsElementType.FILTER_EXPRESSION;
+            FILTER_ARGUMENT_LIST = AngularJsElementType.FILTER_ARGUMENT_LIST;
             REPEAT_EXPRESSION = AngularJsElementType.REPEAT_EXPRESSION;
             base.InitElementTypes();
         }
@@ -34,10 +38,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             else if (CanBeIdentifier(tokenType))
             {
                 if (LookAhead(1) == TokenType.EQ)
-                {
                     ParseVariableStatement();
-                }
-                ParseExpressionStatement();
+                else
+                    ParseExpressionStatement();
             }
                 // TODO: Check ExpressionFirst
             else if (!Builder.Eof() && ExpressionFirst[tokenType])
@@ -53,15 +56,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             }
         }
 
-        private void ParseExpressionStatement()
-        {
-            var mark = Mark();
-            ParseFilterChainExpression();
-            if (GetTokenType() == TokenType.SEMICOLON)
-                ExpectToken(TokenType.SEMICOLON);
-            Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
-        }
-
         private void ParseEmptyStatement()
         {
             var mark = Mark();
@@ -69,29 +63,102 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             Builder.DoneBeforeWhitespaces(mark, EMPTY_STATEMENT, null);
         }
 
-        protected override void ParseVariableStatement()
+        private new void ParseVariableStatement()
         {
             var mark = Mark();
-            ParseVariableDeclarationList(false);
+            ParseVariableDeclaration();
+            ParseOptionalSemiColon();
+            Builder.DoneBeforeWhitespaces(mark, VARIABLE_STATEMENT, null);
+        }
+
+        private void ParseOptionalSemiColon()
+        {
             if (GetTokenType() == TokenType.SEMICOLON)
                 ExpectToken(TokenType.SEMICOLON);
-            Builder.DoneBeforeWhitespaces(mark, VARIABLE_STATEMENT, null);
+        }
+
+        private void ParseVariableDeclaration()
+        {
+            var mark = Mark();
+            base.ParseIdentifierExpression();
+            if (GetTokenType() == TokenType.EQ)
+            {
+                Advance();
+                ParseExpression();
+            }
+            Builder.DoneBeforeWhitespaces(mark, VARIABLE_DECLARATION, null);
+        }
+
+        private void ParseExpressionStatement()
+        {
+            var mark = Mark();
+            ParseExpression();
+            ParseOptionalSemiColon();
+            Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
+        }
+
+        private void ParseExpression()
+        {
+            ParseFilterChainExpression();
         }
 
         private void ParseFilterChainExpression()
         {
-            // ParseBinaryExpression
-            //   ParseExpression
-            // ParsePipe
-            // ParseFilterExpression
-
+            var mark = Mark();
             ParseAssignmentExpression();
-            // TODO: followed by | and filter. Wrapped in binary expression (and probably expression statement, too)
+
+            if (GetTokenType() == TokenType.PIPE)
+            {
+                while (GetTokenType() == TokenType.PIPE)
+                {
+                    ParseFilterExpression();
+                    Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
+                    Builder.Precede(mark);
+                }
+            }
+            Builder.Drop(mark);
+        }
+
+        private void ParseFilterExpression()
+        {
+            ExpectToken(TokenType.PIPE);
+            SkipWhitespaces();
+
+            var mark = Builder.Mark();
+            ParseFilterIdentifierExpression();
+            ParseFilterArgumentList();
+            Builder.DoneBeforeWhitespaces(mark, FILTER_EXPRESSION, null);
+        }
+
+        private void ParseFilterIdentifierExpression()
+        {
+            var mark = Builder.Mark();
+            base.ParseIdentifierExpression();
+            Builder.DoneBeforeWhitespaces(mark, REFERENCE_EXPRESSION, null);
+        }
+
+        private void ParseFilterArgumentList()
+        {
+            var mark = Builder.Mark();
+            while (GetTokenType() == TokenType.COLON)
+            {
+                ExpectToken(TokenType.COLON);
+
+                // TODO: ParseExpression? This prevents recursive filter chains,
+                // but requires knowledge of what ParseExpressionStatement and 
+                // ParseFilterChainExpression do
+                ParseAssignmentExpression();
+            }
+            if (Builder.IsEmpty(mark))
+            {
+                Builder.Drop(mark);
+                return;
+            }
+            Builder.DoneBeforeWhitespaces(mark, FILTER_ARGUMENT_LIST, null);
         }
 
         private new void ParseAssignmentExpression()
         {
-            // TODO: Should this be a variable statement?
             var mark = Mark();
             if (!ParseTernaryExpression())
             {
@@ -105,7 +172,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
                 return;
             }
 
-            // TODO: angular checks that leftmost part of expression can be assigned
             Advance();
             ParseAssignmentExpression();
             Builder.DoneBeforeWhitespaces(mark, BINARY_EXPRESSION, null);
@@ -234,7 +300,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 
         private bool ParseMultiplicativeExpression()
         {
-            if (!ParsePrefixExpression())
+            if (!ParsePrefixPostfixExpression())
                 return false;
 
             var tokenType = GetTokenType();
@@ -250,6 +316,16 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             return true;
         }
 
+        private new bool ParsePrefixPostfixExpression()
+        {
+            var tokenType = GetTokenType();
+            if (tokenType == TokenType.PLUS || tokenType == TokenType.MINUS || tokenType == TokenType.EXCLAMATION)
+            {
+                return ParsePrefixExpression();
+            }
+            return ParsePostfixExpression();
+        }
+
         private bool ParsePrefixExpression()
         {
             var tokenType = GetTokenType();
@@ -257,25 +333,43 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             {
                 var mark = Mark();
                 Advance();
-                ParsePrefixExpression();
+                ParsePrefixPostfixExpression();
                 Builder.DoneBeforeWhitespaces(mark, PREFIX_EXPRESSION, null);
-            }
-            else
-            {
-                //ParsePrimaryExpression();
-                ParseMemberExpression();
             }
 
             return true;
         }
 
-        private void ParsePrimaryExpression()
+        private bool ParsePostfixExpression()
+        {
+            return ParseMemberExpression();
+        }
+
+        private new bool ParseMemberExpression()
+        {
+            if (MemberExpressionFirst[GetTokenType()])
+            {
+                ParseMemberExpressionInner();
+            }
+            else
+            {
+                if (!base.ParseIdentifierExpression())
+                    return false;
+
+                var ident = Builder.PrecedeCurrent();
+                Builder.DoneBeforeWhitespaces(ident, REFERENCE_EXPRESSION, null);
+            }
+
+            // TODO: Implement ParseArgumentListAux, since it calls ParseJavaScriptExpression
+            return base.ParseMemberExpressionFollows(stopAtInvocation: false);
+        }
+
+        private void ParseMemberExpressionInner()
         {
             var tokenType = GetTokenType();
-            if (tokenType == TokenType.LPARENTH)
+            if (JavaScriptTokenType.LITERALS[tokenType])
             {
-                // TODO: I don't think this should be a statement
-                ParseExpressionStatement();
+                ParseLiteralExpression();
             }
             else if (tokenType == TokenType.LBRACKET)
             {
@@ -285,47 +379,44 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             {
                 ParseObjectLiteral();
             }
-            else if (JavaScriptTokenType.LITERALS[tokenType])
+            else if (tokenType == TokenType.LPARENTH)
             {
-                ParseLiteralExpression();
-            }
-            else if (CanBeIdentifier(tokenType))
-            {
-                ParseIdentifierExpression();
-            }
-            else if (tokenType == TokenType.SEMICOLON)
-            {
-                ParseEmptyStatement();
+                ParseParenthesizedExpression();
             }
             else
             {
-                // Angular gets current token, expression is fn, which
-                // for a literal will just return the literal
-                // e.g. function() { return number; }
-
-                // Is this right?
-                ParseExpressionStatement();
+                Builder.ErrorBeforeWhitespaces("Primary expression expected", JavaScriptTokenType.COMMENTS_OR_WHITE_SPACES);
             }
         }
 
+        private void ParseLiteralExpression()
+        {
+            if (JavaScriptTokenType.LITERALS[GetTokenType()])
+            {
+                int mark = Mark();
+                Advance();
+                Builder.DoneBeforeWhitespaces(mark, LITERAL_EXPRESSION, null);
+            }
+        }
+
+        // Same as JavaScriptTreeBuilder's implementation, but calls out ParseExpression
+        // rather than the private ParseJavaScriptExpression
         private void ParseArrayLiteral()
         {
             var mark = Mark();
             ExpectToken(TokenType.LBRACKET);
 
-            // TODO: ExpressionFirst probably needs updating
-            if (!Builder.Eof() && ExpressionFirst[GetTokenType()])
-            {
-                ParseExpressionStatement();
-            }
+            var tokenType = GetTokenType();
+            if (!Builder.Eof() && ExpressionFirst[tokenType])
+                ParseExpression();
 
             while (GetTokenType() == TokenType.COMMA)
             {
-                Advance();  // Past the comma
+                Advance();
 
                 if (!Builder.Eof() && ExpressionFirst[GetTokenType()])
                 {
-                    ParseExpressionStatement();
+                    ParseExpression();
                 }
             }
 
@@ -333,15 +424,26 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             Builder.DoneBeforeWhitespaces(mark, ARRAY_LITERAL, null);
         }
 
-        private void ParseLiteralExpression()
+        private new void ParseParenthesizedExpression()
         {
-            // TODO: LITERALS might need altering
-            if (JavaScriptTokenType.LITERALS[GetTokenType()])
+            var mark = Mark();
+            ExpectToken(TokenType.LPARENTH);
+            ParseCompoundExpression2();
+            ExpectToken(TokenType.RPARENTH);
+            Builder.DoneBeforeWhitespaces(mark, PARENTHESIZED_EXPRESSION, null);
+        }
+
+        private void ParseCompoundExpression2()
+        {
+            var mark = Mark();
+            ParseExpression();
+            while (GetTokenType() == TokenType.COMMA)
             {
-                var mark = Mark();
                 Advance();
-                Builder.DoneBeforeWhitespaces(mark, LITERAL_EXPRESSION, null);
+                ParseExpression();
             }
+
+            Builder.DoneBeforeWhitespaces(mark, COMPOUND_EXPRESSION, null);
         }
     }
 }

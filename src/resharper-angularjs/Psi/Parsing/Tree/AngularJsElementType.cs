@@ -19,8 +19,11 @@ using JetBrains.ReSharper.Psi.JavaScript.Tree;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree
 {
+    // ReSharper disable InconsistentNaming
     public abstract class AngularJsElementType
     {
+        #region REPEAT_EXPRESSION
+
         public static readonly CompositeNodeType REPEAT_EXPRESSION = REPEAT_EXPRESSION_INTERNAL.INSTANCE;
 
         private class REPEAT_EXPRESSION_INTERNAL : JavaScriptCompositeNodeType
@@ -37,5 +40,50 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree
                 return new RepeatExpression();
             }
         }
+
+        #endregion
+
+        #region FILTER_EXPRESSION
+
+        public static readonly CompositeNodeType FILTER_EXPRESSION = FILTER_EXPRESSION_INTERNAL.INSTANCE;
+
+        private class FILTER_EXPRESSION_INTERNAL : JavaScriptCompositeNodeType
+        {
+            public static readonly FILTER_EXPRESSION_INTERNAL INSTANCE = new FILTER_EXPRESSION_INTERNAL(20001);
+
+            private FILTER_EXPRESSION_INTERNAL(int index)
+                : base("FILTER_EXPRESSION", index)
+            {
+            }
+
+            public override CompositeElement Create()
+            {
+                return new FilterExpression();
+            }
+        }
+
+        #endregion
+
+        #region FILTER_ARGUMENT_LIST
+
+        public static readonly CompositeNodeType FILTER_ARGUMENT_LIST = FILTER_ARGUMENT_LIST_INTERNAL.INSTANCE;
+
+        private class FILTER_ARGUMENT_LIST_INTERNAL : JavaScriptCompositeNodeType
+        {
+            public static readonly FILTER_ARGUMENT_LIST_INTERNAL INSTANCE = new FILTER_ARGUMENT_LIST_INTERNAL(20002);
+
+            private FILTER_ARGUMENT_LIST_INTERNAL(int index)
+                : base("FILTER_ARGUMENT_LIST", index)
+            {
+            }
+
+            public override CompositeElement Create()
+            {
+                return new FilterArgumentList();
+            }
+        }
+
+        #endregion
     }
+    // ReSharper restore InconsistentNaming
 }

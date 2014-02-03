@@ -3,14 +3,14 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        FilterExpression
+          IReferenceExpression
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:nonexistent)
 
@@ -19,61 +19,52 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:STRING_LITERAL, text:'abcd')
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
+      IBinaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:STRING_LITERAL, text:'abcd')
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        FilterExpression
+          IReferenceExpression
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:substring)
-      ErrorElement:; is expected - should handle colon
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IJavaScriptLiteralExpression
-          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-      ErrorElement:; is expected
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IReferenceExpression
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:offset)
+          FilterArgumentList
+            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            IJavaScriptLiteralExpression
+              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:offset)
 
 Expression: «'abcd' | substring:1:3 | uppercase»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IBinaryExpression
         IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:STRING_LITERAL, text:'abcd')
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:substring)
-      ErrorElement:; is expected - should handle colon
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IJavaScriptLiteralExpression
-          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-      ErrorElement:; is expected
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:substring)
+            FilterArgumentList
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        FilterExpression
           IReferenceExpression
             IIdentifierExpression
               Identifier(type:IDENTIFIER, text:uppercase)
@@ -82,43 +73,46 @@ Expression: «n = (name | lowercase)»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
-    IVariableDeclaration
-      IIdentifierExpression
-        Identifier(type:IDENTIFIER, text:n)
-      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-      JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-      Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-      IParenthesizedExpression
-        JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-        ICompoundExpression
-          IBinaryExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:name)
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            IReferenceExpression - AngularJsFilterExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:lowercase)
-        JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+    IVariableStatement
+      IVariableDeclaration
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:n)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IParenthesizedExpression
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          ICompoundExpression
+            IBinaryExpression
+              IReferenceExpression
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:name)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+              JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+              Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+              FilterExpression
+                IReferenceExpression
+                  IIdentifierExpression
+                    Identifier(type:IDENTIFIER, text:lowercase)
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
 Expression: «name | uppercase:»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IBinaryExpression
+      IBinaryExpression
+        IReferenceExpression
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:name)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        FilterExpression
           IReferenceExpression
             IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:name)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
               Identifier(type:IDENTIFIER, text:uppercase)
-      ErrorElement:; is expected
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          FilterArgumentList
+            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            ErrorElement:Identifier expected
 

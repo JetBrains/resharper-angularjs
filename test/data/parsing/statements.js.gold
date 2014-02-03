@@ -3,22 +3,20 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IVariableStatement
-      IVariableDeclarationList
-        IVariableDeclaration
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:a)
-          JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+      IVariableDeclaration
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:a)
+        JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IVariableStatement
-      IVariableDeclarationList
-        IVariableDeclaration
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:b)
-          JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+      IVariableDeclaration
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:b)
+        JavaScriptTokenType+EqTokenElement(type:EQ, text:=)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IExpressionStatement
       IBinaryExpression
