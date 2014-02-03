@@ -30,17 +30,27 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             if (tokenType == TokenType.SEMICOLON)
             {
                 ParseEmptyStatement();
-                return;
             }
-            if (CanBeIdentifier(tokenType))
+            else if (CanBeIdentifier(tokenType))
             {
                 if (LookAhead(1) == TokenType.EQ)
                 {
                     ParseVariableStatement();
-                    return;
                 }
+                ParseExpressionStatement();
             }
-            ParseExpressionStatement();
+                // TODO: Check ExpressionFirst
+            else if (!Builder.Eof() && ExpressionFirst[tokenType])
+            {
+                ParseExpressionStatement();
+            }
+            else
+            {
+                var mark = Mark();
+                if (!Builder.Eof())
+                    Advance();
+                Builder.Error(mark, "Unexpected token");
+            }
         }
 
         private void ParseExpressionStatement()
