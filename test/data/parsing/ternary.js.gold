@@ -3,32 +3,30 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -40,207 +38,176 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?0?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?1?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?0?1:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?0?0:2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
 Expression: «1?1?0:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?1?1:0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+
+Expression: «1?1?1:2:3»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IConditionalTernaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-
-Expression: «1?1?1:2:3»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
-
-Expression: «1?1?1:2:3»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -252,7 +219,13 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
@@ -260,199 +233,162 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?0:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?1:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?0:1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?0:0?2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
 Expression: «1?1:0?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?1:1?0:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?1:1?2:3»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
         IConditionalTernaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
           JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
           JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
-
-Expression: «1?1:1?2:3»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IConditionalTernaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:3)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -464,40 +400,38 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+      IConditionalTernaryExpression
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1||0?0:0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+      IConditionalTernaryExpression
+        IBinaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -509,80 +443,76 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?1&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «0?0||0:1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «0?0||1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -594,80 +524,76 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?1&&1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «1?0||0:1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1?0||1:2»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IBinaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -679,80 +605,76 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «0?2:1&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «0?1:0||0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
 Expression: «0?2:0||1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -764,80 +686,76 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1?2:1&&1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+          JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+Amper2TokenElement(type:AMPER2, text:&&)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «1?1:0||0»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
 
 Expression: «1?2:0||1»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
+      IConditionalTernaryExpression
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        IBinaryExpression
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          IBinaryExpression
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+Pipe2TokenElement(type:PIPE2, text:||)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
 
 Expression: «»
 Language: PsiLanguageType:AngularJS
@@ -849,39 +767,104 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnTrue)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnString)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnInt)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+      IConditionalTernaryExpression
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnTrue)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnString)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnInt)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 
 Expression: «returnFalse() ? returnString() : returnInt()»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IConditionalTernaryExpression
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnFalse)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnString)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnInt)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+
+Expression: «returnTrue() ? returnString() : returnInt()»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IConditionalTernaryExpression
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnTrue)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnString)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IInvocationExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:returnInt)
+          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+
+Expression: «identity(returnFalse() ? returnString() : returnInt())»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IInvocationExpression
+        IReferenceExpression
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:identity)
+        JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
         IConditionalTernaryExpression
           IInvocationExpression
             IReferenceExpression
@@ -907,74 +890,5 @@ IJavaScriptFile
                 Identifier(type:IDENTIFIER, text:returnInt)
             JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
             JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-
-Expression: «returnTrue() ? returnString() : returnInt()»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IConditionalTernaryExpression
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnTrue)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnString)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IInvocationExpression
-            IReferenceExpression
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:returnInt)
-            JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-            JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-
-Expression: «identity(returnFalse() ? returnString() : returnInt())»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IInvocationExpression
-          IReferenceExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:identity)
-          JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-          IConditionalTernaryExpression
-            IInvocationExpression
-              IReferenceExpression
-                IIdentifierExpression
-                  Identifier(type:IDENTIFIER, text:returnFalse)
-              JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-              JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            JavaScriptTokenType+QuestionTokenElement(type:QUESTION, text:?)
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            IInvocationExpression
-              IReferenceExpression
-                IIdentifierExpression
-                  Identifier(type:IDENTIFIER, text:returnString)
-              JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-              JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            IInvocationExpression
-              IReferenceExpression
-                IIdentifierExpression
-                  Identifier(type:IDENTIFIER, text:returnInt)
-              JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
-              JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
-          JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+        JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
 

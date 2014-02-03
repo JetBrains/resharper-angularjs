@@ -3,17 +3,84 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
-        IArrayLiteral
-          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+      IArrayLiteral
+        JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+        JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
 Expression: «[1, 2]»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      ICompoundExpression
+      IArrayLiteral
+        JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+        JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+        Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
+        JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Expression: «[1][0]»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IIndexExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+        JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Expression: «[[1]][0][0]»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IIndexExpression
+        IIndexExpression
+          IArrayLiteral
+            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+            IArrayLiteral
+              JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+              JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          IJavaScriptLiteralExpression
+            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+        JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+        IJavaScriptLiteralExpression
+          JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
+        JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+
+Expression: «[].length»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IReferenceExpression
+        IArrayLiteral
+          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+        JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:length)
+
+Expression: «[1, 2].length»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IReferenceExpression
         IArrayLiteral
           JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
           IJavaScriptLiteralExpression
@@ -23,80 +90,7 @@ IJavaScriptFile
           IJavaScriptLiteralExpression
             JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
           JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-
-Expression: «[1][0]»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IIndexExpression
-          IArrayLiteral
-            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-
-Expression: «[[1]][0][0]»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IIndexExpression
-          IIndexExpression
-            IArrayLiteral
-              JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-              IArrayLiteral
-                JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-                IJavaScriptLiteralExpression
-                  JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-                JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-              JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-          JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-          IJavaScriptLiteralExpression
-            JavaScriptGenericToken(type:NUMERIC_LITERAL, text:0)
-          JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-
-Expression: «[].length»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IReferenceExpression
-          IArrayLiteral
-            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-          JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:length)
-
-Expression: «[1, 2].length»
-Language: PsiLanguageType:AngularJS
-IJavaScriptFile
-  IJavaScriptFileSection
-    IExpressionStatement
-      ICompoundExpression
-        IReferenceExpression
-          IArrayLiteral
-            JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
-            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:NUMERIC_LITERAL, text:2)
-            JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-          JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:length)
+        JavaScriptTokenType+DotTokenElement(type:DOT, text:.)
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:length)
 

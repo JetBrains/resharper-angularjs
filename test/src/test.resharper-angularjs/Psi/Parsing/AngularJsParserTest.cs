@@ -39,7 +39,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             get { return @"parsing"; }
         }
 
-        //[TestCase("array")]
+        [TestCase("array")]
         [TestCase("comparison")]
         //[TestCase("filters")]
         //[TestCase("in")]
@@ -48,7 +48,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
         //[TestCase("repeat_expressions")]
         [TestCase("statements")]
         [TestCase("string")]
-        //[TestCase("ternary")]
+        [TestCase("ternary")]
         public void TestParser(string testName)
         {
             // TODO: filters is wrong, but good for a first attempt

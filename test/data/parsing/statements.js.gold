@@ -22,11 +22,13 @@ IJavaScriptFile
       JavaScriptTokenType+SemiTokenElement(type:SEMI, text:;)
     IExpressionStatement
       IBinaryExpression
-        IIdentifierExpression
-          Identifier(type:IDENTIFIER, text:a)
+        IReferenceExpression
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:a)
         JavaScriptTokenType+PlusTokenElement(type:PLUS, text:+)
-        IIdentifierExpression
-          Identifier(type:IDENTIFIER, text:b)
+        IReferenceExpression
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:b)
 
 Expression: «;;1;;»
 Language: PsiLanguageType:AngularJS

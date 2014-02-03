@@ -26,12 +26,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
 
         public override void ParseStatement()
         {
-            ParseExpressionStatement();
-        }
-
-        // TODO: This should be in ParseStatment, and everyone who's calling ParseExpressionStatement should be calling ParseStatement (or ParseExpression)
-        private void ParseExpressionStatement()
-        {
             var tokenType = GetTokenType();
             if (tokenType == TokenType.SEMICOLON)
             {
@@ -46,7 +40,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
                     return;
                 }
             }
+            ParseExpressionStatement();
+        }
 
+        private void ParseExpressionStatement()
+        {
             var mark = Mark();
             ParseFilterChainExpression();
             if (GetTokenType() == TokenType.SEMICOLON)
@@ -245,19 +243,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
         private bool ParsePrefixExpression()
         {
             var tokenType = GetTokenType();
-            if (tokenType == TokenType.PLUS)
-            {
-                Advance();
-                ParsePrimaryExpression();
-            }
-            else if (tokenType == TokenType.MINUS)
-            {
-                var mark = Mark();
-                Advance();
-                ParsePrefixExpression();
-                Builder.DoneBeforeWhitespaces(mark, PREFIX_EXPRESSION, null);
-            }
-            else if (tokenType == TokenType.EXCLAMATION)
+            if (tokenType == TokenType.PLUS || tokenType == TokenType.MINUS || tokenType == TokenType.EXCLAMATION)
             {
                 var mark = Mark();
                 Advance();
@@ -266,7 +252,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             }
             else
             {
-                ParsePrimaryExpression();
+                //ParsePrimaryExpression();
+                ParseMemberExpression();
             }
 
             return true;
@@ -277,6 +264,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             var tokenType = GetTokenType();
             if (tokenType == TokenType.LPARENTH)
             {
+                // TODO: I don't think this should be a statement
                 ParseExpressionStatement();
             }
             else if (tokenType == TokenType.LBRACKET)

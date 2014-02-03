@@ -62,32 +62,30 @@ Language: PsiLanguageType:AngularJS
 IJavaScriptFile
   IJavaScriptFileSection
     IExpressionStatement
-      IObjectLiteral
-        JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
-        IObjectPropertiesList
-          IObjectPropertyInitializer
-            IPropertyNameIdentifier
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:false)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:STRING_LITERAL, text:'WC')
-          JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
-          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IObjectPropertyInitializer
-            IPropertyNameIdentifier
-              IIdentifierExpression
-                Identifier(type:IDENTIFIER, text:true)
-            JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-            IJavaScriptLiteralExpression
-              JavaScriptGenericToken(type:STRING_LITERAL, text:'CC')
-        JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
-    IExpressionStatement
-      IArrayLiteral
+      IIndexExpression
+        IObjectLiteral
+          JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+          IObjectPropertiesList
+            IObjectPropertyInitializer
+              IPropertyNameIdentifier
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:false)
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:STRING_LITERAL, text:'WC')
+            JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+            Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+            IObjectPropertyInitializer
+              IPropertyNameIdentifier
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:true)
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:STRING_LITERAL, text:'CC')
+          JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
         JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-        IExpressionStatement
-          IJavaScriptLiteralExpression
-            JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
+        IJavaScriptLiteralExpression
+          JavaScriptTokenType+FalseKeywordTokenElement(type:FALSE_KEYWORD, text:false)
         JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
 Expression: «[{}]»
@@ -97,11 +95,10 @@ IJavaScriptFile
     IExpressionStatement
       IArrayLiteral
         JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-        IExpressionStatement
-          IObjectLiteral
-            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
-            IObjectPropertiesList
-            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+        IObjectLiteral
+          JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+          IObjectPropertiesList
+          JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
         JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
 Expression: «[{a:[]}, {b:1}]»
@@ -111,32 +108,30 @@ IJavaScriptFile
     IExpressionStatement
       IArrayLiteral
         JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-        IExpressionStatement
-          IObjectLiteral
-            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
-            IObjectPropertiesList
-              IObjectPropertyInitializer
-                IPropertyNameIdentifier
-                  IIdentifierExpression
-                    Identifier(type:IDENTIFIER, text:a)
-                JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-                IArrayLiteral
-                  JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
-                  JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
-            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+        IObjectLiteral
+          JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+          IObjectPropertiesList
+            IObjectPropertyInitializer
+              IPropertyNameIdentifier
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:a)
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IArrayLiteral
+                JavaScriptTokenType+LbrackTokenElement(type:LBRACK, text:[)
+                JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
+          JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
         JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-        IExpressionStatement
-          IObjectLiteral
-            JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
-            IObjectPropertiesList
-              IObjectPropertyInitializer
-                IPropertyNameIdentifier
-                  IIdentifierExpression
-                    Identifier(type:IDENTIFIER, text:b)
-                JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-                IJavaScriptLiteralExpression
-                  JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
-            JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
+        IObjectLiteral
+          JavaScriptTokenType+LbraceTokenElement(type:LBRACE, text:{)
+          IObjectPropertiesList
+            IObjectPropertyInitializer
+              IPropertyNameIdentifier
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:b)
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IJavaScriptLiteralExpression
+                JavaScriptGenericToken(type:NUMERIC_LITERAL, text:1)
+          JavaScriptTokenType+RbraceTokenElement(type:RBRACE, text:})
         JavaScriptTokenType+RbrackTokenElement(type:RBRACK, text:])
 
