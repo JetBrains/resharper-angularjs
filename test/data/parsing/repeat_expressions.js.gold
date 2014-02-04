@@ -5,7 +5,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -23,11 +24,13 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -43,7 +46,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         ErrorElement:Identifier expected
@@ -58,11 +62,13 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -78,11 +84,13 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             ErrorElement:, expected
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -101,9 +109,10 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             ErrorElement:, expected
-            ErrorElement:Expected identifier (angularjs)
+            ErrorElement:Expected identifier
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -122,9 +131,10 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
-            ErrorElement:Expected identifier (angularjs)
+            ErrorElement:Expected identifier
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -142,11 +152,12 @@ IJavaScriptFile
         IParenthesizedExpression
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
-            ErrorElement:Expected identifier (angularjs)
+            ErrorElement:Expected identifier
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -162,7 +173,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -173,9 +185,10 @@ IJavaScriptFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:some)
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:some)
 
 Expression: «foo in bar | some:q»
 Language: PsiLanguageType:AngularJS
@@ -184,7 +197,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -195,16 +209,15 @@ IJavaScriptFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:some)
-    ErrorElement:Unexpected token - shouldn't be error
-      JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IReferenceExpression
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:q)
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:some)
+            FilterArgumentList
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IReferenceExpression
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:q)
 
 Expression: «(key, value) in bar | some»
 Language: PsiLanguageType:AngularJS
@@ -216,11 +229,13 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -232,9 +247,10 @@ IJavaScriptFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:some)
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:some)
 
 Expression: «(key, value) in bar | some:q»
 Language: PsiLanguageType:AngularJS
@@ -246,11 +262,13 @@ IJavaScriptFile
           JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
           ICompoundExpression
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:key)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:key)
             JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
             Whitespace(type:WHITE_SPACE, text: ) spaces:" "
             IReferenceExpression
-              Identifier(type:IDENTIFIER, text:value)
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:value)
           JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
@@ -262,16 +280,15 @@ IJavaScriptFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:some)
-      ErrorElement:; is expected - shouldn't be error
-        JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
-    IExpressionStatement
-      ICompoundExpression
-        IReferenceExpression
-          IIdentifierExpression
-            Identifier(type:IDENTIFIER, text:q)
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:some)
+            FilterArgumentList
+              JavaScriptTokenType+ColonTokenElement(type:COLON, text::)
+              IReferenceExpression
+                IIdentifierExpression
+                  Identifier(type:IDENTIFIER, text:q)
 
 Expression: «foo in bar track by id»
 Language: PsiLanguageType:AngularJS
@@ -280,7 +297,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -301,7 +319,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -312,9 +331,11 @@ IJavaScriptFile
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
           JavaScriptTokenType+PipeTokenElement(type:PIPE, text:|)
           Whitespace(type:WHITE_SPACE, text: ) spaces:" "
-          IReferenceExpression - AngularJsFilterExpression
-            IIdentifierExpression
-              Identifier(type:IDENTIFIER, text:some)
+          FilterExpression
+            IReferenceExpression
+              IIdentifierExpression
+                Identifier(type:IDENTIFIER, text:some)
+            FilterArgumentList
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         AngularJsTokenType+TrackByKeywordTokenElement(type:TRACK_BY_KEYWORD, text:track by)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
@@ -329,7 +350,8 @@ IJavaScriptFile
     IExpressionStatement
       RepeatExpression
         IReferenceExpression
-          Identifier(type:IDENTIFIER, text:foo)
+          IIdentifierExpression
+            Identifier(type:IDENTIFIER, text:foo)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         Whitespace(type:WHITE_SPACE, text: ) spaces:" "

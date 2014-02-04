@@ -37,10 +37,17 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             }
             else if (CanBeIdentifier(tokenType))
             {
-                if (LookAhead(1) == TokenType.EQ)
+                var nextTokenType = LookAhead(1);
+                if (nextTokenType == TokenType.EQ)
                     ParseVariableStatement();
+                else if (nextTokenType == TokenType.IN_KEYWORD)
+                    ParseInStatement();
                 else
                     ParseExpressionStatement();
+            }
+            else if (tokenType == TokenType.LPARENTH)
+            {
+                ParseInStatement();
             }
                 // TODO: Check ExpressionFirst
             else if (!Builder.Eof() && ExpressionFirst[tokenType])
@@ -71,12 +78,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             Builder.DoneBeforeWhitespaces(mark, VARIABLE_STATEMENT, null);
         }
 
-        private void ParseOptionalSemiColon()
-        {
-            if (GetTokenType() == TokenType.SEMICOLON)
-                ExpectToken(TokenType.SEMICOLON);
-        }
-
         private void ParseVariableDeclaration()
         {
             var mark = Mark();
@@ -87,6 +88,98 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
                 ParseExpression();
             }
             Builder.DoneBeforeWhitespaces(mark, VARIABLE_DECLARATION, null);
+        }
+
+        private void ParseOptionalSemiColon()
+        {
+            if (GetTokenType() == TokenType.SEMICOLON)
+                ExpectToken(TokenType.SEMICOLON);
+        }
+
+        private void ParseInStatement()
+        {
+            var mark = Mark();
+            if (!ParseInExpression())
+            {
+                Builder.Drop(mark);
+                return;
+            }
+
+            Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
+        }
+
+        private bool ParseInExpression()
+        {
+            var mark = Mark();
+
+            if (CanBeIdentifier(GetTokenType()))
+            {
+                var m = Mark();
+                base.ParseIdentifierExpression();
+                Builder.DoneBeforeWhitespaces(m, REFERENCE_EXPRESSION, null);
+            }
+            else if (GetTokenType() == TokenType.LPARENTH)
+            {
+                var m = Mark();
+                ParseKeyValue();
+                if (GetTokenType() != TokenType.IN_KEYWORD)
+                {
+                    Builder.RollbackTo(mark);
+                    return false;
+                }
+                Builder.DoneBeforeWhitespaces(m, PARENTHESIZED_EXPRESSION, null);
+            }
+            else
+            {
+                Builder.ErrorBeforeWhitespaces("Unexpected token", CommentsOrWhiteSpacesTokens);
+                return false;
+            }
+
+            ExpectToken(TokenType.IN_KEYWORD);
+            ParseExpression();
+
+            if (GetTokenType() == AngularJsTokenType.TRACK_BY_KEYWORD)
+            {
+                Advance();
+                ParseExpression();
+            }
+
+            Builder.DoneBeforeWhitespaces(mark, REPEAT_EXPRESSION, null);
+            return true;
+        }
+
+        private void ParseKeyValue()
+        {
+            ExpectToken(TokenType.LPARENTH);
+
+            var mark = Mark();
+            if (CanBeIdentifier(GetTokenType()))
+            {
+                var m = Mark();
+                base.ParseIdentifierExpression();
+                Builder.DoneBeforeWhitespaces(m, REFERENCE_EXPRESSION, null);
+            }
+            else
+            {
+                Builder.ErrorBeforeWhitespaces("Expected identifier", CommentsOrWhiteSpacesTokens);
+            }
+
+            ExpectToken(TokenType.COMMA);
+
+            if (CanBeIdentifier(GetTokenType()))
+            {
+                var m = Mark();
+                base.ParseIdentifierExpression();
+                Builder.DoneBeforeWhitespaces(m, REFERENCE_EXPRESSION, null);
+            }
+            else
+            {
+                Builder.ErrorBeforeWhitespaces("Expected identifier", CommentsOrWhiteSpacesTokens);
+            }
+
+            Builder.DoneBeforeWhitespaces(mark, COMPOUND_EXPRESSION, null);
+
+            ExpectToken(TokenType.RPARENTH);
         }
 
         private void ParseExpressionStatement()
@@ -385,7 +478,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
             }
             else
             {
-                Builder.ErrorBeforeWhitespaces("Primary expression expected", JavaScriptTokenType.COMMENTS_OR_WHITE_SPACES);
+                Builder.ErrorBeforeWhitespaces("Primary expression expected", CommentsOrWhiteSpacesTokens);
             }
         }
 
@@ -428,12 +521,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
         {
             var mark = Mark();
             ExpectToken(TokenType.LPARENTH);
-            ParseCompoundExpression2();
+            ParseCompoundExpression();
             ExpectToken(TokenType.RPARENTH);
             Builder.DoneBeforeWhitespaces(mark, PARENTHESIZED_EXPRESSION, null);
         }
 
-        private void ParseCompoundExpression2()
+        private new void ParseCompoundExpression()
         {
             var mark = Mark();
             ParseExpression();
