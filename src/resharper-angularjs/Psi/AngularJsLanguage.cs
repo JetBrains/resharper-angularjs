@@ -19,6 +19,8 @@ using JetBrains.ReSharper.Psi;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi
 {
+    // TODO: What happens if we derive from JavaScriptLanguage?
+    // Will we automatically get a lot of JS support for free?
     [LanguageDefinition(Name)]
     public class AngularJsLanguage : KnownLanguage
     {

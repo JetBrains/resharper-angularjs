@@ -53,6 +53,9 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="Daemon\AngularJsDaemonStageBase.cs" />
+    <Compile Include="Daemon\AngularJsIdentifierHighlighterProcess.cs" />
+    <Compile Include="Daemon\IdentifierHighlightingStage.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsFileLateBoundReference.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsFolderLateBoundReference.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsHtmlDeclaredElementTypes.cs" />
@@ -98,6 +101,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.1.555\build\JetBrains.ReSharper.SDK.Targets')" />
 </Project>
