@@ -119,6 +119,51 @@
       <attribute name="data-ng-transclude" type="CDATA" defaultValueType="#IMPLIED" />
       <attribute name="data-ng-view" type="CDATA" defaultValueType="#IMPLIED" />
 
+      <attribute name="x-ng-app" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-bind" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-bind-html" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-bind-html-unsafe" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-bind-template" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-change" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-checked" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-class" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-class-even" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-class-odd" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-click" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-cloak" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-controller" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-csp" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-dblclick" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-disabled" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-form" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-hide" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-href" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-if" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-include" type="%AngularJsUrl" defaultValueType="#REQUIRED" />
+      <attribute name="x-ng-init" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-list" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-model" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mousedown" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mouseenter" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mouseleave" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mousemove" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mouseover" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-mouseup" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-multiple" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-non-bindable" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-options" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-pluralize" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-readonly" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-repeat" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-selected" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-show" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-src" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-style" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-submit" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-switch" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-transclude" type="CDATA" defaultValueType="#IMPLIED" />
+      <attribute name="x-ng-view" type="CDATA" defaultValueType="#IMPLIED" />
+
     </angularjs>
   </attributes>
   

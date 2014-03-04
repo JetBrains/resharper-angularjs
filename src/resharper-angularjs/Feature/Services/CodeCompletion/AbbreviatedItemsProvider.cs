@@ -39,7 +39,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     [Language(typeof(HtmlLanguage))]
     public class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
-        private static readonly string[] Abbreviations = {"ng-", "data-ng-" };
+        private static readonly string[] Abbreviations = {"ng-", "data-ng-", "x-ng-"};
         private static readonly Key IdentityKey = new Key("NgCodeCompletionItem");
         private static readonly object IdentityObject = new object();
 
