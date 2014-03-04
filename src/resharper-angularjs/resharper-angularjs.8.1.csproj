@@ -37,6 +37,7 @@
     <StartProgram>$(VsInstallDir)devenv.exe</StartProgram>
     <StartArguments>/ReSharper.Plugin $(AssemblyName).dll /ReSharper.Internal</StartArguments>
     <StartWorkingDirectory>$(MSBuildProjectDirectory)\$(OutputPath)</StartWorkingDirectory>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -51,8 +52,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Daemon\AngularJsDaemonStageBase.cs" />
     <Compile Include="Daemon\AngularJsIdentifierHighlighterProcess.cs" />
     <Compile Include="Daemon\IdentifierHighlightingStage.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="TemplateHacks\ReplacingAllowedPrefixCharsScopePoint.cs" />
     <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
     <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.8.1.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\HtmlElements.xml">

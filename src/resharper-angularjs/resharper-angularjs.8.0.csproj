@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
     <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
