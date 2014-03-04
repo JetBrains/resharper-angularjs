@@ -1,6 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderRegionName/@EntryValue">license</s:String>
-	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright 2013 JetBrains s.r.o.&#xD;
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">Copyright 2014 JetBrains s.r.o.&#xD;
 &#xD;
 Licensed under the Apache License, Version 2.0 (the "License");&#xD;
 you may not use this file except in compliance with the License.&#xD;
@@ -13,16 +13,21 @@ distributed under the License is distributed on an "AS IS" BASIS,&#xD;
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xD;
 See the License for the specific language governing permissions and&#xD;
 limitations under the License.</s:String>
-	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=126754E2316A9043B4724A3F01AA9225/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=126754E2316A9043B4724A3F01AA9225/AbsolutePath/@EntryValue">C:\Users\matt\Code\forks\GitHub\JetBrains-resharper-angularjs\src\resharper-angularjs\templates-7.1-8.0.dotSettings</s:String>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=126754E2316A9043B4724A3F01AA9225/RelativePath/@EntryValue">..\resharper-angularjs\templates-7.1-8.0.dotSettings</s:String>
-	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8B07392270B3ED4C9E7352CB1631D579/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8B07392270B3ED4C9E7352CB1631D579/AbsolutePath/@EntryValue">C:\Users\matt\Code\forks\GitHub\JetBrains-resharper-angularjs\src\resharper-angularjs\templates-8.1.dotSettings</s:String>
-	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=8B07392270B3ED4C9E7352CB1631D579/RelativePath/@EntryValue">..\resharper-angularjs\templates-8.1.dotSettings</s:String>
-	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File126754E2316A9043B4724A3F01AA9225/@KeyIndexDefined">True</s:Boolean>
-	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File126754E2316A9043B4724A3F01AA9225/RelativePriority/@EntryValue">1</s:Double>
-	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File8B07392270B3ED4C9E7352CB1631D579/@KeyIndexDefined">True</s:Boolean>
-	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File8B07392270B3ED4C9E7352CB1631D579/RelativePriority/@EntryValue">2</s:Double>
+	
+	
+	
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=7E884B2729D9E244A7E0AF30F8477F9E/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=7E884B2729D9E244A7E0AF30F8477F9E/AbsolutePath/@EntryValue">C:\Users\matt\Code\forks\GitHub\JetBrains-resharper-angularjs\src\resharper-angularjs\templates.dotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=7E884B2729D9E244A7E0AF30F8477F9E/RelativePath/@EntryValue">..\resharper-angularjs\templates.dotSettings</s:String>
+	
+	
+	
+	
+	
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File7E884B2729D9E244A7E0AF30F8477F9E/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=File7E884B2729D9E244A7E0AF30F8477F9E/RelativePriority/@EntryValue">3</s:Double>
+	
+	
 	
 	
 	

@@ -97,11 +97,11 @@
     <None Include="..\..\install\resharper-angularjs.nuspec">
       <Link>resharper-angularjs.nuspec</Link>
     </None>
-    <None Include="packages.config">
+    <None Include="packages.resharper-angularjs.8.1.config">
       <SubType>Designer</SubType>
     </None>
     <CsLex Include="Psi\Parsing\Angular.lex" />
-    <None Include="templates-8.1.dotSettings">
+    <None Include="templates.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
