@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Props" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JetBrains.ReSharper.Plugins.AngularJS</RootNamespace>
+    <AssemblyName>JetBrains.ReSharper.Plugins.AngularJS.8.2</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;JET_MODE_ASSERT,RESHARPER_8</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;RESHARPER_8</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(VsInstallDir)devenv.exe</StartProgram>
+    <StartArguments>/ReSharper.Plugin $(AssemblyName).dll /ReSharper.Internal</StartArguments>
+    <StartWorkingDirectory>$(MSBuildProjectDirectory)\$(OutputPath)</StartWorkingDirectory>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
+    <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
+    <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
+    <Compile Include="Daemon\AngularJsDaemonStageBase.cs" />
+    <Compile Include="Daemon\AngularJsIdentifierHighlighterProcess.cs" />
+    <Compile Include="Daemon\IdentifierHighlightingStage.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsFileLateBoundReference.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsFolderLateBoundReference.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsHtmlDeclaredElementTypes.cs" />
+    <Compile Include="NgIncludeFileReference\IgnoreRootPathFilter.cs" />
+    <Compile Include="NgIncludeFileReference\AngularJsUrlAttributeValueReferenceProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Psi\AngularJsLanguage.cs" />
+    <Compile Include="Psi\AngularJsLanguageService.cs" />
+    <Compile Include="Psi\InjectedPsiProvider.cs" />
+    <Compile Include="Psi\Parsing\AngularJsLexerGenerated.cs" />
+    <Compile Include="Psi\Parsing\AngularJsParser.cs" />
+    <Compile Include="Psi\Parsing\AngularJsTreeBuilder.cs" />
+    <Compile Include="Psi\Parsing\Angular_lex.cs">
+      <DependentUpon>Angular.lex</DependentUpon>
+    </Compile>
+    <Compile Include="Psi\Parsing\AngularJsTokenType.cs" />
+    <Compile Include="Psi\Parsing\Tree\AngularJsElementType.cs" />
+    <Compile Include="Psi\Parsing\Tree\FilterArgumentList.cs" />
+    <Compile Include="Psi\Parsing\Tree\FilterExpression.cs" />
+    <Compile Include="Psi\Parsing\Tree\RepeatExpression.cs" />
+    <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
+    <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
+    <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
+    <Compile Include="TemplateHacks\NonDefaultPrefixWrappingScopeProvider.cs" />
+    <Compile Include="TemplateHacks\ReplacingAllowedPrefixCharsScopePoint.cs" />
+    <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
+    <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.8.1.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\HtmlElements.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\install\resharper-angularjs.nuspec">
+      <Link>resharper-angularjs.nuspec</Link>
+    </None>
+    <CsLex Include="Psi\Parsing\Angular.lex" />
+    <None Include="packages.resharper-angularjs.8.2.config" />
+    <None Include="templates.dotSettings">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Props'))" />
+    <Error Condition="!Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Targets'))" />
+  </Target>
+  <Import Project="..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1001-EAP\build\JetBrains.ReSharper.SDK.Targets')" />
+</Project>

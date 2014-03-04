@@ -55,7 +55,7 @@
     <Compile Include="Psi\Parsing\AngularJsParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.test.resharper-angularjs.8.1.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\resharper-angularjs\resharper-angularjs.8.1.csproj">

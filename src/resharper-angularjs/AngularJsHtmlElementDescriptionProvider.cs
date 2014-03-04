@@ -16,6 +16,7 @@
 
 using System.Collections.Generic;
 using System.Drawing;
+using JetBrains.Metadata.Reader.API;
 using JetBrains.ReSharper.Feature.Services.Descriptions;
 using JetBrains.ReSharper.Feature.Services.Html;
 using JetBrains.ReSharper.Psi;
@@ -38,6 +39,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS
             this.htmlDescriptionsCache = htmlDescriptionsCache;
         }
 
+        // This is the ReSharper 8.2 version. 'context' has a default value of null
+        public RichTextBlock GetElementDescription(IDeclaredElement element, DeclaredElementDescriptionStyle style,
+            PsiLanguageType language, IPsiModule module, IModuleReferenceResolveContext context)
+        {
+            return GetElementDescription(element, style, language, module);
+        }
+
+        // This is the ReSharper 8.1 version
         public RichTextBlock GetElementDescription(IDeclaredElement element, DeclaredElementDescriptionStyle style,
                                                    PsiLanguageType language, IPsiModule module)
         {

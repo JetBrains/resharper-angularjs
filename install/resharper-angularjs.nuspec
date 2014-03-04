@@ -10,9 +10,14 @@
     <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
-    <releaseNotes>ReSharper 8.1 support</releaseNotes>
+    <releaseNotes>Staged code completion for AngularJS attributes
+&#8226; Parsing of AngularJS expressions in attributes
+&#8226; Highlighting of syntax errors in AngularJS expressions in attributes
+&#8226; Support for ReSharper 8.2 EAP
+        
+        ReSharper 8.2 support</releaseNotes>
     <dependencies>
-      <dependency id="ReSharper" version="[8.1,8.2)" />
+      <dependency id="ReSharper" version="[8.1,8.3)" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
@@ -20,7 +25,13 @@
     <!-- ReSharper 8.1 -->
     <file src="..\src\resharper-angularjs\bin\Release\JetBrains.ReSharper.Plugins.AngularJS.8.1.dll"
           target="ReSharper\v8.1\plugins\" />
+
+    <!-- ReSharper 8.2 -->
+    <file src="..\src\resharper-angularjs\bin\Release\JetBrains.ReSharper.Plugins.AngularJS.8.2.dll"
+          target="ReSharper\v8.2\plugins\" />
+
+    <!-- Templates -->
     <file src="..\src\resharper-angularjs\bin\Release\templates.dotSettings"
-          target="ReSharper\v8.1\settings\templates.dotSettings" />
+          target="ReSharper\vAny\settings\templates.dotSettings" />
   </files>
 </package>
