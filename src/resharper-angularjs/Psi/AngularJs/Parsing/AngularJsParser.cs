@@ -19,7 +19,7 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 {
     public class AngularJsParser : JavaScriptQuickParser
     {

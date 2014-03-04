@@ -4,7 +4,7 @@ using JetBrains.ReSharper.Daemon.JavaScript.Stages;
 using JetBrains.ReSharper.Daemon.Stages.Resolve;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon
+namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon.AngularJs.Stages
 {
     // We need to derive from IdentifierHighlighterProcess because IHP is used by
     // JavaScript's IdentifierHighlightingStage, and is keyed on that type. Our

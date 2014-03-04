@@ -18,7 +18,7 @@ using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Scope;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
     internal class ReplacingAllowedPrefixCharsScopePoint : DelegatingScopePoint
     {

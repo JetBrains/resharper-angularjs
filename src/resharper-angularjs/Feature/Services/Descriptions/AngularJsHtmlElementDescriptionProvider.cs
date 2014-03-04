@@ -21,13 +21,13 @@ using JetBrains.ReSharper.Feature.Services.Descriptions;
 using JetBrains.ReSharper.Feature.Services.Html;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html.Html;
-using JetBrains.UI.RichText;
-
-#if RESHARPER_8
 using JetBrains.ReSharper.Psi.Modules;
+using JetBrains.UI.RichText;
+#if RESHARPER_8
+
 #endif
 
-namespace JetBrains.ReSharper.Plugins.AngularJS
+namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Descriptions
 {
     [DeclaredElementDescriptionProvider]
     public class AngularJsHtmlElementDescriptionProvider : IDeclaredElementDescriptionProvider

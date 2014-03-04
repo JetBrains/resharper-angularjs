@@ -17,7 +17,7 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
 {
     // ReSharper disable InconsistentNaming
     public abstract class AngularJsElementType

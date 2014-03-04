@@ -14,24 +14,17 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Resolve;
+using JetBrains.Application;
+using JetBrains.ReSharper.LiveTemplates.JavaScript.LiveTemplates;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
-    internal class FilterExpression : JavaScriptExpressionBase
+    [ShellComponent]
+    public class TypeScriptFilePrefixScopeProvider : NonDefaultPrefixWrappingScopeProvider<TypeScriptScopeProvider>
     {
-        public override NodeType NodeType
+        public TypeScriptFilePrefixScopeProvider(TypeScriptScopeProvider typeScriptScopeProvider)
+            : base(typeScriptScopeProvider)
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
-        }
-
-        // TODO: Make the children available via properties
-
-        public override IJavaScriptType GetJsType(IJsLocalElementResolver context)
-        {
-            return JavaScriptType.Empty;
         }
     }
 }

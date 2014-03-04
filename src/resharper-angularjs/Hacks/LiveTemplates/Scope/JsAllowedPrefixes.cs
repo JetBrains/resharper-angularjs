@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,17 +14,10 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.Application;
-using JetBrains.ReSharper.LiveTemplates.JavaScript.LiveTemplates;
-
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
-    [ShellComponent]
-    public class TypeScriptFilePrefixScopeProvider : NonDefaultPrefixWrappingScopeProvider<TypeScriptScopeProvider>
+    public static class JsAllowedPrefixes
     {
-        public TypeScriptFilePrefixScopeProvider(TypeScriptScopeProvider typeScriptScopeProvider)
-            : base(typeScriptScopeProvider)
-        {
-        }
+        public static readonly char[] Chars = { '_', '$' };
     }
 }

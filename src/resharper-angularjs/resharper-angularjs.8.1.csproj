@@ -53,39 +53,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
-    <Compile Include="AngularJsHtmlElementDescriptionProvider.cs" />
-    <Compile Include="AngularJsHtmlElementsProvider.cs" />
+    <Compile Include="Hacks\CodeCompletion\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\DelegatingScopePoint.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\JsAllowedPrefixes.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\NonDefaultPrefixJavaScriptScopeProvider.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\NonDefaultPrefixWrappingScopeProvider.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\ReplacingAllowedPrefixCharsScopePoint.cs" />
+    <Compile Include="Hacks\LiveTemplates\Scope\TypeScriptFilePrefixScopeProvider.cs" />
+    <Compile Include="Psi\Html\AngularJsHtmlElementsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
-    <Compile Include="Daemon\AngularJsDaemonStageBase.cs" />
-    <Compile Include="Daemon\AngularJsIdentifierHighlighterProcess.cs" />
-    <Compile Include="Daemon\IdentifierHighlightingStage.cs" />
+    <Compile Include="Daemon\AngularJs\Stages\AngularJsDaemonStageBase.cs" />
+    <Compile Include="Daemon\AngularJs\Stages\AngularJsIdentifierHighlighterProcess.cs" />
+    <Compile Include="Daemon\AngularJs\Stages\IdentifierHighlightingStage.cs" />
+    <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsFileLateBoundReference.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsFolderLateBoundReference.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsHtmlDeclaredElementTypes.cs" />
     <Compile Include="NgIncludeFileReference\IgnoreRootPathFilter.cs" />
     <Compile Include="NgIncludeFileReference\AngularJsUrlAttributeValueReferenceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Psi\AngularJsLanguage.cs" />
-    <Compile Include="Psi\AngularJsLanguageService.cs" />
-    <Compile Include="Psi\InjectedPsiProvider.cs" />
-    <Compile Include="Psi\Parsing\AngularJsLexerGenerated.cs" />
-    <Compile Include="Psi\Parsing\AngularJsParser.cs" />
-    <Compile Include="Psi\Parsing\AngularJsTreeBuilder.cs" />
-    <Compile Include="Psi\Parsing\Angular_lex.cs">
+    <Compile Include="Psi\AngularJs\AngularJsLanguage.cs" />
+    <Compile Include="Psi\AngularJs\AngularJsLanguageService.cs" />
+    <Compile Include="Psi\AngularJs\InjectedPsiProvider.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerGenerated.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsParser.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTreeBuilder.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
       <DependentUpon>Angular.lex</DependentUpon>
     </Compile>
-    <Compile Include="Psi\Parsing\AngularJsTokenType.cs" />
-    <Compile Include="Psi\Parsing\Tree\AngularJsElementType.cs" />
-    <Compile Include="Psi\Parsing\Tree\FilterArgumentList.cs" />
-    <Compile Include="Psi\Parsing\Tree\FilterExpression.cs" />
-    <Compile Include="Psi\Parsing\Tree\RepeatExpression.cs" />
-    <Compile Include="TemplateHacks\DelegatingScopePoint.cs" />
-    <Compile Include="TemplateHacks\JsAllowedPrefixes.cs" />
-    <Compile Include="TemplateHacks\NonDefaultPrefixJavaScriptScopeProvider.cs" />
-    <Compile Include="TemplateHacks\NonDefaultPrefixWrappingScopeProvider.cs" />
-    <Compile Include="TemplateHacks\ReplacingAllowedPrefixCharsScopePoint.cs" />
-    <Compile Include="TemplateHacks\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
-    <Compile Include="TemplateHacks\TypeScriptFilePrefixScopeProvider.8.1.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\AngularJsElementType.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.cs" />
     <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +100,7 @@
     <None Include="packages.resharper-angularjs.8.1.config">
       <SubType>Designer</SubType>
     </None>
-    <CsLex Include="Psi\Parsing\Angular.lex" />
+    <CsLex Include="Psi\AngularJs\Parsing\Angular.lex" />
     <None Include="templates.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,5 +1,6 @@
 ﻿using JetBrains.Application;
 using JetBrains.ReSharper.Plugins.AngularJS.Psi;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
 using JetBrains.Threading;
 using System.Reflection;
 using System.Collections.Generic;

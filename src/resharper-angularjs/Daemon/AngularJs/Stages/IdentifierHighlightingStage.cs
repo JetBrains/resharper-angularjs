@@ -21,7 +21,7 @@ using JetBrains.ReSharper.Daemon.Stages.Resolve;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon
+namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon.AngularJs.Stages
 {
     // NOTE: We need this because AngularJsLanguage derives from KnownLanguage, so we don't get
     // to take advantage of JavaScript's IdentifierHighlightingStage. This is how the JsonLanguage

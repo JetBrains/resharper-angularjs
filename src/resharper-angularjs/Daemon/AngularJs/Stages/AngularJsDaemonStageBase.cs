@@ -18,13 +18,13 @@ using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Files;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon
+namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon.AngularJs.Stages
 {
     public abstract class AngularJsDaemonStageBase : IDaemonStage
     {

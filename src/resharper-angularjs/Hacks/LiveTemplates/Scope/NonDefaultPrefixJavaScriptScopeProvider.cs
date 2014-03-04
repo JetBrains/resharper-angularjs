@@ -17,7 +17,7 @@
 using JetBrains.Application;
 using JetBrains.ReSharper.LiveTemplates.JavaScript.LiveTemplates;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
     [ShellComponent]
     public class NonDefaultPrefixJavaScriptScopeProvider : NonDefaultPrefixWrappingScopeProvider<JavaScriptScopeProvider>

@@ -20,7 +20,7 @@ using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html.Impl.Html;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 {
     [PsiComponent]
     public class AngularJsHtmlElementsProvider : HtmlDeclaredElementsProvider

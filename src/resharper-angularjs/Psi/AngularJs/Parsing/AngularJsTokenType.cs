@@ -21,7 +21,7 @@ using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 {
     [UsedImplicitly]
     public class AngularJsTokenType : JavaScriptTokenType

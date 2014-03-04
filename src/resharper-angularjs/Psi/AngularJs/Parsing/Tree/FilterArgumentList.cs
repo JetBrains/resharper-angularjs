@@ -17,7 +17,7 @@
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
 {
     internal class FilterArgumentList : JavaScriptCompositeElement
     {

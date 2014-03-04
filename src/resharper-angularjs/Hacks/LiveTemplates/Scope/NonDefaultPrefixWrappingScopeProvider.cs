@@ -22,7 +22,7 @@ using JetBrains.ReSharper.Feature.Services.LiveTemplates.Context;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Scope;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
     // ReSharper doesn't correctly handle templates with a non-default prefix, i.e.
     // it only correctly handles templates that start with characters, digits or '_'.

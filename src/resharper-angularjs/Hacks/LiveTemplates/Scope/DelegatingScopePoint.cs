@@ -22,7 +22,7 @@ using JetBrains.ReSharper.Feature.Services.LiveTemplates.Scope;
 using JetBrains.ReSharper.Psi;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
 {
     internal abstract class DelegatingScopePoint : ITemplateScopePoint
     {

@@ -19,9 +19,10 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
 using JetBrains.ReSharper.Feature.Services.Lookup;
+using JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope;
 using JetBrains.ReSharper.Psi;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.TemplateHacks
+namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 {
     // ReSharper doesn't correctly handle templates with a non-default prefix, i.e.
     // it only correctly handles templates that start with characters, digits or '_'.

@@ -15,13 +15,13 @@
 #endregion
 
 using JetBrains.DataFlow;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing.Tree;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 {
     public class AngularJsTreeBuilder : JavaScriptTreeBuilder
     {

@@ -28,7 +28,7 @@ using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Text;
 using JetBrains.Util.Logging;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
 {
     [SolutionComponent]
     public class InjectedPsiProvider : IndependentInjectedPsiProvider

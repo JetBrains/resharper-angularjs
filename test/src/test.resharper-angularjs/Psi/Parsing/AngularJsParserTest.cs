@@ -17,6 +17,7 @@
 using System;
 using System.IO;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Impl.Shared;

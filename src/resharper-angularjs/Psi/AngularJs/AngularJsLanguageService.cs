@@ -14,7 +14,7 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.Impl;
@@ -24,7 +24,7 @@ using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
 {
     [Language(typeof(AngularJsLanguage))]
     public class AngularJsLanguageService : JavaScriptBasedLanguageService
