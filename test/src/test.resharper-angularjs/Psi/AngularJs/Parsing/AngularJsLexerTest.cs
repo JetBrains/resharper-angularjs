@@ -30,7 +30,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
     {
         protected override string RelativeTestDataPath
         {
-            get { return @"psi\lexing"; }
+            get { return @"Psi\lexing"; }
         }
 
         protected override ILexer CreateLexer(StreamReader sr)

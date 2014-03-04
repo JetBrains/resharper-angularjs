@@ -36,7 +36,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
     {
         protected override string RelativeTestDataPath
         {
-            get { return @"parsing"; }
+            get { return @"Psi\parsing"; }
         }
 
         [TestCase("array")]
