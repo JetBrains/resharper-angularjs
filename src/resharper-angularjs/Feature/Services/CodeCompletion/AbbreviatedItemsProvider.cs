@@ -57,8 +57,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public override bool IsAvailableEx(CodeCompletionType[] codeCompletionTypes,
             HtmlCodeCompletionContext specificContext)
         {
-            //return codeCompletionTypes.Length <= 2;
-            return codeCompletionTypes.Length == 1; // TODO: Support double completion!
+            return codeCompletionTypes.Length <= 2;
         }
 
         public override bool IsEvaluationModeSupported(CodeCompletionParameters parameters)
@@ -110,69 +109,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
                     || TryAddMatchingAbbreviations(matcher, context, collector)
                     || TryAddMatchingUnprefixedItems(completionPrefix, context, collector)
                     || TryAddMatchingItemsForMatchedAbbreviation(completionPrefix, context, collector);
-
-                // Return true so ReSharper knows we're still dynamic
-                return true;
             }
-
-            #region Incomplete double completion handling
-
-            IList<string> requiredPrefixes = Abbreviations;
-            var addAll = false;
-
-            // TODO: Double completion resets ordering string, because we're based on TextLookupItem
-            if (IsDoubleCompletion(context))
-                addAll = true;
-
-            // TODO: Proper values + proper lookup item
-            var values = new[] { "everything", "stuff", "thing" };
-
-            if (addAll)
+            else if (IsDoubleCompletion(context))
             {
-                foreach (var prefix in requiredPrefixes)
-                {
-                    foreach (var value in values)
-                    {
-                        var item = new TextLookupItem(prefix + value, true);
-                        item.InitializeRanges(context.Ranges, context.BasicContext);
-                        item.PutData(BaseDynamicRule.PrefixKey, prefix);
-                        collector.AddAtDefaultPlace(item);
-                    }
-                }
+                foreach (var abbreviation in Abbreviations)
+                    AddAllItemsForSpecificAbbreviation(abbreviation, context, collector);
             }
 
-            if (!addAll && matcher != null)
-            {
-                foreach (var prefix in requiredPrefixes)
-                {
-                    foreach (var value in values)
-                    {
-                        bool add = false;
-                        var text = prefix + value;
-
-                        // If we match the content, not the abbreviated section, just add it
-                        if (matcher.Matches(value))
-                            add = true;
-                        else
-                        {
-                            // If we match against the whole text
-                            matcher = LookupUtil.CreateMatcher(completionPrefix, IdentifierMatchingStyle.BeginingOfIdentifier);
-                            add = matcher.Matches(text);
-                        }
-
-                        if (add)
-                        {
-                            var item = new TextLookupItem(prefix + value, true);
-                            item.InitializeRanges(context.Ranges, context.BasicContext);
-                            item.PutData(BaseDynamicRule.PrefixKey, prefix);
-                            collector.AddAtDefaultPlace(item);
-                        }
-                    }
-                }
-            }
-
-            #endregion
-
+            // Return true so ReSharper knows we're dynamic
             return true;
         }
 
