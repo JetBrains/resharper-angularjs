@@ -66,6 +66,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Psi\AngularJs\AngularJsLanguage.cs" />
     <Compile Include="Psi\AngularJs\AngularJsLanguageService.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsCodeFormatter.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsFormattingInfoProvider.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsIndentingInfoProvider.cs" />
     <Compile Include="Psi\AngularJs\InjectedPsiProvider.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerGenerated.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsParser.cs" />
@@ -76,6 +79,7 @@
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.cs" />
+    <Compile Include="Psi\AngularJs\Tree\AngularJsNodeTypes.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlElementsProvider.cs" />
     <Compile Include="Hacks\LiveTemplates\Scope\DelegatingScopePoint.cs" />
     <Compile Include="Hacks\LiveTemplates\Scope\JsAllowedPrefixes.cs" />

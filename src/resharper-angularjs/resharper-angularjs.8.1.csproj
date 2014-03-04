@@ -60,6 +60,10 @@
     <Compile Include="Hacks\LiveTemplates\Scope\NonDefaultPrefixWrappingScopeProvider.cs" />
     <Compile Include="Hacks\LiveTemplates\Scope\ReplacingAllowedPrefixCharsScopePoint.cs" />
     <Compile Include="Hacks\LiveTemplates\Scope\TypeScriptFilePrefixScopeProvider.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsCodeFormatter.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsFormattingInfoProvider.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsIndentingInfoProvider.cs" />
+    <Compile Include="Psi\AngularJs\Tree\AngularJsNodeTypes.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlElementsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Daemon\AngularJs\Stages\AngularJsDaemonStageBase.cs" />

@@ -16,10 +16,12 @@
 
 using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
 using JetBrains.ReSharper.Psi.Impl;
 using JetBrains.ReSharper.Psi.JavaScript.LanguageImpl;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
+using JetBrains.ReSharper.Psi.JavaScript.Services;
 using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.Text;
@@ -29,9 +31,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
     [Language(typeof(AngularJsLanguage))]
     public class AngularJsLanguageService : JavaScriptBasedLanguageService
     {
-        public AngularJsLanguageService(PsiLanguageType psiLanguageType, IConstantValueService constantValueService)
+        private readonly IJavaScriptCodeFormatter codeFormatter;
+
+        public AngularJsLanguageService(PsiLanguageType psiLanguageType,
+                                        IConstantValueService constantValueService,
+                                        IJavaScriptCodeFormatter codeFormatter)
             : base(psiLanguageType, constantValueService)
         {
+            this.codeFormatter = codeFormatter;
         }
 
         public override ILexerFactory GetPrimaryLexerFactory()
@@ -69,6 +76,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
         public override ITypePresenter TypePresenter
         {
             get { return DefaultTypePresenter.Instance; }
+        }
+
+        public override ICodeFormatter CodeFormatter
+        {
+            get { return codeFormatter; }
         }
     }
 
