@@ -1,5 +1,5 @@
 ﻿using System;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.Text;
@@ -13,7 +13,7 @@ using JetBrains.Util;
     currTokenType = null;
 %init}
 
-%namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
+%namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 %class AngularJsLexerGenerated
 %implements IIncrementalLexer
 %function _locateToken

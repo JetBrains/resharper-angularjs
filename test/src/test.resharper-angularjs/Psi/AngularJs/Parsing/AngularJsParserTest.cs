@@ -17,7 +17,6 @@
 using System;
 using System.IO;
 using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Impl.Shared;
@@ -28,7 +27,7 @@ using JetBrains.Text;
 using JetBrains.Util.Logging;
 using NUnit.Framework;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Parsing
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 {
     // TODO: Should be able to use ParserTestBase with the injected PSI. Looks like
     // it outputs all PSI files in a file, so, create a HTML file with angular expressions

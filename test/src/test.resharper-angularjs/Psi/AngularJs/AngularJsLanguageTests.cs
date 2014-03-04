@@ -15,12 +15,11 @@
 #endregion
 
 using System;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
 using JetBrains.ReSharper.Psi;
 using JetBrains.TestShell.Infra;
 using NUnit.Framework;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
 {
     [TestFixture]
     public class AngularJsLanguageTests : BaseTest

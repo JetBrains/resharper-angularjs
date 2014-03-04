@@ -23,9 +23,6 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html.Html;
 using JetBrains.ReSharper.Psi.Modules;
 using JetBrains.UI.RichText;
-#if RESHARPER_8
-
-#endif
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Descriptions
 {

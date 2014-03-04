@@ -5,15 +5,17 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-using JetBrains.ReSharper.Psi.JavaScript.Parsing;
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
+{
+using System;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
+using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.Text;
 using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
-{
-    public  partial class AngularJsLexerGenerated : IIncrementalLexer
+
+public  partial class AngularJsLexerGenerated : IIncrementalLexer
 {
 private const int YY_F = -1;
 private const int YY_NO_STATE = -1;
