@@ -19,7 +19,7 @@ using JetBrains.ReSharper.Psi.Html.Impl.References;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.NgIncludeFileReference
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
     public class AngularJsFolderLateBoundReference<TOwner, TToken> : HtmlFolderLateBoundReference<TOwner, TToken>
         where TOwner : ITreeNode

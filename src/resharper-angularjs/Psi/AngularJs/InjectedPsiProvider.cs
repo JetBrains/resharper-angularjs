@@ -18,14 +18,19 @@ using System;
 using System.Linq;
 using System.Text;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Tree;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI;
 using JetBrains.ReSharper.Psi.Html;
+using JetBrains.ReSharper.Psi.Html.Html;
+using JetBrains.ReSharper.Psi.Html.Impl.References;
 using JetBrains.ReSharper.Psi.Html.Tree;
 using JetBrains.ReSharper.Psi.Impl.Shared.InjectedPsi;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Tree;
+using JetBrains.ReSharper.Psi.Web.WinRT.Json;
 using JetBrains.Text;
+using JetBrains.Util;
 using JetBrains.Util.Logging;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
@@ -38,6 +43,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
             return originalLanguage.Is<HtmlLanguage>();
         }
 
+        // TODO: Override CreateInjectedFileContext to not add one unless we're in a HTML file with angular
+
         public override bool IsApplicableToNode(ITreeNode node, IInjectedFileContext context)
         {
             var htmlAttributeValue = node as IHtmlAttributeValue;
@@ -48,10 +55,20 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
             }
 
             var attribute = htmlAttributeValue.GetContainingNode<ITagAttribute>();
-            if (attribute == null || !attribute.AttributeName.StartsWith("ng-", StringComparison.OrdinalIgnoreCase))
+            if (attribute == null || !IsAngularAttribute(attribute))
                 return false;
 
             return true;
+        }
+
+        private static bool IsAngularAttribute(ITagAttribute attribute)
+        {
+            // TODO: We can do better than this...
+            // Perhaps follow the reference and get the attribute type, as defined in
+            // the HtmlElements.xml. E.g. ng-include is %AngularJsUrl
+            return attribute.AttributeName.StartsWith("ng-", StringComparison.OrdinalIgnoreCase)
+                   || attribute.AttributeName.StartsWith("data-ng-", StringComparison.OrdinalIgnoreCase)
+                   || attribute.AttributeName.StartsWith("x-ng-", StringComparison.OrdinalIgnoreCase);
         }
 
         public override IInjectedNodeContext CreateInjectedNodeContext(IInjectedFileContext fileContext, ITreeNode originalNode)
@@ -66,7 +83,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
             // Ignore the attribute quotes
             var stringBuilder = new StringBuilder(htmlAttributeValue.GetTextLength() - 2);
 
-            // TODO: What's this?
+            // TODO: Why do html attributes have multiple value elements?
             foreach (var valueElement in htmlAttributeValue.ValueElements)
                 valueElement.GetText(stringBuilder);
 
@@ -75,7 +92,25 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
             var originalStartOffset = htmlAttributeValue.LeadingQuote == null ? 0 : htmlAttributeValue.LeadingQuote.GetTextLength();
             var originalEndOffset = originalStartOffset + buffer.Length;
 
-            return CreateInjectedFileAndContext(fileContext, originalNode, buffer, languageService, originalStartOffset, originalEndOffset);
+            var context = CreateInjectedFileAndContext(fileContext, originalNode, buffer, languageService,
+                originalStartOffset, originalEndOffset);
+
+            Assertion.Assert(context.RangeTranslator is InjectedRangeTranslator, "RangeTranslator is not an instance of InjectedRangeTranslator");
+
+            // TODO: This is funky. We need a better way of passing context to the generated file
+            // IAngularJsFile? Have a secondary file with islands rather than individual files?
+            var htmlEntry = HtmlAttributeValueEntry.CreateFromElement(htmlAttributeValue);
+            if (!htmlEntry.IsEmpty)
+            {
+                var declaredElement = htmlEntry.AttributeResolution as IHtmlAttributeDeclaredElement;
+                if (declaredElement != null)
+                {
+                    context.GeneratedFile.UserData.PutData(AngularJsFileData.OriginalAttributeType,
+                        declaredElement.ValueType.Name);
+                }
+            }
+
+            return context;
         }
 
         public override void Regenerate(IndependentInjectedNodeContext nodeContext)

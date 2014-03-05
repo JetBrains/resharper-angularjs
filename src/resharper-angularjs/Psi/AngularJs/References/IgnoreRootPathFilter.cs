@@ -1,4 +1,4 @@
-﻿#region license
+#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +15,21 @@
 #endregion
 
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.JavaScript.Tree;
+using JetBrains.ReSharper.Psi.Impl;
+using JetBrains.ReSharper.Psi.Resolve;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    // TODO: AngularJs specific node types
-    [Language(typeof(AngularJsLanguage))]
-    public class AngularJsNodeTypes : JavaScriptNodeTypesBase
+    public class IgnoreRootPathFilter : SimpleSymbolFilter
     {
+        public override bool Accepts(IDeclaredElement declaredElement, ISubstitution substitution)
+        {
+            return declaredElement.ShortName != PathDeclaredElement.ROOT_NAME;
+        }
+
+        public override ResolveErrorType ErrorType
+        {
+            get { return FileResolveErrorType.PATH_IGNORED; }
+        }
     }
 }

@@ -18,7 +18,7 @@ using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html.Html;
 using JetBrains.ReSharper.Psi.Html.Impl.Html;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.NgIncludeFileReference
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 {
     public interface IAngularJsHtmlDeclaredElementTypes : IHtmlDeclaredElementTypesBase
     {

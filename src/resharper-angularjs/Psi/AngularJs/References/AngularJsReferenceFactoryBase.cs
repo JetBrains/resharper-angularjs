@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,21 +15,19 @@
 #endregion
 
 using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.Impl;
+using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Resolve;
+using JetBrains.ReSharper.Psi.Tree;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.NgIncludeFileReference
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    public class IgnoreRootPathFilter : SimpleSymbolFilter
+    public abstract class AngularJsReferenceFactoryBase : StatelessReferenceProviderFactoryBase
     {
-        public override bool Accepts(IDeclaredElement declaredElement, ISubstitution substitution)
+        public override bool IsApplicableToFile(IPsiSourceFile sourceFile, IFile file)
         {
-            return declaredElement.ShortName != PathDeclaredElement.ROOT_NAME;
-        }
-
-        public override ResolveErrorType ErrorType
-        {
-            get { return FileResolveErrorType.PATH_IGNORED; }
+            // TODO: Should we have an IAngularJsFile?
+            // There isn't an IJsonFile, but there is ITsFile
+            return file is IJavaScriptFile && file.Language.Is<AngularJsLanguage>();
         }
     }
 }

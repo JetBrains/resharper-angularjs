@@ -14,14 +14,12 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.JavaScript.Tree;
+using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Tree
 {
-    // TODO: AngularJs specific node types
-    [Language(typeof(AngularJsLanguage))]
-    public class AngularJsNodeTypes : JavaScriptNodeTypesBase
+    public static class AngularJsFileData
     {
+        public static readonly Key<string> OriginalAttributeType = new Key<string>("AngularJs:OriginalAttributeType");
     }
 }
