@@ -73,7 +73,9 @@
     <Compile Include="Psi\AngularJs\Parsing\AngularJsParser.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsTreeBuilder.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
+      <DependentUpon>Angular.lex</DependentUpon>
+    </Compile>
     <Compile Include="Psi\AngularJs\Parsing\Tree\AngularJsElementType.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
