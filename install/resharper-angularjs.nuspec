@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>AngularJS</id>
-    <version>1.1.4</version>
+    <version>1.2.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,12 +10,11 @@
     <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
-    <releaseNotes>Staged code completion for AngularJS attributes
-&#8226; Parsing of AngularJS expressions in attributes
-&#8226; Highlighting of syntax errors in AngularJS expressions in attributes
-&#8226; Support for ReSharper 8.2 EAP
-        
-        ReSharper 8.2 support</releaseNotes>
+    <releaseNotes>&#8226; Staged code completion for AngularJS attributes
+&#8226; ReSharper 8.2 support
+&#8226; Dropped support for ReSharper 8.0. Please upgrade to 8.2
+
+Note that 8.1 is still currently supported. The next release will target ReSharper 8.2 only. Please upgrade!</releaseNotes>
     <dependencies>
       <dependency id="ReSharper" version="[8.1,8.3)" />
     </dependencies>
