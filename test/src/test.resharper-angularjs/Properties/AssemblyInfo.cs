@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Application;
-//using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
+using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
 using JetBrains.Threading;
 using NUnit.Framework;
 
@@ -19,7 +19,7 @@ public class TestEnvironmentAssembly : ReSharperTestEnvironmentAssembly
     {
         // Test assembly
         yield return Assembly.GetExecutingAssembly();
-        //yield return typeof (AngularJsLanguage).Assembly;
+        yield return typeof (AngularJsLanguage).Assembly;
     }
 
     public override void SetUp()
