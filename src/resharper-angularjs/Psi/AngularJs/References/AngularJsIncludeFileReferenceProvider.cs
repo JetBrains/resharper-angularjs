@@ -46,9 +46,21 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
             if (file == null)
                 return false;
 
-            var originalAttributeType = file.UserData.GetData(AngularJsFileData.OriginalAttributeType);
-            if (originalAttributeType != elementTypes.AngularJsUrlType.Name)
-                return false;
+            // TODO: We can't use this, due to losing data when we reparse for code completion
+            // When we start code completion, the tree node is reparsed with new text inserted,
+            // so that references have something to attach to. Reparsing works with IChameleon
+            // blocks that allow for resync-ing in-place. Our AngularJs nodes don't have any
+            // chameleon blocks (for JS, it's the Block class - anything with braces) so we end
+            // up re-parsing the file. This creates a new IFile, (in a sandbox that allows access
+            // to the original file's reference provider) but it doesn't copy the user data. We
+            // could theoretically look for a containing sandbox, get the context node and try
+            // and get the user data there, but that just makes it feel like this is the wrong
+            // solution. I think maybe this should be a reference provider for HTML, not AngularJs.
+            // It would have the context of the attribute name, but should really work with the
+            // injected AngularJs language, if only to see that it's a string literal
+            //var originalAttributeType = file.UserData.GetData(AngularJsFileData.OriginalAttributeType);
+            //if (originalAttributeType != elementTypes.AngularJsUrlType.Name)
+            //    return false;
 
             return true;
         }
