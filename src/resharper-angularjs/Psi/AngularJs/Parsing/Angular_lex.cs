@@ -8,7 +8,7 @@
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 {
 using System;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing;
+using JetBrains.ReSharper.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.Parsing;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
 using JetBrains.Text;

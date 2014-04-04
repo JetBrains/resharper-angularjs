@@ -1,0 +1,59 @@
+﻿<!-- This file defines the classes describing the token node types identified
+     by the lexer, and the token node instances created by the parser.
+     
+     The token node types are singletons and describe the type of the token.
+     The lexer maintains a current node type as a reference to one of these
+     singletons. The token node type implements ITokenNodeType and derives
+     from the TokeNodeType abstract class.
+     
+     When the parser encounters an appropriate token node type, it will call
+     the Create method of that token node type class to create an instance of
+     a token node, also referred to as an element, to act as part fo the abstract
+     syntax tree. The element implements ITreeNode, and derives from the abstract
+     LeafElementBase class. It can also implement the ITokenNode interface.
+     
+     The file consists of the Tokens root element, containing parameters, and
+     Keyword and Token elements. The Keyword represents a keyword, and the Token
+     element represents a fixed token, such as an operator. Non-fixed elements,
+     such as identifiers or comments, are created by hand, not through this tool.
+     
+     The arguments are:
+     
+     TokenTypeNamespace - the namespace used when generating the token
+     node type classes. This has to start with JetBrains.ReSharper.Psi
+     to work around an issue with the TokenGenerator (RSRP-411978)
+     
+     TokenTypeClass - the generated token type classes are nested classes
+     of this type. It is a partial class, with no implementation by itself
+     
+     BaseTokenNodeTypeIndex - the token node types are given a unique (to
+     this file) sequential index. This is in an implementation detail,
+     allowing ReSharper to cache node types based on integers rather than
+     any other lookup type. It is useful when the parser has a set of expected
+     child tokens it can accept. The default is 1000, and can be left, unless
+     this language is going to interact with an existing language tree, in
+     which case, it should be set to a value that doesn't clash with the other
+     language
+     
+     KeywordNodeType + KeywordTokenElement - the names of the base classes for
+     the classes generated from the Keyword xml element. One for the node type
+     and one for the token node/element.
+     
+     TokenNodeType + TokenTokenElement - the names of the base classes for
+     the classes generated from the Token xml element.
+     
+     Note that this file has an msbuild Build Action of TokenGenerator, and
+     the msbuild metadata of OutputFile to tell the TokenGenerator where to
+     store the output
+-->
+<Tokens TokenTypeNamespace="JetBrains.ReSharper.Psi.AngularJs.Parsing"
+        TokenTypeClass="AngularJsTokenType"
+        BaseTokenNodeTypeIndex="7000"
+        KeywordNodeType="KeywordTokenNodeType"
+        KeywordTokenElement="FixedTokenElement"
+        TokenNodeType="FixedTokenNodeType"
+        TokenTokenElement="FixedTokenElement">
+
+  <Keyword name="UNDEFINED_KEYWORD" representation="undefined" />
+  <Keyword name="TRACK_BY_KEYWORD" representation="track by" />
+</Tokens>

@@ -15,62 +15,21 @@
 #endregion
 
 using JetBrains.Annotations;
-using JetBrains.ReSharper.Psi;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
-using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.Text;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
+// TODO: Move namespace to JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJS.Parsing
+// A bug in the TokenGenerator tool means that the namespace of this class
+// has to start with JetBrains.ReSharper.Psi or it fails to compile (it uses
+// JetBrains.ReSharper.Psi.TreeOffset without the appropriate using statement)
+// See: http://youtrack.jetbrains.com/issue/RSRP-411978
+// ReSharper disable once CheckNamespace
+namespace JetBrains.ReSharper.Psi.AngularJs.Parsing
 {
+    // Here is where we would define the KeywordTokenNodeType, FixedTokenElement,
+    // and FixedTokenNodeType base classes. But we're piggy-backing on the JS
+    // parser, so we can use those definitions, by inheriting from JavaScriptTokenType
     [UsedImplicitly]
-    public class AngularJsTokenType : JavaScriptTokenType
+    public partial class AngularJsTokenType : JavaScriptTokenType
     {
-        private class UndefinedKeywordNodeType : KeywordTokenNodeType
-        {
-            public UndefinedKeywordNodeType(int index)
-                : base("UNDEFINED_KEYWORD", "undefined", index)
-            {
-            }
-
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new UndefinedKeywordTokenElement(this);
-            }
-        }
-
-        private class UndefinedKeywordTokenElement : FixedTokenElement
-        {
-            public UndefinedKeywordTokenElement(UndefinedKeywordNodeType tokenNodeType)
-                : base(tokenNodeType)
-            {
-            }
-        }
-
-        public static readonly TokenNodeType UNDEFINED_KEYWORD = new UndefinedKeywordNodeType(7000);
-
-
-        private class TrackByKeywordNodeType : KeywordTokenNodeType
-        {
-            public TrackByKeywordNodeType(int index)
-                : base("TRACK_BY_KEYWORD", "track by", index)
-            {
-            }
-
-            public override LeafElementBase Create(IBuffer buffer, TreeOffset startOffset, TreeOffset endOffset)
-            {
-                return new TrackByKeywordTokenElement(this);
-            }
-        }
-
-        private class TrackByKeywordTokenElement : FixedTokenElement
-        {
-            public TrackByKeywordTokenElement(TrackByKeywordNodeType tokenNodeType)
-                : base(tokenNodeType)
-            {
-            }
-        }
-
-        public static readonly TokenNodeType TRACK_BY_KEYWORD = new TrackByKeywordNodeType(7001);
     }
 }

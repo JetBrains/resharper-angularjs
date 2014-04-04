@@ -64,13 +64,20 @@
     <Compile Include="Psi\AngularJs\CodeStyle\AngularJsFormattingInfoProvider.cs" />
     <Compile Include="Psi\AngularJs\CodeStyle\AngularJsIndentingInfoProvider.cs" />
     <Compile Include="Psi\AngularJs\InjectedPsiProvider.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerGenerated.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexer.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsParser.cs" />
     <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.generated.cs">
+      <DependentUpon>AngularJsTokenType.Tokens.xml</DependentUpon>
+    </Compile>
     <Compile Include="Psi\AngularJs\Parsing\AngularJsTreeBuilder.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
       <DependentUpon>Angular.lex</DependentUpon>
     </Compile>
+    <TokenGenerator Include="Psi\AngularJs\Parsing\AngularJsTokenType.Tokens.xml">
+      <OutputFile>Psi\AngularJs\Parsing\AngularJsTokenType.generated.cs</OutputFile>
+      <SubType>Designer</SubType>
+    </TokenGenerator>
     <Compile Include="Psi\AngularJs\Parsing\Tree\AngularJsElementType.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
@@ -104,7 +111,7 @@
       <Link>resharper-angularjs.nuspec</Link>
     </None>
     <None Include="packages.resharper-angularjs.8.2.config" />
-    <None Include="Psi\AngularJs\Parsing\Angular.lex" />
+    <CsLex Include="Psi\AngularJs\Parsing\Angular.lex" />
     <None Include="templates.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -119,4 +126,5 @@
     <Error Condition="!Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1158\build\JetBrains.ReSharper.SDK.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\JetBrains.ReSharper.SDK.8.2.1158\build\JetBrains.ReSharper.SDK.Targets'))" />
   </Target>
   <Import Project="..\packages\JetBrains.ReSharper.SDK.8.2.1158\build\JetBrains.ReSharper.SDK.Targets" Condition="Exists('..\packages\JetBrains.ReSharper.SDK.8.2.1158\build\JetBrains.ReSharper.SDK.Targets')" />
+  <Import Project="$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets" Condition="Exists('$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets')" />
 </Project>

@@ -16,6 +16,7 @@
 
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree;
+using JetBrains.ReSharper.Psi.AngularJs.Parsing;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
 using JetBrains.ReSharper.Psi.JavaScript.Parsing;
