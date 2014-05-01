@@ -2,6 +2,7 @@ foo in bar
 (key, value) in bar
 foo in
 (key, value) in
+(key, value) i
 (key value) in bar
 (key) in bar
 (key,) in bar

@@ -70,7 +70,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
                         var lexer = new AngularJsLexerGenerated(buffer);
                         var parser = new AngularJsParser(lexer);
 
-
                         try
                         {
                             var parsedFile = parser.ParseFile();

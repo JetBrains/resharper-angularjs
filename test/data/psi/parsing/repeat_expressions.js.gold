@@ -74,6 +74,30 @@ IJavaScriptFile
         JavaScriptTokenType+InKeywordTokenElement(type:IN_KEYWORD, text:in)
         ErrorElement:Identifier expected
 
+Expression: «(key, value) i»
+Language: PsiLanguageType:AngularJS
+IJavaScriptFile
+  IJavaScriptFileSection
+    IExpressionStatement
+      IParenthesizedExpression
+        JavaScriptTokenType+LparenTokenElement(type:LPAREN, text:()
+        ICompoundExpression
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:key)
+          JavaScriptTokenType+CommaTokenElement(type:COMMA, text:,)
+          Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+          IReferenceExpression
+            IIdentifierExpression
+              Identifier(type:IDENTIFIER, text:value)
+        JavaScriptTokenType+RparenTokenElement(type:RPAREN, text:))
+      ErrorElement:; expected
+    Whitespace(type:WHITE_SPACE, text: ) spaces:" "
+    IExpressionStatement
+      IReferenceExpression
+        IIdentifierExpression
+          Identifier(type:IDENTIFIER, text:i)
+
 Expression: «(key value) in bar»
 Language: PsiLanguageType:AngularJS
 IJavaScriptFile

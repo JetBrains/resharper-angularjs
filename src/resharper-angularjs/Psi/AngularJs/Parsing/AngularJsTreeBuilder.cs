@@ -51,23 +51,33 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
             if (tokenType == TokenType.SEMICOLON)
             {
                 ParseEmptyStatement();
+                return;
             }
-            else if (CanBeIdentifier(tokenType))
+
+            if (CanBeIdentifier(tokenType))
             {
                 var nextTokenType = LookAhead(1);
                 if (nextTokenType == TokenType.EQ)
+                {
                     ParseVariableStatement();
-                else if (nextTokenType == TokenType.IN_KEYWORD)
+                    return;
+                }
+
+                if (nextTokenType == TokenType.IN_KEYWORD)
+                {
                     ParseInStatement();
-                else
-                    ParseExpressionStatement();
+                    return;
+                }
             }
-            else if (tokenType == TokenType.LPARENTH)
+
+            if (tokenType == TokenType.LPARENTH)
             {
-                ParseInStatement();
+                if (ParseInStatement())
+                    return;
             }
-                // TODO: Check ExpressionFirst
-            else if (!Builder.Eof() && ExpressionFirst[tokenType])
+
+            // TODO: Check ExpressionFirst
+            if (!Builder.Eof() && ExpressionFirst[tokenType])
             {
                 ParseExpressionStatement();
             }
@@ -109,20 +119,21 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
 
         private void ParseOptionalSemiColon()
         {
-            if (GetTokenType() == TokenType.SEMICOLON)
+            if (!Builder.Eof())
                 ExpectToken(TokenType.SEMICOLON);
         }
 
-        private void ParseInStatement()
+        private bool ParseInStatement()
         {
             var mark = Mark();
             if (!ParseInExpression())
             {
                 Builder.Drop(mark);
-                return;
+                return false;
             }
 
             Builder.DoneBeforeWhitespaces(mark, EXPRESSION_STATEMENT, null);
+            return true;
         }
 
         private bool ParseInExpression()
