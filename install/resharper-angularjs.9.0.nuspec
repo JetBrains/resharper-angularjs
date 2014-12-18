@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>JetBrains.AngularJS</id>
+    <title>AnguarJS (for ReSharper 9)</title>
+    <version>1.2.0</version>
+    <authors>JetBrains</authors>
+    <owners>JetBrains</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/JetBrains/resharper-angularjs</projectUrl>
+    <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
+    <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
+    <description>Code completion and live templates for AngularJS</description>
+    <releaseNotes>&#8226; Support for ReSharper 9.0</releaseNotes>
+    <dependencies>
+      <dependency id="Wave" version="[1.0]" />
+    </dependencies>
+    <tags>resharper angular angularjs javascript js typescript</tags>
+  </metadata>
+  <files>
+    <file src="..\src\resharper-angularjs\bin\Release\Wave01\JetBrains.ReSharper.Plugins.AngularJS.9.0.dll"
+          target="dotFiles\" />
+
+    <!-- Templates -->
+    <file src="..\src\resharper-angularjs\bin\Release\templates.dotSettings"
+          target="dotFiles\Extensions\JetBrains.AngularJS\settings\" />
+  </files>
+</package>

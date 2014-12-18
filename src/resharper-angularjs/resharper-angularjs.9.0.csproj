@@ -19,16 +19,16 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;JET_MODE_ASSERT,RESHARPER_8</DefineConstants>
+    <OutputPath>bin\Debug\Wave01\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;JET_MODE_ASSERT,RESHARPER_9</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;RESHARPER_8</DefineConstants>
+    <OutputPath>bin\Release\Wave01\</OutputPath>
+    <DefineConstants>TRACE;RESHARPER_9</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -163,6 +163,7 @@
     <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
       <DependentUpon>Angular.lex</DependentUpon>
     </Compile>
+    <Compile Include="ZoneMarker.cs" />
     <TokenGenerator Include="Psi\AngularJs\Parsing\AngularJsTokenType.Tokens.xml">
       <OutputFile>Psi\AngularJs\Parsing\AngularJsTokenType.generated.cs</OutputFile>
       <SubType>Designer</SubType>
@@ -201,10 +202,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\install\resharper-angularjs.nuspec">
-      <Link>resharper-angularjs.nuspec</Link>
-    </None>
     <CsLex Include="Psi\AngularJs\Parsing\Angular.lex" />
+    <None Include="..\..\install\resharper-angularjs.9.0.nuspec">
+      <Link>resharper-angularjs.9.0.nuspec</Link>
+    </None>
     <None Include="packages.resharper-angularjs.9.0.config" />
     <None Include="templates.dotSettings">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
