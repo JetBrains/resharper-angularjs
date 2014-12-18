@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,21 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
+using JetBrains.ReSharper.Feature.Services.Lookup;
+using JetBrains.TextControl;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    internal partial class FilterExpression : JavaScriptExpressionBase
+    public partial class WrappedDynamicLookupItem
     {
-        public override NodeType NodeType
+        public MatchingResult Match(string prefix, ITextControl textControl)
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
+            return Item.Match(prefix, textControl);
+        }
+
+        public string OrderingString
+        {
+            get { return Item.OrderingString; }
         }
     }
 }

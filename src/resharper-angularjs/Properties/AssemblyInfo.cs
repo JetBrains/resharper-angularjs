@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 #endregion
+
 using System.Reflection;
-using JetBrains.Application.PluginSupport;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -30,7 +30,3 @@ using JetBrains.Application.PluginSupport;
 
 [assembly: AssemblyVersion("1.2.0.*")]
 
-// The following information is displayed by ReSharper in the Plugins dialog
-[assembly: PluginTitle("AngularJS")]
-[assembly: PluginDescription("Provides support for AngularJS development")]
-[assembly: PluginVendor("JetBrains")]

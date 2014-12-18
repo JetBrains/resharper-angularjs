@@ -150,6 +150,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compatibility.9.0.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesCompletionListTest.cs">
       <SubType>Code</SubType>
     </Compile>

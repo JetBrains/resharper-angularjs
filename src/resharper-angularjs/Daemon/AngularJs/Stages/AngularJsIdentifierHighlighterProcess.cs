@@ -18,6 +18,7 @@ using JetBrains.Application.Settings;
 using JetBrains.ReSharper.Daemon;
 using JetBrains.ReSharper.Daemon.JavaScript.Stages;
 using JetBrains.ReSharper.Daemon.Stages.Resolve;
+using JetBrains.ReSharper.Feature.Services.Daemon;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Daemon.AngularJs.Stages

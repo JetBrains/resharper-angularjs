@@ -14,16 +14,18 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
+using JetBrains.ReSharper.Psi.JavaScript.Resolve;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
 {
-    internal partial class FilterExpression : JavaScriptExpressionBase
+    internal partial class RepeatExpression
     {
-        public override NodeType NodeType
+
+        // TODO: Make the children available via properties
+
+        public override IJavaScriptType GetJsType(IJsLocalElementResolver context)
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
+            return JavaScriptType.Empty;
         }
     }
 }

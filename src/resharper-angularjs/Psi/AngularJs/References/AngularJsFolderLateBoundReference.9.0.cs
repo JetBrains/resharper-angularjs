@@ -14,16 +14,13 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
-
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    internal partial class FilterExpression : JavaScriptExpressionBase
+    public partial class AngularJsFolderLateBoundReference<TOwner, TToken>
     {
-        public override NodeType NodeType
+        public override bool? IsServerSideWebRoot()
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
+            return null;
         }
     }
 }

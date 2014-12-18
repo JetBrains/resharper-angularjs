@@ -15,6 +15,7 @@
 #endregion
 
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.FeaturesTestFramework.Completion;
 using JetBrains.ReSharper.HtmlTests.CodeCompletion;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;

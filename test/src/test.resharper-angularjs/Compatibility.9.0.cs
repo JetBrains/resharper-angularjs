@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,27 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
+// Compatibility shims to get a clean compile for both 8.2 and 9.0
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
+#region Namespaces in 8.2 that don't exist in 9.0
+
+// ReSharper disable once CheckNamespace
+namespace JetBrains
 {
-    internal partial class FilterExpression : JavaScriptExpressionBase
+    namespace ReSharper
     {
-        public override NodeType NodeType
+        namespace HtmlTests.CodeCompletion
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
+        }
+
+        namespace PsiTests.Lexing
+        {
         }
     }
+
+    namespace TestShell.Infra
+    {
+    }
 }
+
+#endregion

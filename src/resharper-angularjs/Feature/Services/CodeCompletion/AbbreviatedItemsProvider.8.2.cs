@@ -1,4 +1,4 @@
-#region license
+﻿#region license
 // Copyright 2014 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +14,20 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
+using System.Linq;
+using JetBrains.Text;
+using JetBrains.Util;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
+namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    internal partial class FilterExpression : JavaScriptExpressionBase
+    public partial class AbbreviatedItemsProvider
     {
-        public override NodeType NodeType
+        private static int[] GetMatchingIndicies(IdentifierMatcher matcher, string abbreviation)
         {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
+            var matches = matcher.MatchingIndicies(abbreviation);
+            if (matches != null)
+                return matches.Select(m => m.TextIndex).ToArray();
+            return EmptyArray<int>.Instance;
         }
     }
 }

@@ -21,8 +21,10 @@ using JetBrains.Annotations;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.BaseRules;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
 using JetBrains.ReSharper.Feature.Services.Html.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.Lookup;
+using JetBrains.ReSharper.Features.Intellisense.CodeCompletion.Html;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Html;
@@ -37,7 +39,7 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
     [Language(typeof(HtmlLanguage))]
-    public class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
+    public partial class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
         private static readonly string[] Abbreviations = {"ng-", "data-ng-", "x-ng-"};
         private static readonly Key IdentityKey = new Key("NgCodeCompletionItem");
@@ -191,14 +193,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
             foreach (var abbreviation in Abbreviations)
             {
-                var matches = matcher.MatchingIndicies(abbreviation);
+                var matches = GetMatchingIndicies(matcher, abbreviation);
                 if (matches != null)
                 {
                     // TODO: This could match multiple? E.g. n- matches ng- and data-ng-
-                    // This is relying on ordering of the Abreviations
+                    // This is relying on ordering of the Abbreviations
                     // How to work out best fit? Most number of matched indices in
                     // shortest string?
-                    if (matches.Last().TextIndex == abbreviation.Length - 1)
+                    if (matches.Last() == abbreviation.Length - 1)
                         return abbreviation;
                 }
             }

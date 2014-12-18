@@ -22,6 +22,7 @@ using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.ReSharper.Psi.Impl.Shared;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.TestFramework;
+using JetBrains.TestFramework;
 using JetBrains.TestShell.Infra;
 using JetBrains.Text;
 using JetBrains.Util.Logging;

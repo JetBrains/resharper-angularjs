@@ -16,9 +16,11 @@
 
 using JetBrains.Application;
 using JetBrains.DocumentModel;
+using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.BaseRules;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems.Impl;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi.ExpectedTypes;
 using JetBrains.TextControl;
@@ -27,7 +29,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public class AbbreviatedTextLookupItem : TextLookupItem
+    public partial class AbbreviatedTextLookupItem : TextLookupItem
     {
         private readonly CodeCompletionContext context;
 
@@ -77,10 +79,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             if (context != null)
             {
                 context.CompletionManager.Locks.QueueReadLock("Code completion inside markup extension",
-                    () => context.CompletionManager.ExecuteManualCompletion(
-                        CodeCompletionType.AutomaticCompletion, textControl, context.Solution, EmptyAction.Instance,
-                        context.CompletionManager.GetPrimaryEvaluationMode(CodeCompletionType.AutomaticCompletion),
-                        AutocompletionBehaviour.DoNotAutocomplete));
+                    () => ExecuteManualCompletion(textControl));
             }
         }
     }

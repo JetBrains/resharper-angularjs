@@ -16,6 +16,9 @@
 
 using System.Collections.Generic;
 using JetBrains.ProjectModel;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.Match;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Feature.Services.ParameterInfo;
 using JetBrains.TextControl;
@@ -25,8 +28,8 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public class WrappedDynamicLookupItem : IWrappedLookupItem, IDescriptionProvidingLookupItem,
-        IParameterInfoProvidingLookupItem, IUserDataHolder
+    public partial class WrappedDynamicLookupItem : IWrappedLookupItem, IDescriptionProvidingLookupItem,
+        IParameterInfoCandidatesProvider, IUserDataHolder
     {
         private readonly IUserDataHolder dataHolder;
 
@@ -38,9 +41,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         public ILookupItem Item { get; private set; }
 
-        private IParameterInfoProvidingLookupItem ParameterInfoProvidingLookupItem
+        private IParameterInfoCandidatesProvider ParameterInfoProvidingLookupItem
         {
-            get { return Item as IParameterInfoProvidingLookupItem; }
+            get { return Item as IParameterInfoCandidatesProvider; }
         }
 
         public bool IsDynamic
@@ -68,11 +71,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool AcceptIfOnlyMatched(LookupItemAcceptanceContext itemAcceptanceContext)
         {
             return Item.AcceptIfOnlyMatched(itemAcceptanceContext);
-        }
-
-        public MatchingResult Match(string prefix, ITextControl textControl)
-        {
-            return Item.Match(prefix, textControl);
         }
 
         public void Accept(ITextControl textControl, TextRange nameRange, LookupItemInsertType lookupItemInsertType, Suffix suffix,
@@ -114,11 +112,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool CanShrink
         {
             get { return Item.CanShrink; }
-        }
-
-        public string OrderingString
-        {
-            get { return Item.OrderingString; }
         }
 
         public int Multiplier

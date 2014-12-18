@@ -5,9 +5,9 @@ using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs;
 using JetBrains.Threading;
 using NUnit.Framework;
 
-/// <summary>
-/// Test environment. Must be in the global namespace.
-/// </summary>
+
+// TODO: Testing needs fixing for 9.0...
+
 [SetUpFixture]
 public class TestEnvironmentAssembly : ReSharperTestEnvironmentAssembly
 {

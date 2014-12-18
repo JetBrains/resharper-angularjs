@@ -21,18 +21,13 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    public class AngularJsFolderLateBoundReference<TOwner, TToken> : HtmlFolderLateBoundReference<TOwner, TToken>
+    public partial class AngularJsFolderLateBoundReference<TOwner, TToken> : HtmlFolderLateBoundReference<TOwner, TToken>
         where TOwner : ITreeNode
         where TToken : class, ITreeNode
     {
         public AngularJsFolderLateBoundReference(TOwner owner, IQualifier qualifier, TToken token, TreeTextRange rangeWithin)
             : base(owner, qualifier, token, rangeWithin)
         {
-        }
-
-        public override bool IsWebRootPathSupported()
-        {
-            return false;
         }
 
         protected override ISymbolFilter[] GetCompletionFilters()

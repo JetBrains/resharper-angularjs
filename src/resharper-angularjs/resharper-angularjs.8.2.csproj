@@ -52,10 +52,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compatibility.8.2.cs" />
     <Compile Include="Daemon\AngularJs\Stages\AngularJsDaemonStageBase.cs" />
     <Compile Include="Daemon\AngularJs\Stages\AngularJsIdentifierHighlighterProcess.cs" />
     <Compile Include="Daemon\AngularJs\Stages\IdentifierHighlightingStage.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.8.2.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.8.2.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.8.2.cs" />
     <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Psi\AngularJs\AngularJsLanguage.cs" />
@@ -80,10 +84,15 @@
     </TokenGenerator>
     <Compile Include="Psi\AngularJs\Parsing\Tree\AngularJsElementType.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.8.2.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.8.2.cs" />
     <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsFileLateBoundReference.8.2.cs" />
     <Compile Include="Psi\AngularJs\References\AngularJsFileLateBoundReference.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsFolderLateBoundReference.8.2.cs" />
     <Compile Include="Psi\AngularJs\References\AngularJsFolderLateBoundReference.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsIncludeFileReferenceProvider.8.2.cs" />
     <Compile Include="Psi\AngularJs\References\AngularJsIncludeFileReferenceProvider.cs" />
     <Compile Include="Psi\AngularJs\References\AngularJsReferenceFactoryBase.cs" />
     <Compile Include="Psi\AngularJs\References\IgnoreRootPathFilter.cs" />
@@ -110,6 +119,7 @@
     <None Include="..\..\install\resharper-angularjs.nuspec">
       <Link>resharper-angularjs.nuspec</Link>
     </None>
+    <Compile Include="Properties\AssemblyInfo.8.2.cs" />
     <None Include="packages.resharper-angularjs.8.2.config" />
     <CsLex Include="Psi\AngularJs\Parsing\Angular.lex" />
     <None Include="templates.dotSettings">

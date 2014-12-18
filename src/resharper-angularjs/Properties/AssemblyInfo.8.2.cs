@@ -1,5 +1,5 @@
-#region license
-// Copyright 2014 JetBrains s.r.o.
+﻿#region license
+// Copyright 2013 JetBrains s.r.o.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,16 +14,9 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
-using JetBrains.ReSharper.Psi.JavaScript.Impl.Tree;
+using JetBrains.Application.PluginSupport;
 
-namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing.Tree
-{
-    internal partial class FilterExpression : JavaScriptExpressionBase
-    {
-        public override NodeType NodeType
-        {
-            get { return AngularJsElementType.FILTER_EXPRESSION; }
-        }
-    }
-}
+// The following information is displayed by ReSharper in the Plugins dialog
+[assembly: PluginTitle("AngularJS")]
+[assembly: PluginDescription("Provides support for AngularJS development")]
+[assembly: PluginVendor("JetBrains")]
