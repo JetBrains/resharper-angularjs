@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.8.2", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.resharper-angularjs.8.2", "..\test\src\test.resharper-angularjs\test.resharper-angularjs.8.2.csproj", "{0EB30E88-5029-48EB-AC46-BFBF2A809C20}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rs90", "rs90", "{E0D7085D-E26A-489F-9ADA-91F4737F7E63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.resharper-angularjs.9.0", "..\test\src\test.resharper-angularjs\test.resharper-angularjs.9.0.csproj", "{8E0BE7C0-CB94-4993-94F3-A91961F8A809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.9.0", "resharper-angularjs\resharper-angularjs.9.0.csproj", "{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +29,14 @@ Global
 		{0EB30E88-5029-48EB-AC46-BFBF2A809C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EB30E88-5029-48EB-AC46-BFBF2A809C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EB30E88-5029-48EB-AC46-BFBF2A809C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635} = {EE5A13F6-42EF-45C5-AF9D-8C5B3614000E}
 		{0EB30E88-5029-48EB-AC46-BFBF2A809C20} = {EE5A13F6-42EF-45C5-AF9D-8C5B3614000E}
+		{8E0BE7C0-CB94-4993-94F3-A91961F8A809} = {E0D7085D-E26A-489F-9ADA-91F4737F7E63}
+		{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2} = {E0D7085D-E26A-489F-9ADA-91F4737F7E63}
 	EndGlobalSection
 EndGlobal
