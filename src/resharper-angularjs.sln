@@ -1,14 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.8.1", "resharper-angularjs\resharper-angularjs.8.1.csproj", "{D1C3A33B-B444-431A-9EC8-0843F2C78295}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.resharper-angularjs.8.1", "..\test\src\test.resharper-angularjs\test.resharper-angularjs.8.1.csproj", "{A2F9E866-84B2-4249-9A9E-31BCAA795581}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rs81", "rs81", "{E8F51E5F-997A-439C-8558-825DA4469267}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rs82", "rs82", "{EE5A13F6-42EF-45C5-AF9D-8C5B3614000E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.8.2", "resharper-angularjs\resharper-angularjs.8.2.csproj", "{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635}"
@@ -21,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D1C3A33B-B444-431A-9EC8-0843F2C78295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1C3A33B-B444-431A-9EC8-0843F2C78295}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1C3A33B-B444-431A-9EC8-0843F2C78295}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1C3A33B-B444-431A-9EC8-0843F2C78295}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2F9E866-84B2-4249-9A9E-31BCAA795581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2F9E866-84B2-4249-9A9E-31BCAA795581}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2F9E866-84B2-4249-9A9E-31BCAA795581}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2F9E866-84B2-4249-9A9E-31BCAA795581}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -42,8 +28,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D1C3A33B-B444-431A-9EC8-0843F2C78295} = {E8F51E5F-997A-439C-8558-825DA4469267}
-		{A2F9E866-84B2-4249-9A9E-31BCAA795581} = {E8F51E5F-997A-439C-8558-825DA4469267}
 		{A8B57247-A7D6-48FB-9A9A-7DEB31EA8635} = {EE5A13F6-42EF-45C5-AF9D-8C5B3614000E}
 		{0EB30E88-5029-48EB-AC46-BFBF2A809C20} = {EE5A13F6-42EF-45C5-AF9D-8C5B3614000E}
 	EndGlobalSection
