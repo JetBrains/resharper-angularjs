@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>JetBrains.AngularJS</id>
-    <title>AnguarJS (for ReSharper 9)</title>
+    <title>AngularJS (for ReSharper 9)</title>
     <version>1.2.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
