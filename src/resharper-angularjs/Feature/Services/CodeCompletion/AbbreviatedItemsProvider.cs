@@ -194,7 +194,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             foreach (var abbreviation in Abbreviations)
             {
                 var matches = GetMatchingIndicies(matcher, abbreviation);
-                if (matches != null)
+                if (matches != null && matches.Length > 0)
                 {
                     // TODO: This could match multiple? E.g. n- matches ng- and data-ng-
                     // This is relying on ordering of the Abbreviations
