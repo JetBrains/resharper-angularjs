@@ -50,22 +50,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             var codeCompletionType = context.BasicContext.CodeCompletionType;
             var isAvailable = codeCompletionType == CodeCompletionType.BasicCompletion
                               || codeCompletionType == CodeCompletionType.SmartCompletion
-                              || codeCompletionType == CodeCompletionType.AutomaticCompletion;
+                              || context.BasicContext.Parameters.IsAutomaticCompletion();
 
             // Only if the current token is expected to be an attribute
             return isAvailable && context.Reference is IHtmlAttributeReference;
-        }
-
-        public override bool IsAvailableEx(CodeCompletionType[] codeCompletionTypes,
-            HtmlCodeCompletionContext specificContext)
-        {
-            return codeCompletionTypes.Length <= 2;
-        }
-
-        public override bool IsEvaluationModeSupported(CodeCompletionParameters parameters)
-        {
-            return parameters.EvaluationMode == EvaluationMode.Light ||
-                   parameters.EvaluationMode == EvaluationMode.OnlyDynamicRules;
         }
 
         protected override TextLookupRanges GetDefaultRanges(HtmlCodeCompletionContext context)
@@ -301,7 +289,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement));
             item.PutData(IdentityKey, IdentityObject);
             item.PutData(BaseDynamicRule.PrefixKey, abbreviation);
-            collector.AddAtDefaultPlace(item);
+            collector.Add(item);
         }
 
         private static void AddAllAbbreviations(HtmlCodeCompletionContext context,
@@ -314,8 +302,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         private static bool AddAbbreviation(HtmlCodeCompletionContext context, GroupedItemsCollector collector,
             string text)
         {
-            collector.AddAtDefaultPlace(CreateAbbreviatedLookupItem(text, context.Ranges,
-                context.BasicContext));
+            collector.Add(CreateAbbreviatedLookupItem(text, context.Ranges, context.BasicContext));
             return true;
         }
 

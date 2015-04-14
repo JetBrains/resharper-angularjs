@@ -14,12 +14,24 @@
 // limitations under the License.
 #endregion
 
+using JetBrains.ReSharper.Feature.Services.CodeCompletion;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.Text;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
     public partial class AbbreviatedItemsProvider
     {
+        public override CompletionMode SupportedCompletionMode
+        {
+            get { return CompletionMode.All; }
+        }
+
+        public override EvaluationMode SupportedEvaluationMode
+        {
+            get { return EvaluationMode.All; }
+        }
+
         private static int[] GetMatchingIndicies(IdentifierMatcher matcher, string abbreviation)
         {
             return matcher.MatchingIndicies(abbreviation);

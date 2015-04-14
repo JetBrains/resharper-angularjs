@@ -24,9 +24,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
     [Category("Code Completion")]
     [TestFileExtension(HtmlProjectFileType.HTML_EXTENSION)]
-    public class AngularJsAttributesCompletionListTest : WebCodeCompletionTestBase
+    public partial class AngularJsAttributesCompletionListTest : WebCodeCompletionTestBase
     {
-        protected override bool ExecuteAction { get { return false; } }
         protected override string RelativeTestDataPath { get { return @"CodeCompletion\List"; } }
 
         [Test] public void TestShowAbbreviationsWithNoPrefix() { DoNamedTest2(); }

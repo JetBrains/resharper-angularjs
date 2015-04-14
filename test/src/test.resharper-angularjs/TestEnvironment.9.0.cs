@@ -14,23 +14,19 @@
 // limitations under the License.
 #endregion
 
-// Compatibility shims to get a clean compile for both 8.2 and 9.0
+using JetBrains.Application.BuildScript.Application.Zones;
+using JetBrains.ReSharper.TestFramework;
+using JetBrains.TestFramework;
+using JetBrains.TestFramework.Application.Zones;
+using NUnit.Framework;
 
-using JetBrains.ReSharper.Feature.Services.CodeCompletion;
-
-public static class CompatibilityExtensions
-{
-    public static bool IsAutomaticCompletion(this CodeCompletionParameters parameters)
-    {
-        return parameters.IsAutomaticCompletion;
-    }
-}
-
-#region Namespaces in 8.2 that don't exist in 9.0
-
-// ReSharper disable once CheckNamespace
-namespace JetBrains.ReSharper.Psi.Web.WinRT.Json
+[ZoneDefinition]
+public interface IAngularJsTestZone : ITestsZone, IRequire<PsiFeatureTestZone>
 {
 }
 
-#endregion
+[SetUpFixture]
+public class TestEnvironmentAssembly : ExtensionTestEnvironmentAssembly<IAngularJsTestZone>
+{
+}
+

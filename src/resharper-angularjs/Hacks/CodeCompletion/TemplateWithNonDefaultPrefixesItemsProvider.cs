@@ -58,7 +58,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 
         private bool CanNormalProviderWork(ISpecificCodeCompletionContext context)
         {
-            if (context.BasicContext.CodeCompletionType != CodeCompletionType.AutomaticCompletion)
+            if (context.BasicContext.Parameters.IsAutomaticCompletion())
                 return false;
             if (hotspotSessionExecutor.CurrentSession != null)
                 return false;

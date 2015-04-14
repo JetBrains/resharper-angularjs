@@ -17,6 +17,22 @@
 
 // Compatibility shims to get a clean compile for both 8.2 and 9.0
 
+using JetBrains.ReSharper.Feature.Services.CodeCompletion;
+using JetBrains.ReSharper.Feature.Services.Lookup;
+
+public static class CompatibilityExtensions
+{
+    public static bool IsAutomaticCompletion(this CodeCompletionParameters parameters)
+    {
+        return parameters.LastCodeCompletionType == CodeCompletionType.AutomaticCompletion;
+    }
+
+    public static void Add(this GroupedItemsCollector collector, ILookupItem item)
+    {
+        collector.AddAtDefaultPlace(item);
+    }
+}
+
 #region Namespaces in 9.0 that don't exist in 8.2
 
 // ReSharper disable once CheckNamespace

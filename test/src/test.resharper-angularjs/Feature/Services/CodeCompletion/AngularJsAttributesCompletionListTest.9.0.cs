@@ -14,19 +14,15 @@
 // limitations under the License.
 #endregion
 
-using JetBrains.ProjectModel;
-using JetBrains.ReSharper.Feature.Services.CodeCompletion;
-using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
-using JetBrains.TextControl;
+using JetBrains.ReSharper.FeaturesTestFramework.Completion;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public partial class AbbreviatedTextLookupItem
+    public partial class AngularJsAttributesCompletionListTest
     {
-        private void ExecuteManualCompletion(ITextControl textControl)
+        protected override CodeCompletionTestType TestType
         {
-            var sessionManager = context.Solution.GetComponent<ICodeCompletionSessionManager>();
-            sessionManager.ExecuteAutomaticCompletionAsync(textControl, context.Language, AutopopupType.SoftAutopopup);
+            get { return CodeCompletionTestType.List; }
         }
     }
 }

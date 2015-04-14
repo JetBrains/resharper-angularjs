@@ -15,6 +15,8 @@
 #endregion
 
 using System.Linq;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion;
+using JetBrains.ReSharper.Feature.Services.Html.CodeCompletion;
 using JetBrains.Text;
 using JetBrains.Util;
 
@@ -22,6 +24,18 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
     public partial class AbbreviatedItemsProvider
     {
+        public override bool IsAvailableEx(CodeCompletionType[] codeCompletionTypes,
+           HtmlCodeCompletionContext specificContext)
+        {
+            return codeCompletionTypes.Length <= 2;
+        }
+
+        public override bool IsEvaluationModeSupported(CodeCompletionParameters parameters)
+        {
+            return parameters.EvaluationMode == EvaluationMode.Light ||
+                   parameters.EvaluationMode == EvaluationMode.OnlyDynamicRules;
+        }
+
         private static int[] GetMatchingIndicies(IdentifierMatcher matcher, string abbreviation)
         {
             var matches = matcher.MatchingIndicies(abbreviation);

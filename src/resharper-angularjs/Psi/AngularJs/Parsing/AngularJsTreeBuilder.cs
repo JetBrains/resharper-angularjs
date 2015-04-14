@@ -425,7 +425,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Parsing
                 return false;
 
             var tokenType = GetTokenType();
-            if (tokenType == JavaScriptTokenType.STAR || tokenType == JavaScriptTokenType.DIVIDE
+            // 8.2 uses STAR. This change might break
+            if (tokenType == JavaScriptTokenType.ASTERISK || tokenType == JavaScriptTokenType.DIVIDE
                 || tokenType == JavaScriptTokenType.PERCENT)
             {
                 var mark = Builder.PrecedeCurrent();
