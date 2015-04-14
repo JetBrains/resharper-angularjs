@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JetBrains.ReSharper.Plugins.AngularJS</RootNamespace>
-    <AssemblyName>JetBrains.ReSharper.Plugins.AngularJS.9.0</AssemblyName>
+    <AssemblyName>JetBrains.ReSharper.Plugins.AngularJS</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
