@@ -21,7 +21,7 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    public partial class AngularJsFolderLateBoundReference<TOwner, TToken> : HtmlFolderLateBoundReference<TOwner, TToken>
+    public class AngularJsFolderLateBoundReference<TOwner, TToken> : HtmlFolderLateBoundReference<TOwner, TToken>
         where TOwner : ITreeNode
         where TToken : class, ITreeNode
     {

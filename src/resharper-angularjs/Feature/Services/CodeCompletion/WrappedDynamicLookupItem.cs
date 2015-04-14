@@ -28,7 +28,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public partial class WrappedDynamicLookupItem : IWrappedLookupItem, IDescriptionProvidingLookupItem,
+    public class WrappedDynamicLookupItem : IWrappedLookupItem, IDescriptionProvidingLookupItem,
         IParameterInfoCandidatesProvider, IUserDataHolder
     {
         private readonly IUserDataHolder dataHolder;

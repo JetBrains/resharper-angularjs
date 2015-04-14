@@ -21,7 +21,7 @@ using JetBrains.ReSharper.Psi.Tree;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
-    public sealed partial class AngularJsFileLateBoundReference<TOwner, TToken> : HtmlFileLateBoundReference<TOwner, TToken>
+    public sealed class AngularJsFileLateBoundReference<TOwner, TToken> : HtmlFileLateBoundReference<TOwner, TToken>
         where TOwner : ITreeNode
         where TToken : class, ITreeNode
     {

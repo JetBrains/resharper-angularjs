@@ -30,7 +30,7 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public partial class AbbreviatedTextLookupItem : TextLookupItem
+    public class AbbreviatedTextLookupItem : TextLookupItem
     {
         private readonly CodeCompletionContext context;
 

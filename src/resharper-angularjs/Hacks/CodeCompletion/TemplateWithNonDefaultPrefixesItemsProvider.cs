@@ -19,7 +19,6 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
-using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope;
 using JetBrains.ReSharper.Psi;
 

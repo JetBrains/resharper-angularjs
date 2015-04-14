@@ -29,9 +29,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
         {
             this.allowedPrefixChars = allowedPrefixChars;
 
-// ReSharper disable DoNotCallOverridableMethodsInConstructor
             Prefix = CalcPrefix(document, caretOffset);
-// ReSharper restore DoNotCallOverridableMethodsInConstructor
         }
 
         public override string CalcPrefix(IDocument document, int caretOffset)

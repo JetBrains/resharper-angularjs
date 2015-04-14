@@ -14,8 +14,6 @@
 // limitations under the License.
 #endregion
 
-using System.Collections.Generic;
-using JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.Tree;
 using JetBrains.ReSharper.Plugins.AngularJS.Psi.Html;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
@@ -27,7 +25,7 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
 {
     [ReferenceProviderFactory]
-    public partial class AngularJsIncludeFileReferenceProvider : AngularJsReferenceFactoryBase
+    public class AngularJsIncludeFileReferenceProvider : AngularJsReferenceFactoryBase
     {
         private readonly IAngularJsHtmlDeclaredElementTypes elementTypes;
 

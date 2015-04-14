@@ -22,7 +22,6 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.BaseRules;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
-using JetBrains.ReSharper.Feature.Services.Html.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Features.Intellisense.CodeCompletion.Html;
 using JetBrains.ReSharper.Psi;
@@ -39,7 +38,7 @@ using JetBrains.Util;
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
     [Language(typeof(HtmlLanguage))]
-    public partial class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
+    public class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
         private static readonly string[] Abbreviations = {"ng-", "data-ng-", "x-ng-"};
         private static readonly Key IdentityKey = new Key("NgCodeCompletionItem");
@@ -91,8 +90,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
             if (IsSingleCompletion(context))
             {
-                // Return value is ignored. Just a cute way of calling each of these in turn
-                // without loads of if statements
+                // Return value is ignored. Just a cute way of calling each of these in turn without loads of if statements
+                // ReSharper disable once UnusedVariable
                 var ignored = TryAddAllAbbreviations(completionPrefix, context, collector)
                     || TryAddAllItemsForExactAbbreviation(completionPrefix, context, collector)
                     || TryAddAllItemsForMatchedAbbreviation(matcher, context, collector)
