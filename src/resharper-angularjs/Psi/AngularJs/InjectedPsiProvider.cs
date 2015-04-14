@@ -28,7 +28,6 @@ using JetBrains.ReSharper.Psi.Html.Tree;
 using JetBrains.ReSharper.Psi.Impl.Shared.InjectedPsi;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Tree;
-using JetBrains.ReSharper.Psi.Web.WinRT.Json;
 using JetBrains.Text;
 using JetBrains.Util;
 using JetBrains.Util.Logging;

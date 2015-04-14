@@ -21,6 +21,7 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.BaseRules;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems.Impl;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi.ExpectedTypes;
 using JetBrains.TextControl;
@@ -81,6 +82,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
                 context.CompletionManager.Locks.QueueReadLock("Code completion inside markup extension",
                     () => ExecuteManualCompletion(textControl));
             }
+        }
+
+        private void ExecuteManualCompletion(ITextControl textControl)
+        {
+            var sessionManager = context.Solution.GetComponent<ICodeCompletionSessionManager>();
+            sessionManager.ExecuteAutomaticCompletionAsync(textControl, context.Language, AutopopupType.SoftAutopopup);
         }
     }
 }

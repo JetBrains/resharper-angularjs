@@ -50,7 +50,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             var codeCompletionType = context.BasicContext.CodeCompletionType;
             var isAvailable = codeCompletionType == CodeCompletionType.BasicCompletion
                               || codeCompletionType == CodeCompletionType.SmartCompletion
-                              || context.BasicContext.Parameters.IsAutomaticCompletion();
+                              || context.BasicContext.Parameters.IsAutomaticCompletion;
 
             // Only if the current token is expected to be an attribute
             return isAvailable && context.Reference is IHtmlAttributeReference;
@@ -388,6 +388,21 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         private static bool IsDoubleCompletion(ISpecificCodeCompletionContext context)
         {
             return context.BasicContext.Parameters.Multiplier == 2;
+        }
+
+        public override CompletionMode SupportedCompletionMode
+        {
+            get { return CompletionMode.All; }
+        }
+
+        public override EvaluationMode SupportedEvaluationMode
+        {
+            get { return EvaluationMode.All; }
+        }
+
+        private static int[] GetMatchingIndicies(IdentifierMatcher matcher, string abbreviation)
+        {
+            return matcher.MatchingIndicies(abbreviation);
         }
     }
 }

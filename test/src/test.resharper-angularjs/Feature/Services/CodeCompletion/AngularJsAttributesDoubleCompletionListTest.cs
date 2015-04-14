@@ -1,6 +1,5 @@
 ﻿using JetBrains.ProjectModel;
 using JetBrains.ReSharper.FeaturesTestFramework.Completion;
-using JetBrains.ReSharper.HtmlTests.CodeCompletion;
 using JetBrains.ReSharper.TestFramework;
 using NUnit.Framework;
 
@@ -12,11 +11,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     {
         protected override string RelativeTestDataPath { get { return @"CodeCompletion\Double\List"; } }
 
-        [Test]
-        public void TestShowAllItemsOnDoubleCompletionWithNoPrefix()
+        protected override CodeCompletionTestType TestType
         {
-            DoNamedTest2();
+            get { return CodeCompletionTestType.List; }
         }
+
+        [Test]
+        public void TestShowAllItemsOnDoubleCompletionWithNoPrefix() { DoNamedTest2(); }
         [Test] public void TestShowMatchingItemsOnDoubleCompletionWithPrefix() { DoNamedTest2(); }
     }
 }

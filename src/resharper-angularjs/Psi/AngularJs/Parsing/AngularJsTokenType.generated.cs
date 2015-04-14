@@ -7,6 +7,7 @@
 //------------------------------------------------------------------------------
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Tree;
 using JetBrains.Text;
+using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Parsing;
 
 namespace JetBrains.ReSharper.Psi.AngularJs.Parsing

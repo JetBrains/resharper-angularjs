@@ -157,5 +157,28 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
             return LookupUtil.GetDescriptionForDeclaredElementLookupItem(Item as IDeclaredElementLookupItem);
         }
+
+        public MatchingResult Match(PrefixMatcher prefixMatcher, ITextControl textControl)
+        {
+            return Item.Match(prefixMatcher, textControl);
+        }
+
+        public EvaluationMode Mode
+        {
+            get { return Item.Mode; }
+            set { Item.Mode = value; }
+        }
+
+        public bool IsStable
+        {
+            get { return Item.IsStable; }
+            set { Item.IsStable = value; }
+        }
+
+        public LookupItemPlacement Placement
+        {
+            get { return Item.Placement; }
+            set { Item.Placement = value; }
+        }
     }
 }

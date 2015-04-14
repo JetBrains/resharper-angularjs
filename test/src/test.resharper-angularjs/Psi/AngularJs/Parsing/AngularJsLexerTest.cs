@@ -18,7 +18,6 @@ using System.IO;
 using System.Text.RegularExpressions;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi.Parsing;
-using JetBrains.ReSharper.PsiTests.Lexing;
 using JetBrains.ReSharper.TestFramework;
 using JetBrains.Text;
 using NUnit.Framework;

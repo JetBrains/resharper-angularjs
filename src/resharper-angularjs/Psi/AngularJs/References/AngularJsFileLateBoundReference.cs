@@ -38,5 +38,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs.References
             newFilters[filters.Length] = new IgnoreRootPathFilter();
             return newFilters;
         }
+
+        public override bool? IsServerSideWebRoot()
+        {
+            return null;
+        }
     }
 }

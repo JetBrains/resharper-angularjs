@@ -3,14 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.9.0", "resharper-angularjs\resharper-angularjs.9.0.csproj", "{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs", "resharper-angularjs\resharper-angularjs.csproj", "{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0E849245-F362-496C-A4E1-26B03BB1DA37}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test.resharper-angularjs.9.0", "..\test\src\test.resharper-angularjs\test.resharper-angularjs.9.0.csproj", "{8E0BE7C0-CB94-4993-94F3-A91961F8A809}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "..\test\src\test.resharper-angularjs\tests.csproj", "{8E0BE7C0-CB94-4993-94F3-A91961F8A809}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

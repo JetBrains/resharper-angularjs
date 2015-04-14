@@ -17,7 +17,6 @@
 using System;
 using JetBrains.ReSharper.Psi;
 using JetBrains.TestFramework;
-using JetBrains.TestShell.Infra;
 using NUnit.Framework;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.AngularJs
