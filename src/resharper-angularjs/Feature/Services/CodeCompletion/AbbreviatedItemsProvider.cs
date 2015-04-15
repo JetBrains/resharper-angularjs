@@ -396,7 +396,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         public override EvaluationMode SupportedEvaluationMode
         {
-            get { return EvaluationMode.All; }
+            get { return EvaluationMode.Light | EvaluationMode.OnlyDynamicRules; }
         }
 
         private static int[] GetMatchingIndicies(IdentifierMatcher matcher, string abbreviation)

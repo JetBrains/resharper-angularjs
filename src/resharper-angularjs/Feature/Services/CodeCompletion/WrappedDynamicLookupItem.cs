@@ -28,15 +28,12 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
-    public class WrappedDynamicLookupItem : IWrappedLookupItem, IDescriptionProvidingLookupItem,
-        IParameterInfoCandidatesProvider, IUserDataHolder
+    public class WrappedDynamicLookupItem : UserDataHolder, IWrappedLookupItem, IDescriptionProvidingLookupItem,
+        IParameterInfoCandidatesProvider
     {
-        private readonly IUserDataHolder dataHolder;
-
         public WrappedDynamicLookupItem(ILookupItem item)
         {
             Item = item;
-            dataHolder = item as IUserDataHolder ?? new LocalUserDataHolder();
         }
 
         public ILookupItem Item { get; private set; }
@@ -49,21 +46,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool IsDynamic
         {
             get { return true; }
-        }
-
-        public void PutData<T>(Key<T> key, T val) where T : class
-        {
-            dataHolder.PutData(key, val);
-        }
-
-        public T GetData<T>(Key<T> key) where T : class
-        {
-            return dataHolder.GetData(key);
-        }
-
-        public IEnumerable<KeyValuePair<object, object>> EnumerateData()
-        {
-            return dataHolder.EnumerateData();
         }
 
         #region Delegated ILookupItem implementation
