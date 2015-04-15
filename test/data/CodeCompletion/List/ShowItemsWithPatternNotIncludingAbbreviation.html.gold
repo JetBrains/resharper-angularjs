@@ -1,5 +1,5 @@
 ﻿# 3 ITEMS #
 
-+ data-ng-controller
-ng-controller
++ ng-controller
+data-ng-controller
 x-ng-controller

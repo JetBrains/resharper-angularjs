@@ -288,7 +288,28 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement));
             item.PutData(IdentityKey, IdentityObject);
             item.PutData(BaseDynamicRule.PrefixKey, abbreviation);
+            SortItem(item, abbreviation, name);
             collector.Add(item);
+        }
+
+        private static void SortItem(ILookupItem item, string abbreviation, string name)
+        {
+            // The tilde pushes us to the bottom of the list, lexicographically, then
+            // order by ng- first, then data-ng-, then x-ng-
+            switch (abbreviation)
+            {
+                case "ng-":
+                    item.Placement.OrderString = "~0" + name;
+                    break;
+
+                case "data-ng-":
+                    item.Placement.OrderString = "~1" + name;
+                    break;
+
+                case "x-ng-":
+                    item.Placement.OrderString = "~2" + name;
+                    break;
+            }
         }
 
         private static void AddAllAbbreviations(HtmlCodeCompletionContext context,
@@ -309,6 +330,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         {
             var item = new AbbreviatedTextLookupItem(text, context);
             item.InitializeRanges(ranges, context);
+
+            // We're a HTML item too, sort us in with the other HTML items
+            item.Placement.Relevance |= (long) HtmlLookupItemRelevance.Item;
+            item.Placement.OrderString = text;
             return item;
         }
 
