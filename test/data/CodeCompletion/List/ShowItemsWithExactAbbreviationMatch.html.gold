@@ -1,4 +1,6 @@
-﻿ng-app
+﻿# 44 ITEMS #
+
++ ng-app
 ng-bind
 ng-bind-html
 ng-bind-html-unsafe
@@ -24,7 +26,7 @@ ng-list
 ng-model
 ng-mousedown
 ng-mouseenter
-+ ng-mouseleave
+ng-mouseleave
 ng-mousemove
 ng-mouseover
 ng-mouseup
