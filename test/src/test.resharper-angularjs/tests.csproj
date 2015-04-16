@@ -158,10 +158,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesDoubleCompletionListTest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Psi\AngularJs\AngularJsLanguageTests.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerTest.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\AngularJsParserTest.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +170,9 @@
       <Project>{B66C17A3-9499-4ad6-93CE-DC8B2823BEF2}</Project>
       <Name>resharper-angularjs</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
