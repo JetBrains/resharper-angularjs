@@ -119,6 +119,7 @@
       <HintPath>..\packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -129,6 +130,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\JetBrains.Platform.Lib.System.Windows.Interactivity.2.0.20140318.0\lib\System.Windows.Interactivity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -166,6 +168,7 @@
     <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
       <DependentUpon>Angular.lex</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Logo\ThemedIcons.Logo.Generated.cs" />
     <Compile Include="ZoneMarker.cs" />
     <TokenGenerator Include="Psi\AngularJs\Parsing\AngularJsTokenType.Tokens.xml">
       <OutputFile>Psi\AngularJs\Parsing\AngularJsTokenType.generated.cs</OutputFile>
@@ -211,7 +214,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ThemedIconsXamlV3 Include="Resources\Logo\angularjs-logo.xaml">
+      <ThemeColumns>Color</ThemeColumns>
+      <RemoveBackgroundElement>False</RemoveBackgroundElement>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ThemedIconsXamlV3>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets" Condition="Exists('$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

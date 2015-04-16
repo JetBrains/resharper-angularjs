@@ -25,6 +25,7 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Settings;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Psi.ExpectedTypes;
 using JetBrains.TextControl;
+using JetBrains.UI.Icons;
 using JetBrains.UI.RichText;
 using JetBrains.Util;
 
@@ -34,8 +35,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     {
         private readonly CodeCompletionContext context;
 
-        public AbbreviatedTextLookupItem(string text, CodeCompletionContext context)
-            : base(text, true)
+        public AbbreviatedTextLookupItem(string text, CodeCompletionContext context, IconId image)
+            : base(text, image, true)
         {
             this.context = context;
 

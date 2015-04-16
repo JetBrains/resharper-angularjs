@@ -24,6 +24,7 @@ using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
 using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Features.Intellisense.CodeCompletion.Html;
+using JetBrains.ReSharper.Plugins.AngularJS.Resources;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
 using JetBrains.ReSharper.Psi.Html;
@@ -285,7 +286,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         private static void AddItem(string abbreviation, string name, IDeclaredElement declaredElement, HtmlCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement));
+            var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement), LogoThemedIcons.Angularjs.Id);
             item.PutData(IdentityKey, IdentityObject);
             item.PutData(BaseDynamicRule.PrefixKey, abbreviation);
             SortItem(item, abbreviation, name);
@@ -328,7 +329,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         private static AbbreviatedTextLookupItem CreateAbbreviatedLookupItem(string text, TextLookupRanges ranges, CodeCompletionContext context)
         {
-            var item = new AbbreviatedTextLookupItem(text, context);
+            var item = new AbbreviatedTextLookupItem(text, context, LogoThemedIcons.Angularjs.Id);
             item.InitializeRanges(ranges, context);
 
             // We're a HTML item too, sort us in with the other HTML items

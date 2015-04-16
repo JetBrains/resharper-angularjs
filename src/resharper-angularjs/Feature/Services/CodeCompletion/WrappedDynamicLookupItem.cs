@@ -31,8 +31,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     public class WrappedDynamicLookupItem : UserDataHolder, IWrappedLookupItem, IDescriptionProvidingLookupItem,
         IParameterInfoCandidatesProvider
     {
-        public WrappedDynamicLookupItem(ILookupItem item)
+        private readonly IconId image;
+
+        public WrappedDynamicLookupItem(ILookupItem item, IconId image = null)
         {
+            this.image = image;
             Item = item;
         }
 
@@ -46,6 +49,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool IsDynamic
         {
             get { return true; }
+        }
+
+        public IconId Image
+        {
+            get { return image ?? Item.Image; }
         }
 
         #region Delegated ILookupItem implementation
@@ -74,11 +82,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public void Unshrink()
         {
             Item.Unshrink();
-        }
-
-        public IconId Image
-        {
-            get { return Item.Image; }
         }
 
         public RichText DisplayName
