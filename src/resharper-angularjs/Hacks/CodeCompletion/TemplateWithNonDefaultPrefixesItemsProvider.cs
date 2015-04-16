@@ -14,13 +14,21 @@
 // limitations under the License.
 #endregion
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
+using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.AspectLookupItems.BaseInfrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.Hotspots;
 using JetBrains.ReSharper.Feature.Services.LiveTemplates.LiveTemplates;
+using JetBrains.ReSharper.Feature.Services.LiveTemplates.Util;
+using JetBrains.ReSharper.Feature.Services.Lookup;
 using JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope;
 using JetBrains.ReSharper.Psi;
+using JetBrains.Util;
+using JetBrains.Util.Special;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 {
@@ -35,11 +43,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
     [Language(typeof(KnownLanguage))]
     public class TemplateWithNonDefaultPrefixesItemsProvider : ItemsProviderOfSpecificContext<ISpecificCodeCompletionContext>
     {
+        private static readonly Key<JetHashSet<string>> TemplateNamesKey = new Key<JetHashSet<string>>("AddedTemplateNames");
+        
+        private readonly PsiLanguageType language;
         private readonly ICodeCompletionItemsProvider includeTemplatesRule;
         private readonly HotspotSessionExecutor hotspotSessionExecutor;
 
-        public TemplateWithNonDefaultPrefixesItemsProvider(IncludeTemplatesRule includeTemplatesRule, HotspotSessionExecutor hotspotSessionExecutor)
+        public TemplateWithNonDefaultPrefixesItemsProvider(PsiLanguageType language, IncludeTemplatesRule includeTemplatesRule, HotspotSessionExecutor hotspotSessionExecutor)
         {
+            this.language = language;
             this.includeTemplatesRule = includeTemplatesRule;
             this.hotspotSessionExecutor = hotspotSessionExecutor;
         }
@@ -57,9 +69,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 
         private bool CanNormalProviderWork(ISpecificCodeCompletionContext context)
         {
-            if (context.BasicContext.Parameters.IsAutomaticCompletion)
-                return false;
             if (hotspotSessionExecutor.CurrentSession != null)
+                return false;
+            if (context.BasicContext.CodeCompletionType != CodeCompletionType.BasicCompletion)
                 return false;
             return true;
         }
@@ -69,9 +81,57 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             return includeTemplatesRule.IsAvailable(context) != null;
         }
 
+        public override bool IsFinal
+        {
+            get { return true; }
+        }
+
+        protected override bool AddLookupItems(ISpecificCodeCompletionContext context, GroupedItemsCollector collector)
+        {
+            var languageCaseProvider = LanguageManager.Instance.TryGetService<LanguageCaseProvider>(language);
+            var templateNames = new JetHashSet<string>(languageCaseProvider.IfNotNull(cp => cp.IsCaseSensitive()
+                ? StringComparer.Ordinal
+                : StringComparer.OrdinalIgnoreCase));
+            IEnumerable<TemplateLookupItem> templateItems = TemplateActionsUtil.GetLookupItems(context.BasicContext.TextControl, context.BasicContext.CompletionManager.Solution, false, false);
+
+            var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.Document, context.BasicContext.CaretDocumentRange.TextRange.StartOffset, JsAllowedPrefixes.Chars);
+            if (collector.Ranges == null)
+            {
+                var caretOffset = context.BasicContext.CaretDocumentRange.TextRange.StartOffset;
+                var prefixRange = new TextRange(caretOffset - prefix.Length, caretOffset);
+                collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange));
+            }
+
+            if (!string.IsNullOrEmpty(prefix))
+            {
+                var identifierMatcher = LookupUtil.CreateMatcher(prefix, context.BasicContext.IdentifierMatchingStyle);
+                templateItems = templateItems.Where(item => identifierMatcher.Matches(item.Template.Shortcut));
+            }
+
+            foreach (var templateItem in templateItems)
+                templateNames.Add(templateItem.DisplayName.Text);
+
+            if (templateItems.IsEmpty())
+                return false;
+
+            context.BasicContext.PutData(TemplateNamesKey, templateNames);
+
+            foreach (var templateItem in templateItems)
+                collector.Add(templateItem);
+
+            return true;
+        }
+
         protected override void TransformItems(ISpecificCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            includeTemplatesRule.TransformItems(context, collector, null);
+            JetHashSet<string> templateNames = context.BasicContext.GetData(TemplateNamesKey);
+            if (templateNames == null || templateNames.Count == 0)
+                return;
+
+            List<ILookupItem> toRemove = collector.Items.Where(lookupItem => (lookupItem.IsKeyword()) && templateNames.Contains(lookupItem.GetText())).ToList();
+
+            foreach (var lookupItem in toRemove)
+                collector.Remove(lookupItem);
         }
     }
 }
