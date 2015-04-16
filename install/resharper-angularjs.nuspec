@@ -11,7 +11,11 @@
     <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
-    <releaseNotes>&#8226; Support for ReSharper 9.1</releaseNotes>
+    <releaseNotes>
+&#8226; Support for ReSharper 9.1
+&#8226; Tweaked sort order to put ng- items above data-ng-
+&#8226; Added angular icons to the code completion items
+    </releaseNotes>
     <dependencies>
       <dependency id="Wave" version="[2.0]" />
     </dependencies>
