@@ -158,6 +158,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesDoubleCompletionListTest.cs" />
+    <Compile Include="Psi\AngularJs\AngularJsLanguageTests.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerTest.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsParserTest.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>

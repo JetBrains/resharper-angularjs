@@ -146,9 +146,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Daemon\AngularJs\Stages\AngularJsDaemonStageBase.cs" />
+    <Compile Include="Daemon\AngularJs\Stages\AngularJsIdentifierHighlighterProcess.cs" />
+    <Compile Include="Daemon\AngularJs\Stages\IdentifierHighlightingStage.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
     <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
+    <Compile Include="Psi\AngularJs\AngularJsLanguage.cs" />
+    <Compile Include="Psi\AngularJs\AngularJsLanguageService.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsCodeFormatter.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsFormattingInfoProvider.cs" />
+    <Compile Include="Psi\AngularJs\CodeStyle\AngularJsIndentingInfoProvider.cs" />
+    <Compile Include="Psi\AngularJs\InjectedPsiProvider.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexer.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsParser.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTokenType.generated.cs">
+      <DependentUpon>AngularJsTokenType.Tokens.xml</DependentUpon>
+    </Compile>
+    <Compile Include="Psi\AngularJs\Parsing\AngularJsTreeBuilder.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Angular_lex.cs">
+      <DependentUpon>Angular.lex</DependentUpon>
+    </Compile>
+    <Compile Include="Psi\AngularJs\Parsing\Tree\AngularJsElementType.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterArgumentList.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.8.2.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.9.0.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\FilterExpression.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.8.2.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.9.0.cs" />
+    <Compile Include="Psi\AngularJs\Parsing\Tree\RepeatExpression.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsFileLateBoundReference.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsFolderLateBoundReference.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsIncludeFileReferenceProvider.cs" />
+    <Compile Include="Psi\AngularJs\References\AngularJsReferenceFactoryBase.cs" />
+    <Compile Include="Psi\AngularJs\References\IgnoreRootPathFilter.cs" />
+    <Compile Include="Psi\AngularJs\Tree\AngularJsFileData.cs" />
+    <Compile Include="Psi\AngularJs\Tree\AngularJsNodeTypes.cs" />
     <Compile Include="Resources\Logo\ThemedIcons.Logo.Generated.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlDeclaredElementTypes.cs" />
@@ -184,6 +218,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ThemedIconsXamlV3>
+  </ItemGroup>
+  <ItemGroup>
+    <CsLex Include="Psi\AngularJs\Parsing\Angular.lex" />
+  </ItemGroup>
+  <ItemGroup>
+    <TokenGenerator Include="Psi\AngularJs\Parsing\AngularJsTokenType.Tokens.xml">
+      <SubType>Designer</SubType>
+    </TokenGenerator>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets" Condition="Exists('$(ReSharperSdkTools)\PsiGen\TokenGenerator.Targets')" />
