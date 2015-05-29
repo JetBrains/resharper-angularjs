@@ -154,6 +154,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Feature\Services\Caches\DirectivesCacheTest.cs" />
+    <Compile Include="Feature\Services\Caches\FiltersCacheTest.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesCompletionListTest.cs">
       <SubType>Code</SubType>
     </Compile>
