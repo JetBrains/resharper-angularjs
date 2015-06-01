@@ -14,15 +14,10 @@
 // limitations under the License.
 #endregion
 
-using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Application.platforms;
-using JetBrains.Metadata.Reader.API;
 using JetBrains.ProjectModel;
-using JetBrains.ProjectModel.Update;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.TestFramework;
-using JetBrains.Util;
 using NUnit.Framework;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
