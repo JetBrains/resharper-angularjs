@@ -160,6 +160,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesDoubleCompletionListTest.cs" />
+    <Compile Include="Psi\Html\AngularJsHtmlElementsProviderTest.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
