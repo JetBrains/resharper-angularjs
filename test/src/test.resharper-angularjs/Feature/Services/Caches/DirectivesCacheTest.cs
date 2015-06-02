@@ -45,9 +45,21 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         }
 
         [Test]
-        public void CacheDefaultAngularDirectives()
+        public void CacheDefaultAngularDirectives12()
         {
-            DoTestSolution("angular.js");
+            DoTestSolution(@"..\angular.1.2.28.js");
+        }
+
+        [Test]
+        public void CacheDefaultAngularDirectives13()
+        {
+            DoTestSolution(@"..\angular.1.3.15.js");
+        }
+
+        [Test]
+        public void CacheDefaultAngularDirectives14()
+        {
+            DoTestSolution(@"..\angular.1.4.0.js");
         }
     }
 }
