@@ -35,9 +35,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
             ExecuteWithGold(tw =>
             {
-                foreach (var directive in ngdocCache.Directives.OrderBy(d => d.Name))
+                var directives = ngdocCache.Directives.ToList();
+                tw.WriteLine("Directives: {0}", directives.Count());
+                foreach (var directive in directives.OrderBy(d => d.Name))
                 {
-                    tw.WriteLine("{0} {1} {2}", directive.Name, directive.Restrictions, directive.Offset);
+                    tw.WriteLine("{0} {1} {2} <{3}> {4}", directive.OriginalName, directive.Name, directive.Restrictions, directive.Tag, directive.Offset);
                 }
             });
         }

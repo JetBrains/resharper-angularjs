@@ -16,6 +16,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using JetBrains.DataFlow;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Caches;
@@ -33,27 +34,71 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 {
     public class Directive
     {
-        public string Name;
-        public string Restrictions;
-        public int Offset;
+        public readonly string OriginalName;
+        public readonly string Name;
+        public readonly string Restrictions;
+        public readonly string Tag;
+        public readonly int Offset;
 
-        public Directive(string name, string restrictions, int offset)
+        public Directive(string originalName, string name, string restrictions, string tag, int offset)
         {
+            OriginalName = originalName;
             Name = name;
             Restrictions = restrictions;
+            Tag = tag;
             Offset = offset;
+
+            IsAttribute = restrictions.Contains('A');
+            IsElement = restrictions.Contains('E');
+            IsClass = restrictions.Contains('C');
+        }
+
+        public bool IsAttribute { get; private set; }
+        public bool IsElement { get; private set; }
+        public bool IsClass { get; private set; }
+
+        public void Write(UnsafeWriter writer)
+        {
+            writer.Write(OriginalName);
+            writer.Write(Name);
+            writer.Write(Restrictions);
+            writer.Write(Tag);
+            writer.Write(Offset);
+        }
+
+        public static Directive Read(UnsafeReader reader)
+        {
+            var originalName = reader.ReadString();
+            var name = reader.ReadString();
+            var restrictions = reader.ReadString();
+            var tag = reader.ReadString();
+            var offset = reader.ReadInt();
+            return new Directive(originalName, name, restrictions, tag, offset);
         }
     }
 
     public class Filter
     {
-        public string Name;
-        public int Offset;
+        public readonly string Name;
+        public readonly int Offset;
 
         public Filter(string name, int offset)
         {
             Name = name;
             Offset = offset;
+        }
+
+        public void Write(UnsafeWriter writer)
+        {
+            writer.Write(Name);
+            writer.Write(Offset);
+        }
+
+        public static Filter Read(UnsafeReader reader)
+        {
+            var name = reader.ReadString();
+            var offset = reader.ReadInt();
+            return new Filter(name, offset);
         }
     }
 
@@ -82,35 +127,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
         private static AngularJsCacheItems Read(UnsafeReader reader)
         {
-            var directives = reader.ReadCollection(r =>
-            {
-                var name = r.ReadString();
-                var restrictions = r.ReadString();
-                var offset = r.ReadInt();
-                return new Directive(name, restrictions, offset);
-            }, count => new List<Directive>(count));
-            var filters = reader.ReadCollection(r =>
-            {
-                var name = r.ReadString();
-                var offset = r.ReadInt();
-                return new Filter(name, offset);
-            }, count => new List<Filter>(count));
+            var directives = reader.ReadCollection(Directive.Read, count => new List<Directive>(count));
+            var filters = reader.ReadCollection(Filter.Read, count => new List<Filter>(count));
             return new AngularJsCacheItems(directives, filters);
         }
 
         private static void Write(UnsafeWriter writer, AngularJsCacheItems value)
         {
-            writer.Write<Directive, ICollection<Directive>>((w, directive) =>
-            {
-                w.Write(directive.Name);
-                w.Write(directive.Restrictions);
-                w.Write(directive.Offset);
-            }, value.Directives.ToList());
-            writer.Write<Filter, ICollection<Filter>>((w, filter) =>
-            {
-                w.Write(filter.Name);
-                w.Write(filter.Offset);
-            }, value.Filters.ToList());
+            writer.Write<Directive, ICollection<Directive>>((w, directive) => directive.Write(w), value.Directives.ToList());
+            writer.Write<Filter, ICollection<Filter>>((w, filter) => filter.Write(w), value.Filters.ToList());
         }
     }
 
@@ -212,6 +237,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                 ISimpleTag ngdocTag = null;
                 ISimpleTag nameTag = null;
                 ISimpleTag restrictTag = null;
+                ISimpleTag elementTag = null;
+                IList<IParameterTag> paramTags = null;
 
                 foreach (var simpleTag in jsDocFile.GetTags<ISimpleTag>())
                 {
@@ -224,12 +251,24 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         nameTag = simpleTag;
                     else if (simpleTag.Keyword.GetText() == "@restrict")
                         restrictTag = simpleTag;
+                    else if (simpleTag.Keyword.GetText() == "@element")
+                        elementTag = simpleTag;
+                }
+
+                foreach (var parameterTag in jsDocFile.GetTags<IParameterTag>())
+                {
+                    if (paramTags == null)
+                        paramTags = new List<IParameterTag>();
+                    paramTags.Add(parameterTag);
                 }
 
                 if (ngdocTag != null && nameTag != null)
                 {
                     var nameValue = nameTag.DescriptionText;
                     var name = string.IsNullOrEmpty(nameValue) ? null : nameTag.DescriptionText;
+
+                    // TODO: Should we strip off the module?
+                    // What about 3rd party documented code?
                     if (!string.IsNullOrEmpty(name))
                         name = name.Substring(name.IndexOf(':') + 1);
 
@@ -238,12 +277,27 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                     var ngdocValue = ngdocTag.DescriptionText;
                     if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(ngdocValue))
                     {
+                        // TODO: Could support "event", "function", etc.
                         if (ngdocValue == "directive")
                         {
-                            // TODO: I don't know what "D" means. It's used in the IJ plugin, but not mentioned anywhere in the Angular docs
-                            var restrictions = restrictTag != null ? restrictTag.DescriptionText : "D";
+                            // Angular docs state that if @restrict is missing, default is AE
+                            var restrictions = restrictTag != null ? restrictTag.DescriptionText : "AE";
+                            var element = elementTag != null ? elementTag.DescriptionText : "ANY";
 
-                            directives.Add(new Directive(name, restrictions, nameOffset));
+                            // Pull the attribute/element type from the param tag(s). Optional parameters
+                            // are specified with a trailing equals sign, e.g. {string=}
+                            // There can be more than one parameter, especially for E directives, e.g. textarea
+                            // (Presumably these parameters are named attributes)
+                            // Type can also be another directive, e.g. textarea can have an ngModel parameter
+                            // Might be worth setting up special attribute types, e.g. string, expression, template
+                            // For attributes, the parameter name is the same as the directive name
+
+                            // TODO: Parameters
+
+                            name = StringUtil.Unquote(name);
+                            var formattedName = Regex.Replace(name, @"(\B[A-Z])", "-$1").ToLowerInvariant();
+
+                            directives.Add(new Directive(name, formattedName, restrictions, element, nameOffset));
                         }
                         else if (ngdocValue == "filter")
                         {
