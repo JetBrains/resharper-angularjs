@@ -1,4 +1,4 @@
-﻿# 8 ITEMS #
+﻿# 10 ITEMS #
 
 + ng-change
 ng-checked
@@ -7,4 +7,6 @@ ng-class-even
 ng-class-odd
 ng-click
 ng-cloak
+ng-copy
 ng-csp
+ng-cut

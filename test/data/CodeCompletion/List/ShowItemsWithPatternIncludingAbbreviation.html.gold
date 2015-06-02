@@ -1,4 +1,4 @@
-﻿# 9 ITEMS #
+﻿# 11 ITEMS #
 
 + data-ng-change
 data-ng-checked
@@ -8,4 +8,6 @@ data-ng-class-odd
 data-ng-click
 data-ng-cloak
 data-ng-controller
+data-ng-copy
 data-ng-csp
+data-ng-cut

@@ -280,7 +280,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         // TODO: Could support "event", "function", etc.
                         if (ngdocValue == "directive")
                         {
-                            // Angular docs state that if @restrict is missing, default is AE
+                            // Default is AE for 1.3 and above, just A for 1.2
+                            // This why the IntelliJ plugin uses "D", and resolves when required
+                            // Also checks angular version by presence of known directives for those
+                            // versions
                             var restrictions = restrictTag != null ? restrictTag.DescriptionText : "AE";
                             var element = elementTag != null ? elementTag.DescriptionText : "ANY";
 

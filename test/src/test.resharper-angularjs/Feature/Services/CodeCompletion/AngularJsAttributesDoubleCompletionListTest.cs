@@ -25,6 +25,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     [TestFileExtension(HtmlProjectFileType.HTML_EXTENSION)]
     public class AngularJsAttributesDoubleCompletionListTest : WebCodeCompletionTestBase
     {
+        private const string AngularJs = @"..\..\..\angular.js";
+
         protected override string RelativeTestDataPath { get { return @"CodeCompletion\Double\List"; } }
 
         protected override CodeCompletionTestType TestType
@@ -32,8 +34,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             get { return CodeCompletionTestType.List; }
         }
 
-        [Test]
-        public void TestShowAllItemsOnDoubleCompletionWithNoPrefix() { DoNamedTest2(); }
-        [Test] public void TestShowMatchingItemsOnDoubleCompletionWithPrefix() { DoNamedTest2(); }
+        [Test] public void TestShowAllItemsOnDoubleCompletionWithNoPrefix() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowMatchingItemsOnDoubleCompletionWithPrefix() { DoNamedTest2(AngularJs); }
     }
 }

@@ -15,7 +15,6 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using JetBrains.ProjectModel;
@@ -29,12 +28,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
     [TestFixture]
     public class AngularJsHtmlElementsProviderTest : BaseTestWithSingleProject
     {
+        private const string AngularJs = @"..\..\..\angular.js";
+
         protected override string RelativeTestDataPath { get { return @"Psi\Html\ElementsProvider"; } }
 
         [Test]
         public void GetCommonAttributesSymbolTable()
         {
-            DoTest("angular.js", (writer, provider) =>
+            DoTest(AngularJs, (writer, provider) =>
             {
                 var symbolTable = provider.GetCommonAttributesSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -51,7 +52,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void GetAllAttributesSymbolTable()
         {
-            DoTest("angular.js", (writer, provider) =>
+            DoTest(AngularJs, (writer, provider) =>
             {
                 var symbolTable = provider.GetAllAttributesSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -68,7 +69,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void GetAllTagsSymbolTable()
         {
-            DoTest("angular.js", (writer, provider) =>
+            DoTest(AngularJs, (writer, provider) =>
             {
                 var symbolTable = provider.GetAllTagsSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -86,7 +87,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void GetAttributeDeclaredElementForAttributeName()
         {
-            WithSingleProject("angular.js", (lifetime, solution, project) =>
+            WithSingleProject(AngularJs, (lifetime, solution, project) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var attributes = provider.GetAttributes("ng-app");
@@ -101,7 +102,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void GetAttributeInfo()
         {
-            WithSingleProject("angular.js", (lifetime, solution, arg3) =>
+            WithSingleProject(AngularJs, (lifetime, solution, arg3) =>
             {
                 ExecuteWithGold(tw =>
                 {
@@ -109,8 +110,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
                     var tag = cache.GetTag("body", null);
                     Assert.IsNotNull(tag);
-                    var attributeInfos = provider.GetAttributeInfos(null, tag, true);
-                    Assert.IsNotNull(attributeInfos);
+                    var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
+                    tw.WriteLine("Attributes: {0}", attributeInfos.Count);
                     foreach (var attributeInfo in attributeInfos.OrderBy(a => a.AttributeDeclaredElement.ShortName))
                     {
                         tw.WriteLine("{0} ({1} - {2})", attributeInfo.AttributeDeclaredElement.ShortName, attributeInfo.DefaultValueType, attributeInfo.DefaultValue);
@@ -122,7 +123,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void ReturnsNoEvents()
         {
-            WithSingleProject("angular.js", (lifetime, solution, project) =>
+            WithSingleProject(AngularJs, (lifetime, solution, project) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var eventsSymbolTable = provider.GetEventsSymbolTable();
@@ -133,7 +134,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         [Test]
         public void ReturnsNoLegacyEvents()
         {
-            WithSingleProject("angular.js", (lifetime, solution, arg3) =>
+            WithSingleProject(AngularJs, (lifetime, solution, arg3) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var eventsSymbolTable = provider.GetLegacyEventsSymbolTable();

@@ -25,6 +25,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     [TestFileExtension(HtmlProjectFileType.HTML_EXTENSION)]
     public class AngularJsAttributesCompletionListTest : WebCodeCompletionTestBase
     {
+        private const string AngularJs = @"..\..\angular.js";
+
         protected override string RelativeTestDataPath { get { return @"CodeCompletion\List"; } }
 
         protected override CodeCompletionTestType TestType
@@ -32,13 +34,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             get { return CodeCompletionTestType.List; }
         }
 
-        [Test] public void TestShowAbbreviationsWithNoPrefix() { DoNamedTest2(); }
-        [Test] public void TestShowAbbreviationsWithMatchingPrefix() { DoNamedTest2(); }
-        [Test] public void TestShowItemsWithExactAbbreviationMatch() { DoNamedTest2(); }
-        [Test] public void TestShowItemsWithPatternAbbreviationMatch() { DoNamedTest2(); }
-        [Test] public void TestShowItemsWithPatternNotIncludingAbbreviation() { DoNamedTest2(); }
-        [Test] public void TestShowItemsWithPatternIncludingAbbreviation() { DoNamedTest2(); }
-        [Test] public void TestShowItemsWithCaretInMiddleOfCompletionPrefix() { DoNamedTest2(); }
-        [Test] public void TestDoesNotIncludeAttributesAlreadyUsed() { DoNamedTest2(); }
+        [Test] public void TestShowAbbreviationsWithNoPrefix() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowAbbreviationsWithMatchingPrefix() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowItemsWithExactAbbreviationMatch() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowItemsWithPatternAbbreviationMatch() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowItemsWithPatternNotIncludingAbbreviation() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowItemsWithPatternIncludingAbbreviation() { DoNamedTest2(AngularJs); }
+        [Test] public void TestShowItemsWithCaretInMiddleOfCompletionPrefix() { DoNamedTest2(AngularJs); }
+        [Test] public void TestDoesNotIncludeAttributesAlreadyUsed() { DoNamedTest2(AngularJs); }
     }
 }

@@ -150,6 +150,8 @@
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
     <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
+    <Compile Include="Psi\Html\AngularJsHtmlAttributeDeclaredElement.cs" />
+    <Compile Include="Psi\Html\AngularJsHtmlTagDeclaredElement.cs" />
     <Compile Include="Resources\Logo\ThemedIcons.Logo.Generated.cs" />
     <Compile Include="ZoneMarker.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlDeclaredElementTypes.cs" />
@@ -163,11 +165,6 @@
     <Compile Include="Hacks\CodeCompletion\TemplateWithNonDefaultPrefixesItemsProvider.cs" />
     <Compile Include="Hacks\LiveTemplates\Scope\TypeScriptFilePrefixScopeProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\WrappedDynamicLookupItem.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\HtmlElements.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\install\resharper-angularjs.nuspec">

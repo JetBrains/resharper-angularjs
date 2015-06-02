@@ -1,4 +1,4 @@
-﻿# 27 ITEMS #
+﻿# 33 ITEMS #
 
 + ng-change
 + ng-checked
@@ -8,7 +8,9 @@
 + ng-click
 + ng-cloak
 + ng-controller
++ ng-copy
 + ng-csp
++ ng-cut
 data-ng-change
 data-ng-checked
 data-ng-class
@@ -17,7 +19,9 @@ data-ng-class-odd
 data-ng-click
 data-ng-cloak
 data-ng-controller
+data-ng-copy
 data-ng-csp
+data-ng-cut
 x-ng-change
 x-ng-checked
 x-ng-class
@@ -26,4 +30,6 @@ x-ng-class-odd
 x-ng-click
 x-ng-cloak
 x-ng-controller
+x-ng-copy
 x-ng-csp
+x-ng-cut
