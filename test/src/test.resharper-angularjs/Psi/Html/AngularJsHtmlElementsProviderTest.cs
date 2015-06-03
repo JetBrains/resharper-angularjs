@@ -28,14 +28,18 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
     [TestFixture]
     public class AngularJsHtmlElementsProviderTest : BaseTestWithSingleProject
     {
-        private const string AngularJs = @"..\..\..\angular.js";
-
         protected override string RelativeTestDataPath { get { return @"Psi\Html\ElementsProvider"; } }
 
-        [Test]
-        public void GetCommonAttributesSymbolTable()
+        private string GetAngularJs(Version version)
         {
-            DoTest(AngularJs, (writer, provider) =>
+            return AngularJsTestVersions.GetAngularJsVersion(BaseTestDataPath, version);
+        }
+
+        [Test]
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetCommonAttributesSymbolTable(Version version)
+        {
+            DoTest(GetAngularJs(version), version, (writer, provider) =>
             {
                 var symbolTable = provider.GetCommonAttributesSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -50,9 +54,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void GetAllAttributesSymbolTable()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetAllAttributesSymbolTable(Version version)
         {
-            DoTest(AngularJs, (writer, provider) =>
+            DoTest(GetAngularJs(version), version, (writer, provider) =>
             {
                 var symbolTable = provider.GetAllAttributesSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -67,9 +72,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void GetAllTagsSymbolTable()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetAllTagsSymbolTable(Version version)
         {
-            DoTest(AngularJs, (writer, provider) =>
+            DoTest(GetAngularJs(version), version, (writer, provider) =>
             {
                 var symbolTable = provider.GetAllTagsSymbolTable();
                 var symbols = symbolTable.GetAllSymbolInfos().OrderBy(s => s.ShortName).ToList();
@@ -85,9 +91,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void GetAttributeDeclaredElementForAttributeName()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetAttributeDeclaredElementForAttributeName(Version version)
         {
-            WithSingleProject(AngularJs, (lifetime, solution, project) =>
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, project) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var attributes = provider.GetAttributes("ng-app");
@@ -100,11 +107,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void GetAttributeInfo()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetAttributeInfo(Version version)
         {
-            WithSingleProject(AngularJs, (lifetime, solution, arg3) =>
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, arg3) =>
             {
-                ExecuteWithGold(tw =>
+                ExecuteWithGold(TestMethodName + version.Major + version.Minor, tw =>
                 {
                     var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
@@ -121,9 +129,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void ReturnsNoEvents()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void ReturnsNoEvents(Version version)
         {
-            WithSingleProject(AngularJs, (lifetime, solution, project) =>
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, project) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var eventsSymbolTable = provider.GetEventsSymbolTable();
@@ -132,9 +141,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         [Test]
-        public void ReturnsNoLegacyEvents()
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void ReturnsNoLegacyEvents(Version version)
         {
-            WithSingleProject(AngularJs, (lifetime, solution, arg3) =>
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, arg3) =>
             {
                 var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                 var eventsSymbolTable = provider.GetLegacyEventsSymbolTable();
@@ -142,11 +152,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             });
         }
 
-        private void DoTest(string filename, Action<TextWriter, AngularJsHtmlElementsProvider> action)
+        private void DoTest(string filename, Version version, Action<TextWriter, AngularJsHtmlElementsProvider> action)
         {
             WithSingleProject(filename, (l, s, p) =>
             {
-                ExecuteWithGold(tw =>
+                ExecuteWithGold(AngularJsTestVersions.GetTestMethodName(TestMethodName, version), tw =>
                 {
                     var provider = s.GetComponent<AngularJsHtmlElementsProvider>();
                     action(tw, provider);
