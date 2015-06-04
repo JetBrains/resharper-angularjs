@@ -38,6 +38,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         private readonly IHtmlAttributeValueType cdataAttributeValueType;
         private readonly Dictionary<string, IHtmlTagDeclaredElement> tagsByName = new Dictionary<string, IHtmlTagDeclaredElement>(); 
         private readonly Dictionary<string, IHtmlAttributeDeclaredElement> attributesByName = new Dictionary<string, IHtmlAttributeDeclaredElement>();
+        private ISymbolTable commonAttributesSymbolTable;
+        private ISymbolTable allAttributesSymbolTable;
 
         public AngularJsHtmlElementsProvider(Lifetime lifetime, AngularJsCache cache, ISolution solution)
         {
@@ -47,7 +49,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             // TODO: Finer grained caching?
             // This will clear the cache of elements whenever the AngularJs cache changes, which will be
             // every time a .js file is updated
-            cache.CacheUpdated.Advise(lifetime, ClearCachedElements);
+            cache.CacheUpdated.Advise(lifetime, ClearCache);
 
             // TODO: Is this the right value for angular attributes?
             cdataAttributeValueType = new HtmlAttributeValueType("CDATA");
@@ -55,18 +57,32 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
         public ISymbolTable GetCommonAttributesSymbolTable()
         {
-            return GetAllAttributesSymbolTable();
+            lock (lockObject)
+            {
+                if (commonAttributesSymbolTable == null)
+                {
+                    var psiServices = solution.GetComponent<IPsiServices>();
+                    var attributes = from d in cache.Directives
+                        where d.IsAttribute && d.IsForAnyTag()
+                        from n in GetPrefixedNames(d.Name)
+                        select GetOrCreateAttribute(n);
+                    commonAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
+                }
+                return commonAttributesSymbolTable;
+            }
         }
 
         public IEnumerable<AttributeInfo> GetAttributeInfos(IPsiSourceFile sourceFile, IHtmlTagDeclaredElement tag, bool strict)
         {
-            var psiServices = solution.GetComponent<IPsiServices>();
-            var attributes = from d in cache.Directives
-                where d.IsAttribute
-                from n in new[] {d.Name, "x-" + d.Name, "data-" + d.Name}   // TODO: Not for attributes that don't start ng-
-                select
-                    new AttributeInfo(GetOrCreateAttribute(n), DefaultAttributeValueType.IMPLIED, null);
-            return attributes.ToList();
+            lock (lockObject)
+            {
+                var attributes = from d in cache.Directives
+                    where d.IsAttribute && d.IsForTag(tag.ShortName)
+                    from n in GetPrefixedNames(d.Name)   // TODO: Not for attributes that don't start ng-
+                    select
+                        new AttributeInfo(GetOrCreateAttribute(n), DefaultAttributeValueType.IMPLIED, null);
+                return attributes.ToList();
+            }
         }
 
         public IHtmlTagDeclaredElement GetTag(string name)
@@ -92,23 +108,32 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             else if (name.StartsWith("data-"))
                 name = name.Substring(5);
 
-            var psiServices = solution.GetComponent<IPsiServices>();
-            var attributes = from d in cache.Directives
-                             where d.IsAttribute && string.Equals(d.Name, name, StringComparison.InvariantCultureIgnoreCase)
-                             select new AngularJsHtmlAttributeDeclaredElement(psiServices, prefixedName, cdataAttributeValueType, null);
-            return attributes.ToList();
+            lock (lockObject)
+            {
+                var psiServices = solution.GetComponent<IPsiServices>();
+                var attributes = from d in cache.Directives
+                    where d.IsAttribute && string.Equals(d.Name, name, StringComparison.InvariantCultureIgnoreCase)
+                    select new AngularJsHtmlAttributeDeclaredElement(psiServices, prefixedName, cdataAttributeValueType, null);
+                return attributes.ToList();
+            }
         }
 
         public ISymbolTable GetAllAttributesSymbolTable()
         {
-            // TODO: Cached?
-            var psiServices = solution.GetComponent<IPsiServices>();
-            var attributes = from d in cache.Directives
-                where d.IsAttribute
-                from n in new[] {d.Name, "x-" + d.Name, "data-" + d.Name}
-                // TODO: Not for attributes that don't start ng-
-                select GetOrCreateAttribute(n);
-            return new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
+            lock (lockObject)
+            {
+                if (allAttributesSymbolTable == null)
+                {
+                    var psiServices = solution.GetComponent<IPsiServices>();
+                    var attributes = from d in cache.Directives
+                        where d.IsAttribute
+                        from n in GetPrefixedNames(d.Name)
+                        // TODO: Not for attributes that don't start ng-
+                        select GetOrCreateAttribute(n);
+                    allAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
+                }
+                return allAttributesSymbolTable;
+            }
         }
 
         public IHtmlAttributeValueType GetAttributeValueType(string typeName)
@@ -139,6 +164,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return true;
         }
 
+        private string[] GetPrefixedNames(string root)
+        {
+            return new[] {root, "data-" + root, "x-" + root};
+        }
+
         private IHtmlTagDeclaredElement GetOrCreateTag(string name)
         {
             IHtmlTagDeclaredElement tag;
@@ -163,10 +193,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return attribute;
         }
 
-        private void ClearCachedElements()
+        private void ClearCache()
         {
-            tagsByName.Clear();
-            attributesByName.Clear();
+            lock (lockObject)
+            {
+                tagsByName.Clear();
+                attributesByName.Clear();
+                commonAttributesSymbolTable = null;
+                allAttributesSymbolTable = null;
+            }
         }
     }
 }

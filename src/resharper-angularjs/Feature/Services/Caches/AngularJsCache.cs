@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -37,15 +38,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public readonly string OriginalName;
         public readonly string Name;
         public readonly string Restrictions;
-        public readonly string Tag;
+        public readonly string[] Tags;
         public readonly int Offset;
 
-        public Directive(string originalName, string name, string restrictions, string tag, int offset)
+        public Directive(string originalName, string name, string restrictions, string[] tags, int offset)
         {
             OriginalName = originalName;
             Name = name;
             Restrictions = restrictions;
-            Tag = tag;
+            Tags = tags;
             Offset = offset;
 
             IsAttribute = restrictions.Contains('A');
@@ -57,12 +58,35 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public bool IsElement { get; private set; }
         public bool IsClass { get; private set; }
 
+        public bool IsForTag(string tag)
+        {
+            foreach (var t in Tags)
+            {
+                if (t.Equals("ANY", StringComparison.InvariantCultureIgnoreCase) ||
+                    t.Equals(tag, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool IsForAnyTag()
+        {
+            foreach (var t in Tags)
+            {
+                if (t.Equals("ANY", StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+            }
+            return false;
+        }
+
         public void Write(UnsafeWriter writer)
         {
             writer.Write(OriginalName);
             writer.Write(Name);
             writer.Write(Restrictions);
-            writer.Write(Tag);
+            writer.Write(UnsafeWriter.StringDelegate, Tags);
             writer.Write(Offset);
         }
 
@@ -71,9 +95,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             var originalName = reader.ReadString();
             var name = reader.ReadString();
             var restrictions = reader.ReadString();
-            var tag = reader.ReadString();
+            var tags = reader.ReadArray(UnsafeReader.StringDelegate);
             var offset = reader.ReadInt();
-            return new Directive(originalName, name, restrictions, tag, offset);
+            return new Directive(originalName, name, restrictions, tags, offset);
         }
     }
 
@@ -296,6 +320,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                             // versions
                             var restrictions = restrictTag != null ? restrictTag.DescriptionText : "AE";
                             var element = elementTag != null ? elementTag.DescriptionText : "ANY";
+                            var tags = element.Split(new[] {',', ' '}, StringSplitOptions.RemoveEmptyEntries);
 
                             // Pull the attribute/element type from the param tag(s). Optional parameters
                             // are specified with a trailing equals sign, e.g. {string=}
@@ -310,7 +335,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                             name = StringUtil.Unquote(name);
                             var formattedName = Regex.Replace(name, @"(\B[A-Z])", "-$1").ToLowerInvariant();
 
-                            directives.Add(new Directive(name, formattedName, restrictions, element, nameOffset));
+                            directives.Add(new Directive(name, formattedName, restrictions, tags, nameOffset));
                         }
                         else if (ngdocValue == "filter")
                         {

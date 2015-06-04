@@ -39,7 +39,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                 tw.WriteLine("Directives: {0}", directives.Count());
                 foreach (var directive in directives.OrderBy(d => d.Name))
                 {
-                    tw.WriteLine("{0} {1} {2} <{3}> {4}", directive.OriginalName, directive.Name, directive.Restrictions, directive.Tag, directive.Offset);
+                    tw.WriteLine("{0} {1} {2} <{3}> {4}", directive.OriginalName, directive.Name, directive.Restrictions, string.Join(", ", directive.Tags), directive.Offset);
                 }
             });
         }

@@ -108,7 +108,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
         [Test]
         [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
-        public void GetAttributeInfo(Version version)
+        public void GetAttributeInfoForCommonAttributes(Version version)
         {
             WithSingleProject(GetAngularJs(version), (lifetime, solution, arg3) =>
             {
@@ -117,6 +117,28 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                     var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
                     var tag = cache.GetTag("body", null);
+                    Assert.IsNotNull(tag);
+                    var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
+                    tw.WriteLine("Attributes: {0}", attributeInfos.Count);
+                    foreach (var attributeInfo in attributeInfos.OrderBy(a => a.AttributeDeclaredElement.ShortName))
+                    {
+                        tw.WriteLine("{0} ({1} - {2})", attributeInfo.AttributeDeclaredElement.ShortName, attributeInfo.DefaultValueType, attributeInfo.DefaultValue);
+                    }
+                });
+            });
+        }
+
+        [Test]
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetAttributeInfoForSpecificTag(Version version)
+        {
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, arg3) =>
+            {
+                ExecuteWithGold(TestMethodName + version.Major + version.Minor, tw =>
+                {
+                    var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
+                    var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
+                    var tag = cache.GetTag("input", null);
                     Assert.IsNotNull(tag);
                     var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);
