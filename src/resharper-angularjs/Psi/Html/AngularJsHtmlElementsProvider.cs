@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.DataFlow;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches;
 using JetBrains.ReSharper.Psi;
@@ -35,11 +36,18 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         private readonly ISolution solution;
         private readonly object lockObject = new object();
         private readonly IHtmlAttributeValueType cdataAttributeValueType;
+        private readonly Dictionary<string, IHtmlTagDeclaredElement> tagsByName = new Dictionary<string, IHtmlTagDeclaredElement>(); 
+        private readonly Dictionary<string, IHtmlAttributeDeclaredElement> attributesByName = new Dictionary<string, IHtmlAttributeDeclaredElement>();
 
-        public AngularJsHtmlElementsProvider(AngularJsCache cache, ISolution solution)
+        public AngularJsHtmlElementsProvider(Lifetime lifetime, AngularJsCache cache, ISolution solution)
         {
             this.cache = cache;
             this.solution = solution;
+
+            // TODO: Finer grained caching?
+            // This will clear the cache of elements whenever the AngularJs cache changes, which will be
+            // every time a .js file is updated
+            cache.CacheUpdated.Advise(lifetime, ClearCachedElements);
 
             // TODO: Is this the right value for angular attributes?
             cdataAttributeValueType = new HtmlAttributeValueType("CDATA");
@@ -57,9 +65,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 where d.IsAttribute
                 from n in new[] {d.Name, "x-" + d.Name, "data-" + d.Name}   // TODO: Not for attributes that don't start ng-
                 select
-                    new AttributeInfo(
-                        new AngularJsHtmlAttributeDeclaredElement(psiServices, n, cdataAttributeValueType, null),
-                        DefaultAttributeValueType.IMPLIED, null);
+                    new AttributeInfo(GetOrCreateAttribute(n), DefaultAttributeValueType.IMPLIED, null);
             return attributes.ToList();
         }
 
@@ -101,7 +107,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 where d.IsAttribute
                 from n in new[] {d.Name, "x-" + d.Name, "data-" + d.Name}
                 // TODO: Not for attributes that don't start ng-
-                select new AngularJsHtmlAttributeDeclaredElement(psiServices, n, cdataAttributeValueType, null);
+                select GetOrCreateAttribute(n);
             return new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
         }
 
@@ -131,6 +137,36 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             // TODO: Check to see if angular.js included?
             // Maybe not - if it's not included, the cache will be empty
             return true;
+        }
+
+        private IHtmlTagDeclaredElement GetOrCreateTag(string name)
+        {
+            IHtmlTagDeclaredElement tag;
+            if (!tagsByName.TryGetValue(name, out tag))
+            {
+                tag = new AngularJsHtmlTagDeclaredElement();
+                tagsByName.Add(name, tag);
+            }
+            return tag;
+        }
+
+        private IHtmlAttributeDeclaredElement GetOrCreateAttribute(string name)
+        {
+            IHtmlAttributeDeclaredElement attribute;
+            if (!attributesByName.TryGetValue(name, out attribute))
+            {
+                var psiServices = solution.GetComponent<IPsiServices>();
+                // TODO: Add tag
+                attribute = new AngularJsHtmlAttributeDeclaredElement(psiServices, name, cdataAttributeValueType, null);
+                attributesByName.Add(name, attribute);
+            }
+            return attribute;
+        }
+
+        private void ClearCachedElements()
+        {
+            tagsByName.Clear();
+            attributesByName.Clear();
         }
     }
 }

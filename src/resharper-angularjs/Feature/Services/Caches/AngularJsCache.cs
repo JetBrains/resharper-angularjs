@@ -149,7 +149,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         {
             // TODO: Useful for testing. Remove for release
             ClearOnLoad = true;
+
+            CacheUpdated = new SimpleSignal(lifetime, "AngularJsCache");
         }
+
+        public ISimpleSignal CacheUpdated { get; private set; }
 
         // TODO: Override Version when the format changes
 
@@ -174,13 +178,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
         public override void Drop(IPsiSourceFile sourceFile)
         {
-            cachedItems = null;
+            ClearCache();
             base.Drop(sourceFile);
         }
 
         public override void Merge(IPsiSourceFile sourceFile, object builtPart)
         {
-            cachedItems = null;
+            ClearCache();
             base.Merge(sourceFile, builtPart);
         }
 
@@ -212,6 +216,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                     cachedItems = new ChunkHashMap<IPsiSourceFile, AngularJsCacheItems>(Map);
                 return cachedItems;
             }
+        }
+
+        private void ClearCache()
+        {
+            cachedItems = null;
+            CacheUpdated.Fire();
         }
 
         private class Processor : IRecursiveElementProcessor
