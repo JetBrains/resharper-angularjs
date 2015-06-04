@@ -89,5 +89,20 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public bool RequiresValue { get { return true; } }
         public IHtmlAttributeValueType ValueType { get; private set; }
         public IHtmlTagDeclaredElement Tag { get; private set; }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj)) return true;
+
+            var attribute = obj as AngularJsHtmlAttributeDeclaredElement;
+            if (attribute == null) return false;
+
+            return attribute.ShortName == ShortName;
+        }
+
+        public override int GetHashCode()
+        {
+            return ShortName.GetHashCode();
+        }
     }
 }
