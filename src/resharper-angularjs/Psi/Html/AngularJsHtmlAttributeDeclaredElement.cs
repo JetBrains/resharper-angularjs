@@ -85,7 +85,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public PsiLanguageType PresentationLanguage { get { return HtmlLanguage.Instance; } }
         public AspNetVersion? SupportedVersion { get { return null; } }
         public bool Obsolete { get { return false; } }
-        public bool NonStandard { get { return true; } }
+        public bool NonStandard { get { return false; } }
         public bool RequiresValue { get { return true; } }
         public IHtmlAttributeValueType ValueType { get; private set; }
         public IHtmlTagDeclaredElement Tag { get; private set; }
