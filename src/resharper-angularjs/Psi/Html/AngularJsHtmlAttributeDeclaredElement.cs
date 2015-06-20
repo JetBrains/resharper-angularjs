@@ -11,7 +11,7 @@ using JetBrains.Util.DataStructures;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 {
-    public class AngularJsHtmlAttributeDeclaredElement : IHtmlAttributeDeclaredElement
+    public class AngularJsHtmlAttributeDeclaredElement : IHtmlAttributeDeclaredElement, IAngularJsDeclaredElement
     {
         private readonly IPsiServices psiServices;
 
