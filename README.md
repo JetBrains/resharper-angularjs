@@ -13,7 +13,7 @@ The Live Templates are based on the IntelliJ templates by [Pawel Kozlowski](http
 
 ## How do I get it?
 
-You can install directly into ReSharper 9.2 via the Extension Manager in the ReSharper menu.
+You can install directly into ReSharper 9.1 via the Extension Manager in the ReSharper menu.
 
 Packages for previous versions (8.2 and 9.0) are still available on the Extension Manager.
 
