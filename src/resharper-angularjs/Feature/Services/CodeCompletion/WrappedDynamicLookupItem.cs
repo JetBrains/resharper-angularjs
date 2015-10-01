@@ -109,7 +109,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             set { Item.IgnoreSoftOnSpace = value; }
         }
 
-        public string Identity
+        public int Identity
         {
             get { return Item.Identity; }
         }
