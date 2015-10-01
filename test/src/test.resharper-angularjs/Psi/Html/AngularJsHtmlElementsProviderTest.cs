@@ -66,7 +66,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     var element = symbolInfo.GetDeclaredElement() as IHtmlAttributeDeclaredElement;
                     Assert.IsNotNull(element);
-                    writer.WriteLine("{0} ({1})", symbolInfo.ShortName, element.ValueType.Name);
+                    writer.WriteLine("{0} {1} ({2})", symbolInfo.ShortName,
+                        element.Tag == null ? "(ANY)" : element.Tag.ShortName, element.ValueType.Name);
                 }
             });
         }
@@ -82,11 +83,48 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 writer.WriteLine("Symbols: {0}", symbols.Count);
                 foreach (var symbolInfo in symbols)
                 {
-                    // TODO: Dump more stuff, but only once we support tags
-                    var element = symbolInfo.GetDeclaredElement() as IHtmlTagDeclaredElement;
-                    Assert.IsNotNull(element);
+                    var tag = symbolInfo.GetDeclaredElement() as IHtmlTagDeclaredElement;
+                    Assert.IsNotNull(tag);
                     writer.WriteLine("{0} {1}", symbolInfo.ShortName, symbolInfo.Level);
+                    writer.WriteLine("\tOwn attributes: {0}", tag.OwnAttributes.Count());
+                    foreach (var attribute in tag.OwnAttributes.OrderBy(a => a.AttributeDeclaredElement.ShortName))
+                        writer.WriteLine("\t\t{0}", attribute.AttributeDeclaredElement.ShortName);
+                    writer.WriteLine("\tInherited attributes: {0}", tag.InheritedAttributes.Count());
+                    foreach (var attribute in tag.InheritedAttributes.OrderBy(a => a.AttributeDeclaredElement.ShortName))
+                        writer.WriteLine("\t\t{0}", attribute.AttributeDeclaredElement.ShortName);
                 }
+            });
+        }
+
+        [Test]
+        [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
+        public void GetTagForAngularTag(Version version)
+        {
+            DoTest(GetAngularJs(version), version, (writer, provider) =>
+            {
+                var tag = provider.GetTag("ng-include");
+                Assert.IsNotNull(tag);
+                writer.WriteLine("{0}", tag.ShortName);
+                writer.WriteLine("Own attributes: {0}", tag.OwnAttributes.Count());
+                foreach (var attribute in tag.OwnAttributes.OrderBy(a => a.AttributeDeclaredElement.ShortName))
+                    writer.WriteLine("\t{0}", attribute.AttributeDeclaredElement.ShortName);
+                writer.WriteLine("Inherited attributes: {0}", tag.InheritedAttributes.Count());
+                foreach (var attribute in tag.InheritedAttributes.OrderBy(a => a.AttributeDeclaredElement.ShortName))
+                    writer.WriteLine("\t{0}", attribute.AttributeDeclaredElement.ShortName);
+            });
+        }
+
+        [Test]
+        [TestCaseSource(typeof (AngularJsTestVersions), "Versions")]
+        public void GetStandardHtmlTag(Version version)
+        {
+            WithSingleProject(GetAngularJs(version), (lifetime, solution, project) =>
+            {
+                // This tag is declared in Angular, but we keep the standard HTML tag
+                // as the declared element, and just add our attributes
+                var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
+                var tag = provider.GetTag("a");
+                Assert.IsNull(tag);
             });
         }
 
@@ -106,6 +144,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             });
         }
 
+        // TODO: Does this test what it says it tests?
         [Test]
         [TestCaseSource(typeof(AngularJsTestVersions), "Versions")]
         public void GetAttributeInfoForCommonAttributes(Version version)

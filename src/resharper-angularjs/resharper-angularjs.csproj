@@ -149,6 +149,7 @@
     <Compile Include="Feature\Services\Caches\AngularJsCache.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
+    <Compile Include="Feature\Services\CodeCompletion\OverriddenAngularJsItemsRemover.cs" />
     <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="Psi\Html\AngularJsDeclaredElementIconProvider.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlAttributeDeclaredElement.cs" />

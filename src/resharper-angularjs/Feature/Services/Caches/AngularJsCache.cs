@@ -35,6 +35,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 {
     public class Directive
     {
+        public const string AnyTagName = "ANY";
+
         public readonly string OriginalName;
         public readonly string Name;
         public readonly string Restrictions;
@@ -58,12 +60,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public bool IsElement { get; private set; }
         public bool IsClass { get; private set; }
 
-        public bool IsForTag(string tag)
+        public bool IsForTag(string tagName)
         {
             foreach (var t in Tags)
             {
-                if (t.Equals("ANY", StringComparison.InvariantCultureIgnoreCase) ||
-                    t.Equals(tag, StringComparison.InvariantCultureIgnoreCase))
+                if (t.Equals(AnyTagName, StringComparison.InvariantCultureIgnoreCase) ||
+                    t.Equals(tagName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return true;
                 }
@@ -71,11 +73,16 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             return false;
         }
 
+        public bool IsForTagSpecific(string tagName)
+        {
+            return Tags.Any(t => t.Equals(tagName, StringComparison.InvariantCultureIgnoreCase));
+        }
+
         public bool IsForAnyTag()
         {
             foreach (var t in Tags)
             {
-                if (t.Equals("ANY", StringComparison.InvariantCultureIgnoreCase))
+                if (t.Equals(AnyTagName, StringComparison.InvariantCultureIgnoreCase))
                     return true;
             }
             return false;
