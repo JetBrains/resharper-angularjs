@@ -1,4 +1,4 @@
-﻿# 33 ITEMS #
+﻿# 39 ITEMS #
 
 accesskey
 align
@@ -27,6 +27,12 @@ onmousemove
 onmouseout
 onmouseover
 onmouseup
+onscroll
+ontouchcancel
+ontouchend
+ontouchmove
+ontouchstart
+onwheel
 spellcheck
 style
 tabindex
