@@ -3570,7 +3570,10 @@ data-ng-value 0
 		x-ng-switch
 		x-ng-transclude
 ng-app 0
-	Own attributes: 0
+	Own attributes: 3
+		data-ng-strict-di
+		ng-strict-di
+		x-ng-strict-di
 	Inherited attributes: 99
 		data-ng-app
 		data-ng-bind
@@ -4998,7 +5001,9 @@ ng-hide 0
 		x-ng-switch
 		x-ng-transclude
 ng-include 0
-	Own attributes: 0
+	Own attributes: 2
+		autoscroll
+		onload
 	Inherited attributes: 99
 		data-ng-app
 		data-ng-bind
@@ -6426,7 +6431,10 @@ ng-paste 0
 		x-ng-switch
 		x-ng-transclude
 ng-pluralize 0
-	Own attributes: 0
+	Own attributes: 3
+		count
+		offset
+		when
 	Inherited attributes: 99
 		data-ng-app
 		data-ng-bind

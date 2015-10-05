@@ -29,147 +29,9 @@ using JetBrains.ReSharper.Psi.JavaScript.Util.JsDoc;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
 using JetBrains.Util.DataStructures;
-using JetBrains.Util.PersistentMap;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 {
-    public class Directive
-    {
-        public const string AnyTagName = "ANY";
-
-        public readonly string OriginalName;
-        public readonly string Name;
-        public readonly string Restrictions;
-        public readonly string[] Tags;
-        public readonly int Offset;
-
-        public Directive(string originalName, string name, string restrictions, string[] tags, int offset)
-        {
-            OriginalName = originalName;
-            Name = name;
-            Restrictions = restrictions;
-            Tags = tags;
-            Offset = offset;
-
-            IsAttribute = restrictions.Contains('A');
-            IsElement = restrictions.Contains('E');
-            IsClass = restrictions.Contains('C');
-        }
-
-        public bool IsAttribute { get; private set; }
-        public bool IsElement { get; private set; }
-        public bool IsClass { get; private set; }
-
-        public bool IsForTag(string tagName)
-        {
-            foreach (var t in Tags)
-            {
-                if (t.Equals(AnyTagName, StringComparison.InvariantCultureIgnoreCase) ||
-                    t.Equals(tagName, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool IsForTagSpecific(string tagName)
-        {
-            return Tags.Any(t => t.Equals(tagName, StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        public bool IsForAnyTag()
-        {
-            foreach (var t in Tags)
-            {
-                if (t.Equals(AnyTagName, StringComparison.InvariantCultureIgnoreCase))
-                    return true;
-            }
-            return false;
-        }
-
-        public void Write(UnsafeWriter writer)
-        {
-            writer.Write(OriginalName);
-            writer.Write(Name);
-            writer.Write(Restrictions);
-            writer.Write(UnsafeWriter.StringDelegate, Tags);
-            writer.Write(Offset);
-        }
-
-        public static Directive Read(UnsafeReader reader)
-        {
-            var originalName = reader.ReadString();
-            var name = reader.ReadString();
-            var restrictions = reader.ReadString();
-            var tags = reader.ReadArray(UnsafeReader.StringDelegate);
-            var offset = reader.ReadInt();
-            return new Directive(originalName, name, restrictions, tags, offset);
-        }
-    }
-
-    public class Filter
-    {
-        public readonly string Name;
-        public readonly int Offset;
-
-        public Filter(string name, int offset)
-        {
-            Name = name;
-            Offset = offset;
-        }
-
-        public void Write(UnsafeWriter writer)
-        {
-            writer.Write(Name);
-            writer.Write(Offset);
-        }
-
-        public static Filter Read(UnsafeReader reader)
-        {
-            var name = reader.ReadString();
-            var offset = reader.ReadInt();
-            return new Filter(name, offset);
-        }
-    }
-
-    // All the cached items in a file, directives + filters
-    public class AngularJsCacheItems
-    {
-        public static readonly IUnsafeMarshaller<AngularJsCacheItems> Marshaller =
-            new UniversalMarshaller<AngularJsCacheItems>(Read, Write);
-
-        private readonly IList<Directive> directives;
-        private readonly IList<Filter> filters;
-
-        public AngularJsCacheItems(IList<Directive> directives, IList<Filter> filters)
-        {
-            this.directives = directives;
-            this.filters = filters;
-        }
-
-        public IEnumerable<Directive> Directives { get { return directives; } }
-        public IEnumerable<Filter> Filters { get { return filters; } }
-
-        public bool IsEmpty
-        {
-            get { return directives.Count == 0 && filters.Count == 0; }
-        }
-
-        private static AngularJsCacheItems Read(UnsafeReader reader)
-        {
-            var directives = reader.ReadCollection(Directive.Read, count => new List<Directive>(count));
-            var filters = reader.ReadCollection(Filter.Read, count => new List<Filter>(count));
-            return new AngularJsCacheItems(directives, filters);
-        }
-
-        private static void Write(UnsafeWriter writer, AngularJsCacheItems value)
-        {
-            writer.Write<Directive, ICollection<Directive>>((w, directive) => directive.Write(w), value.Directives.ToList());
-            writer.Write<Filter, ICollection<Filter>>((w, filter) => filter.Write(w), value.Filters.ToList());
-        }
-    }
-
     [PsiComponent]
     public class AngularJsCache : SimpleICache<AngularJsCacheItems>
     {
@@ -337,12 +199,22 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                             // Might be worth setting up special attribute types, e.g. string, expression, template
                             // For attributes, the parameter name is the same as the directive name
 
-                            // TODO: Parameters
-
                             name = StringUtil.Unquote(name);
-                            var formattedName = Regex.Replace(name, @"(\B[A-Z])", "-$1").ToLowerInvariant();
+                            var formattedName = GetNormalisedName(name);
 
-                            directives.Add(new Directive(name, formattedName, restrictions, tags, nameOffset));
+                            // TODO: There might be alternative names
+                            // If the description starts with e.g. "|name ", then this is an alternative name
+                            // TODO: What does it mean when the name is in brackets, e.g. "[ngTrim=true]" (default value?)
+                            // Type can be string, expression, number, boolean
+                            // TODO: A parameter with the same name as the directive gives the type + default value of the directive itself - add this information to Directive
+                            var parameters = from p in paramTags ?? EmptyArray<IParameterTag>.Instance
+                                let isOptional = p.DeclaredType.EndsWith("=")
+                                let type = p.DeclaredType.Replace("=", string.Empty)
+                                let parameterName = GetNormalisedName(p.DeclaredName)
+                                where !parameterName.Equals(formattedName, StringComparison.InvariantCultureIgnoreCase)
+                                select new Parameter(parameterName, p.DeclaredType, isOptional, p.DescriptionText);
+
+                            directives.Add(new Directive(name, formattedName, restrictions, tags, nameOffset, parameters.ToList()));
                         }
                         else if (ngdocValue == "filter")
                         {
@@ -350,6 +222,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         }
                     }
                 }
+            }
+
+            private static string GetNormalisedName(string name)
+            {
+                return Regex.Replace(name, @"(\B[A-Z])", "-$1").ToLowerInvariant();
             }
 
             public void ProcessAfterInterior(ITreeNode element)

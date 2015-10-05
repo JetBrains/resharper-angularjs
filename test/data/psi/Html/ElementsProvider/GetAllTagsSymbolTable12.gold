@@ -4653,7 +4653,9 @@ ng-hide 0
 		x-ng-switch
 		x-ng-transclude
 ng-include 0
-	Own attributes: 0
+	Own attributes: 2
+		autoscroll
+		onload
 	Inherited attributes: 96
 		data-ng-app
 		data-ng-bind
@@ -5940,7 +5942,10 @@ ng-paste 0
 		x-ng-switch
 		x-ng-transclude
 ng-pluralize 0
-	Own attributes: 0
+	Own attributes: 3
+		count
+		offset
+		when
 	Inherited attributes: 96
 		data-ng-app
 		data-ng-bind

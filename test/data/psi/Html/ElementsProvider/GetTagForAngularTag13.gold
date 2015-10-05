@@ -1,5 +1,7 @@
 ﻿ng-include
-Own attributes: 0
+Own attributes: 2
+	autoscroll
+	onload
 Inherited attributes: 99
 	data-ng-app
 	data-ng-bind

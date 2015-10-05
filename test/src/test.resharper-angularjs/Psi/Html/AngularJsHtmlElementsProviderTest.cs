@@ -183,7 +183,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);
                     foreach (var attributeInfo in attributeInfos.OrderBy(a => a.AttributeDeclaredElement.ShortName))
                     {
-                        tw.WriteLine("{0} ({1} - {2})", attributeInfo.AttributeDeclaredElement.ShortName, attributeInfo.DefaultValueType, attributeInfo.DefaultValue);
+                        var attributeTag = attributeInfo.AttributeDeclaredElement.Tag;
+                        tw.WriteLine("{0} ({1} - {2})", attributeInfo.AttributeDeclaredElement.ShortName,
+                            attributeInfo.DefaultValueType, attributeInfo.DefaultValue);
                     }
                 });
             });

@@ -100,8 +100,25 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 var attributeInfos = from d in cache.Directives
                     where d.IsAttribute && d.IsForTag(tag.ShortName)
                     from n in GetPrefixedNames(d.Name)
-                    select new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
-                return attributeInfos.ToList();
+                    select
+                        new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
+
+                // Get any elements that have the same name as the tag, and add the parameters as attributes
+                // Don't include any attributes that are aleady defined by other providers (this causes the
+                // HTML description cache component to crash)
+                var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
+
+                var parameterAttributeInfos = from d in cache.Directives
+                    where d.IsElement && d.Name == tag.ShortName
+                    from p in d.Parameters
+                    where !IsKnownCommonAttribute(p.Name, providers)
+                    from n in GetPrefixedNames(p.Name)
+                    select
+                        new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
+
+                // Parameter attributes take precedence over attribute directives. Only include one.
+                return parameterAttributeInfos.Concat(attributeInfos)
+                    .Distinct(ai => ai.AttributeDeclaredElement.ShortName).ToList();
             }
         }
 
@@ -174,12 +191,23 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 if (allAttributesSymbolTable == null)
                 {
                     var psiServices = solution.GetComponent<IPsiServices>();
+                    var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
+
                     var attributeDeclaredElements = from d in cache.Directives
                         where d.IsAttribute
                         from n in GetPrefixedNames(d.Name)
                         from t in d.Tags
                         select GetOrCreateAttributeLocked(n, t);
-                    allAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributeDeclaredElements);
+
+                    var parameterAttributeDeclaredElements = from d in cache.Directives
+                        where d.IsElement
+                        from p in d.Parameters
+                        where !IsKnownCommonAttribute(p.Name, providers)
+                        from n in GetPrefixedNames(p.Name)
+                        select GetOrCreateAttributeLocked(n, d.Name);
+
+                    var attributes = attributeDeclaredElements.Concat(parameterAttributeDeclaredElements);
+                    allAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
                 }
                 return allAttributesSymbolTable;
             }
@@ -225,6 +253,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return providers.Where(p => p != this).Any(p => p.GetTag(name) != null);
         }
 
+        private bool IsKnownCommonAttribute(string name, IEnumerable<IHtmlDeclaredElementsProvider> providers)
+        {
+            return providers.Where(p => p != this).Any(p => p.GetAttributes(name).Any());
+        }
+
         private static string StripPrefix(string name)
         {
             if (name.StartsWith("x-"))
@@ -254,13 +287,31 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
                 tag = new AngularJsHtmlTagDeclaredElement(psiServices, htmlDeclaredElementsCache, name, ownAttributes, inheritedAttributes);
 
-                // Stupid circular references
-                ownAttributes.AddRange(GetSpecificAttributeInfosLocked(tag));
-                inheritedAttributes.AddRange(GetCommonAttributeInfosLocked());
+                // Stupid circular references. Populate the attributes after creating the tag, so
+                // that the attribute can reference the tag
+                var ownAttributeInfos = GetParameterAttributeInfosLocked(tag)
+                    .Concat(GetSpecificAttributeInfosLocked(tag)
+                    .Distinct(ai => ai.AttributeDeclaredElement.ShortName));
+                ownAttributes.AddRange(ownAttributeInfos);
+
+                // Only include common attributes if they're not already part of the own attributes
+                var ownAttributeNames = ownAttributes.ToHashSet(a => a.AttributeDeclaredElement.ShortName);
+                var inheritedAttributeInfos = GetCommonAttributeInfosLocked()
+                    .Where(ai => !ownAttributeNames.Contains(ai.AttributeDeclaredElement.ShortName));
+                inheritedAttributes.AddRange(inheritedAttributeInfos);
 
                 tags.Add(name, tag);
             }
             return tag;
+        }
+
+        private IEnumerable<AttributeInfo> GetParameterAttributeInfosLocked(IHtmlTagDeclaredElement tag)
+        {
+            return from d in cache.Directives
+                where d.IsElement && d.Name.Equals(tag.ShortName, StringComparison.InvariantCultureIgnoreCase)
+                from p in d.Parameters
+                from n in GetPrefixedNames(p.Name)
+                select new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
         }
 
         private IEnumerable<AttributeInfo> GetSpecificAttributeInfosLocked(IHtmlTagDeclaredElement tag)

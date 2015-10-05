@@ -31,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
@@ -38,6 +39,7 @@
     <StartArguments>/ReSharper.Plugin $(AssemblyName).dll /ReSharper.Internal</StartArguments>
     <StartWorkingDirectory>$(MSBuildProjectDirectory)\$(OutputPath)</StartWorkingDirectory>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="antlr.runtime">
@@ -160,6 +162,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Feature\Services\Caches\AngularJsCache.cs" />
+    <Compile Include="Feature\Services\Caches\AngularJsCacheItems.cs" />
+    <Compile Include="Feature\Services\Caches\Directive.cs" />
+    <Compile Include="Feature\Services\Caches\Filter.cs" />
+    <Compile Include="Feature\Services\Caches\Parameter.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
     <Compile Include="Feature\Services\CodeCompletion\OverriddenAngularJsItemsRemover.cs" />
