@@ -114,7 +114,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                     where !IsKnownCommonAttribute(p.Name, providers)
                     from n in GetPrefixedNames(p.Name)
                     select
-                        new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
+                        new AttributeInfo(GetOrCreateAttributeLocked(n, tag),
+                            p.IsOptional ? DefaultAttributeValueType.IMPLIED : DefaultAttributeValueType.REQUIRED, null);
 
                 // Parameter attributes take precedence over attribute directives. Only include one.
                 return parameterAttributeInfos.Concat(attributeInfos)
