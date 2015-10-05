@@ -40,6 +40,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                 foreach (var directive in directives.OrderBy(d => d.Name))
                 {
                     tw.WriteLine("{0} {1} {2} <{3}> {4}", directive.OriginalName, directive.Name, directive.Restrictions, string.Join(", ", directive.Tags), directive.Offset);
+                    foreach (var parameter in directive.Parameters.OrderBy(p => p.Name))
+                    {
+                        tw.WriteLine("\t{0} {1} {2} default: <{3}> {4}", parameter.Name, parameter.Type, parameter.IsOptional ? "optional" : "required", parameter.DefaultValue, parameter.Description);
+                    }
                 }
             });
         }

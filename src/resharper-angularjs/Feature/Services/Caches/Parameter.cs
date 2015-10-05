@@ -24,13 +24,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public readonly string Type;
         public readonly bool IsOptional;
         public readonly string Description;
+        public readonly string DefaultValue;
 
-        public Parameter(string name, string type, bool isOptional, string description)
+        public Parameter(string name, string type, bool isOptional, string description, string defaultValue)
         {
             Name = name;
             Type = type;
             IsOptional = isOptional;
             Description = description;
+            DefaultValue = defaultValue;
         }
 
         public static Parameter Read(UnsafeReader reader)
@@ -39,7 +41,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             var type = reader.ReadString();
             var isOptional = reader.ReadBoolean();
             var description = reader.ReadString();
-            return new Parameter(name, type, isOptional, description);
+            var defaultValue = reader.ReadString();
+            return new Parameter(name, type, isOptional, description, defaultValue);
         }
 
         public void Write(UnsafeWriter writer)
@@ -48,6 +51,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             writer.Write(Type);
             writer.Write(IsOptional);
             writer.Write(Description);
+            writer.Write(DefaultValue);
         }
     }
 }

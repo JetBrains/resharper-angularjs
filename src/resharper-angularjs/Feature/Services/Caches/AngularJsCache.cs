@@ -204,15 +204,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
                             // TODO: There might be alternative names
                             // If the description starts with e.g. "|name ", then this is an alternative name
-                            // TODO: What does it mean when the name is in brackets, e.g. "[ngTrim=true]" (default value?)
                             // Type can be string, expression, number, boolean
+                            // TODO: Type can also be multiple values, e.g. string|expression (ngPluralize.count)
                             // TODO: A parameter with the same name as the directive gives the type + default value of the directive itself - add this information to Directive
                             var parameters = from p in paramTags ?? EmptyArray<IParameterTag>.Instance
                                 let isOptional = p.DeclaredType.EndsWith("=")
                                 let type = p.DeclaredType.Replace("=", string.Empty)
                                 let parameterName = GetNormalisedName(p.DeclaredName)
                                 where !parameterName.Equals(formattedName, StringComparison.InvariantCultureIgnoreCase)
-                                select new Parameter(parameterName, p.DeclaredType, isOptional, p.DescriptionText);
+                                select CreateParameter(parameterName, type, isOptional, p);
 
                             directives.Add(new Directive(name, formattedName, restrictions, tags, nameOffset, parameters.ToList()));
                         }
@@ -222,6 +222,29 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         }
                     }
                 }
+            }
+
+            private static Parameter CreateParameter(string parameterName, string type, bool isOptional, IParameterTag parameterTag)
+            {
+                var description = parameterTag.DescriptionText;
+                var defaultValue = string.Empty;
+                if (string.IsNullOrEmpty(parameterName) && !string.IsNullOrEmpty(description))
+                {
+                    // If the name is empty, the description might be starting with e.g. [ngTrim=true],
+                    // which provides a default value for the parameter
+                    if (description.StartsWith("["))
+                    {
+                        var end = description.IndexOf(']');
+                        var equals = description.IndexOf('=');
+                        if (end == -1 || equals == -1)
+                            return null;    // TODO: We don't handle nulls!
+
+                        parameterName = GetNormalisedName(description.Substring(1, equals - 1).Trim());
+                        defaultValue = description.Substring(equals + 1, end - equals - 1).Trim();
+                        description = description.Substring(end + 1).Trim();
+                    }
+                }
+                return new Parameter(parameterName, type, isOptional, description, defaultValue);
             }
 
             private static string GetNormalisedName(string name)
