@@ -33,8 +33,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public AngularJsCache(Lifetime lifetime, IPersistentIndexManager persistentIndexManager)
             : base(lifetime, persistentIndexManager, AngularJsCacheItems.Marshaller)
         {
+#if DEBUG
             // TODO: Useful for testing. Remove for release
             ClearOnLoad = true;
+#endif
 
             CacheUpdated = new SimpleSignal(lifetime, "AngularJsCache");
         }
