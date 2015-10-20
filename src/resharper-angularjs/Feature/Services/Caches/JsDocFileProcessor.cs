@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using JetBrains.ReSharper.Psi.JavaScript.Tree.JsDoc;
 using JetBrains.ReSharper.Psi.JavaScript.Util.JsDoc;
 using JetBrains.ReSharper.Psi.Tree;
@@ -83,7 +82,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         // For attributes, the parameter name is the same as the directive name
 
                         name = StringUtil.Unquote(name);
-                        var formattedName = GetNormalisedName(name);
+                        var formattedName = DirectiveUtil.GetNormalisedName(name);
 
                         // TODO: There might be alternative names
                         // If the description starts with e.g. "|name ", then this is an alternative name
@@ -93,7 +92,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                         var parameters = from p in paramTags ?? EmptyArray<IParameterTag>.Instance
                             let isOptional = p.DeclaredType.EndsWith("=")
                             let type = p.DeclaredType.Replace("=", string.Empty)
-                            let parameterName = GetNormalisedName(p.DeclaredName)
+                            let parameterName = DirectiveUtil.GetNormalisedName(p.DeclaredName)
                             where !parameterName.Equals(formattedName, StringComparison.InvariantCultureIgnoreCase)
                             select CreateParameter(parameterName, type, isOptional, p);
 
@@ -122,17 +121,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                     if (end == -1 || @equals == -1)
                         return null;    // TODO: We don't handle nulls!
 
-                    parameterName = GetNormalisedName(description.Substring(1, @equals - 1).Trim());
+                    parameterName = DirectiveUtil.GetNormalisedName(description.Substring(1, @equals - 1).Trim());
                     defaultValue = description.Substring(@equals + 1, end - @equals - 1).Trim();
                     description = description.Substring(end + 1).Trim();
                 }
             }
             return new Parameter(parameterName, type, isOptional, description, defaultValue);
-        }
-
-        private static string GetNormalisedName(string name)
-        {
-            return Regex.Replace(name, @"(\B[A-Z])", "-$1").ToLowerInvariant();
         }
     }
 }

@@ -165,11 +165,14 @@
     <Compile Include="Feature\Services\Caches\AngularJsCacheItems.cs" />
     <Compile Include="Feature\Services\Caches\AngularJsCacheItemsBuilder.cs" />
     <Compile Include="Feature\Services\Caches\Directive.cs" />
+    <Compile Include="Feature\Services\Caches\DirectiveUtil.cs" />
     <Compile Include="Feature\Services\Caches\Filter.cs" />
     <Compile Include="Feature\Services\Caches\JsDocFileProcessor.cs" />
+    <Compile Include="Feature\Services\Caches\JsInvocationProcessor.cs" />
     <Compile Include="Feature\Services\Caches\Parameter.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\AbbreviatedTextLookupItem.cs" />
+    <Compile Include="Hacks\CodeCompletion\AutomaticTagItemsProvider.cs" />
     <Compile Include="Feature\Services\CodeCompletion\OverriddenAngularJsItemsRemover.cs" />
     <Compile Include="Feature\Services\Descriptions\AngularJsHtmlElementDescriptionProvider.cs" />
     <Compile Include="Psi\Html\AngularJsDeclaredElementIconProvider.cs" />

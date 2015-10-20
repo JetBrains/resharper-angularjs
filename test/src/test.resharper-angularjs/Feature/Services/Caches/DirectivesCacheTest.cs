@@ -23,6 +23,7 @@ using NUnit.Framework;
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 {
     [TestFixture]
+    [TestFileExtension(JavaScriptProjectFileType.JS_EXTENSION)]
     public class DirectivesCacheTest : BaseTestWithSingleProject
     {
         protected override string RelativeTestDataPath { get { return "Caches"; } }
@@ -64,6 +65,24 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
         public void CacheDefaultAngularDirectives14()
         {
             DoTestSolution(@"..\angular.1.4.0.js");
+        }
+
+        [Test]
+        public void SimpleDirectiveFromSource()
+        {
+            DoNamedTest();
+        }
+
+        [Test]
+        public void DirectiveFromSourceWithRestrictProperty()
+        {
+            DoNamedTest();
+        }
+
+        [Test]
+        public void DirectiveFromSourceWithInjectedFunction()
+        {
+            DoNamedTest();
         }
     }
 }
