@@ -1,0 +1,90 @@
+﻿Directives: 57
+a a E <ANY> 568270
+form form E <ANY> 591873
+	name string optional default: <> Name of the form. If specified, the form controller will be published into related scope, under this name.
+input input E <ANY> 630747
+	name string optional default: <> Property name of the form under which the control is published.
+	ng-change string optional default: <> Angular expression to be executed when input changes due to user interaction with the input element.
+	ng-maxlength number optional default: <> Sets `maxlength` validation error key if the value is longer than maxlength.
+	ng-minlength number optional default: <> Sets `minlength` validation error key if the value is shorter than minlength.
+	ng-model string required default: <> Assignable angular expression to data-bind to.
+	ng-pattern string optional default: <> Sets `pattern` validation error key if the value does not match the RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for patterns defined as scope expressions.
+	ng-required boolean optional default: <> Sets `required` attribute if set to true
+	ng-trim boolean optional default: <true> If set to false Angular will not automatically trim the input. This parameter is ignored for input[type=password] controls, which will never trim the input.
+	required string optional default: <> Sets `required` validation error key if the value is not entered.
+ngApp ng-app AE <ANY> 36300
+ngBind ng-bind AC <ANY> 663228
+ngBindHtml ng-bind-html AE <ANY> 668005
+ngBindTemplate ng-bind-template AE <ANY> 665719
+ngBlur ng-blur AE <window, input, select, textarea, a> 709306
+ngChange ng-change AE <input> 654259
+ngChecked ng-checked A <INPUT> 577238
+ngClass ng-class AC <ANY> 674283
+ngClassEven ng-class-even AC <ANY> 681825
+ngClassOdd ng-class-odd AC <ANY> 680282
+ngClick ng-click AE <ANY> 697507
+ngCloak ng-cloak AC <ANY> 683393
+ngController ng-controller AE <ANY> 685932
+ngCopy ng-copy AE <window, input, select, textarea, a> 710106
+ngCsp ng-csp AE <html> 695045
+ngCut ng-cut AE <window, input, select, textarea, a> 710666
+ngDblclick ng-dblclick AE <ANY> 700250
+ngDisabled ng-disabled A <INPUT> 575525
+ngFocus ng-focus AE <window, input, select, textarea, a> 708663
+ngForm ng-form EAC <ANY> 591201
+ngHide ng-hide AE <ANY> 763088
+ngHref ng-href A <A> 569944
+ngIf ng-if A <ANY> 711761
+ngInclude ng-include ECA <ANY> 716773
+	autoscroll string optional default: <> Whether `ngInclude` should call {@link ng.$anchorScroll
+ *                  $anchorScroll} to scroll the viewport after the content is loaded. - If the attribute is not set, disable scrolling. - If the attribute is set without value, enable scrolling. - Otherwise enable scrolling only if the expression evaluates to truthy value.
+	onload string optional default: <> Expression to evaluate when a new partial is loaded.
+ngInit ng-init AC <ANY> 726126
+ngKeydown ng-keydown AE <ANY> 704333
+ngKeypress ng-keypress AE <ANY> 705661
+ngKeyup ng-keyup AE <ANY> 704870
+ngList ng-list AE <input> 657409
+ngModel ng-model AE <input> 649788
+ngMousedown ng-mousedown AE <ANY> 700837
+ngMouseenter ng-mouseenter AE <ANY> 702590
+ngMouseleave ng-mouseleave AE <ANY> 703173
+ngMousemove ng-mousemove AE <ANY> 703756
+ngMouseover ng-mouseover AE <ANY> 702011
+ngMouseup ng-mouseup AE <ANY> 701451
+ngNonBindable ng-non-bindable AC <ANY> 728392
+ngOpen ng-open A <DETAILS> 581680
+ngPaste ng-paste AE <window, input, select, textarea, a> 711208
+ngPluralize ng-pluralize EA <ANY> 729603
+	count string|expression required default: <> The variable to be bound to.
+	offset number optional default: <> Offset to deduct from the total number.
+	when string required default: <> The mapping between plural category to its corresponding strings.
+ngReadonly ng-readonly A <INPUT> 578685
+ngRepeat ng-repeat AE <ANY> 739663
+ngSelected ng-selected A <OPTION> 580160
+ngShow ng-show AE <ANY> 756814
+ngSrc ng-src A <IMG> 574125
+ngSrcset ng-srcset A <IMG> 574813
+ngStyle ng-style AC <ANY> 769269
+ngSubmit ng-submit AE <form> 706225
+ngSwitch ng-switch EA <ANY> 771230
+ngTransclude ng-transclude AC <ANY> 778678
+ngValue ng-value AE <input> 660809
+script script E <ANY> 781169
+	id string required default: <> Cache name of the template.
+	type string required default: <> Must be set to `'text/ng-template'`.
+select select E <ANY> 782890
+	name string optional default: <> Property name of the form under which the control is published.
+	ng-model string required default: <> Assignable angular expression to data-bind to.
+	ng-options comprehension_expression optional default: <> in one of the following forms: * for array data sources: * `label` **`for`** `value` **`in`** `array` * `select` **`as`** `label` **`for`** `value` **`in`** `array` * `label`  **`group by`** `group` **`for`** `value` **`in`** `array` * `select` **`as`** `label` **`group by`** `group` **`for`** `value` **`in`** `array` **`track by`** `trackexpr` * for object data sources: * `label` **`for (`**`key` **`,`** `value`**`) in`** `object` * `select` **`as`** `label` **`for (`**`key` **`,`** `value`**`) in`** `object` * `label` **`group by`** `group` **`for (`**`key`**`,`** `value`**`) in`** `object` * `select` **`as`** `label` **`group by`** `group` **`for` `(`**`key`**`,`** `value`**`) in`** `object` Where: * `array` / `object`: an expression which evaluates to an array / object to iterate over. * `value`: local variable which will refer to each item in the `array` or each property value of `object` during iteration. * `key`: local variable which will refer to a property name in `object` during iteration. * `label`: The result of this expression will be the label for `<option>` element. The `expression` will most likely refer to the `value` variable (e.g. `value.propertyName`). * `select`: The result of this expression will be bound to the model of the parent `<select>` element. If not specified, `select` expression will default to `value`. * `group`: The result of this expression will be used to group options using the `<optgroup>` DOM element. * `trackexpr`: Used when working with an array of objects. The result of this expression will be used to identify the objects in the array. The `trackexpr` will most likely refer to the `value` variable (e.g. `value.propertyName`).
+	ng-required string optional default: <> Adds `required` attribute and `required` validation constraint to the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of `required` when you want to data-bind to the `required` attribute.
+	required string optional default: <> The control is considered valid only if value is entered.
+textarea textarea E <ANY> 629199
+	name string optional default: <> Property name of the form under which the control is published.
+	ng-change string optional default: <> Angular expression to be executed when input changes due to user interaction with the input element.
+	ng-maxlength number optional default: <> Sets `maxlength` validation error key if the value is longer than maxlength.
+	ng-minlength number optional default: <> Sets `minlength` validation error key if the value is shorter than minlength.
+	ng-model string required default: <> Assignable angular expression to data-bind to.
+	ng-pattern string optional default: <> Sets `pattern` validation error key if the value does not match the RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for patterns defined as scope expressions.
+	ng-required string optional default: <> Adds `required` attribute and `required` validation constraint to the element when the ngRequired expression evaluates to true. Use `ngRequired` instead of `required` when you want to data-bind to the `required` attribute.
+	ng-trim boolean optional default: <true> If set to false Angular will not automatically trim the input.
+	required string optional default: <> Sets `required` validation error key if the value is not entered.

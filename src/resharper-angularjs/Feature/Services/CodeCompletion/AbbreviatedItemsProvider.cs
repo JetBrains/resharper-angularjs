@@ -42,8 +42,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     public class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
         private static readonly string[] Abbreviations = {"ng-", "data-ng-", "x-ng-"};
-        private static readonly Key IdentityKey = new Key("NgCodeCompletionItem");
-        private static readonly object IdentityObject = new object();
+        private static readonly Key ExplicitlyAddedKey = new Key("NgCodeCompletionItem");
+        private static readonly object ExplicitlyAddedKeyValue = new object();
 
         protected override bool IsAvailable(HtmlCodeCompletionContext context)
         {
@@ -53,7 +53,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
                               || context.BasicContext.Parameters.IsAutomaticCompletion;
 
             // Only if the current token is expected to be an attribute
-            return isAvailable && context.Reference is IHtmlAttributeReference;
+            return isAvailable && (context.Reference is IHtmlAttributeReference || context.Reference is IHtmlTagReference);
         }
 
         protected override TextLookupRanges GetDefaultRanges(HtmlCodeCompletionContext context)
@@ -286,8 +286,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         private static void AddItem(string abbreviation, string name, IDeclaredElement declaredElement, HtmlCodeCompletionContext context, GroupedItemsCollector collector)
         {
-            var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement), LogoThemedIcons.Angularjs.Id);
-            item.PutData(IdentityKey, IdentityObject);
+            // Add the element as an item, but we need it to be dynamic, so we need to decorate it
+            var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement));
+            item.PutData(ExplicitlyAddedKey, ExplicitlyAddedKeyValue);
             item.PutData(BaseDynamicRule.PrefixKey, abbreviation);
             SortItem(item, abbreviation, name);
             collector.Add(item);
@@ -381,10 +382,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         private static void RemoveItemsToAbbreviate(GroupedItemsCollector collector)
         {
+            // Remove all items that begin with a prefix that we're abbreviating, unless they've
+            // got our key to say they've been explicitly added
             var toRemove = from item in collector.Items
                 let unwrappedItem = GetDeclaredElementLookupItem(item)
                 where unwrappedItem != null
-                      && unwrappedItem.GetData(IdentityKey) == null
+                      && unwrappedItem.GetData(ExplicitlyAddedKey) == null
                       && StartsWithAbbreviation(unwrappedItem.PreferredDeclaredElement.Element.ShortName)
                 select unwrappedItem;
 

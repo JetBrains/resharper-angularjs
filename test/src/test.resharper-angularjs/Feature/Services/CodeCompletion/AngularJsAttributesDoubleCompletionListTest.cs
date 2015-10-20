@@ -14,6 +14,7 @@
 // limitations under the License.
 #endregion
 
+using System;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.FeaturesTestFramework.Completion;
 using JetBrains.ReSharper.TestFramework;
@@ -25,6 +26,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     [TestFileExtension(HtmlProjectFileType.HTML_EXTENSION)]
     public class AngularJsAttributesDoubleCompletionListTest : WebCodeCompletionTestBase
     {
+        private Version currentVersion;
+
         protected override string RelativeTestDataPath { get { return @"CodeCompletion\Double\List"; } }
 
         protected override CodeCompletionTestType TestType
@@ -32,8 +35,29 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             get { return CodeCompletionTestType.List; }
         }
 
+        protected override string GetGoldTestDataPath(string fileName)
+        {
+            return base.GetGoldTestDataPath(fileName + AngularJsTestVersions.GetProductVersion(currentVersion));
+        }
+
         [Test]
-        public void TestShowAllItemsOnDoubleCompletionWithNoPrefix() { DoNamedTest2(); }
-        [Test] public void TestShowMatchingItemsOnDoubleCompletionWithPrefix() { DoNamedTest2(); }
+        [TestCaseSource(typeof (AngularJsTestVersions), "Versions")]
+        public void TestShowAllItemsOnDoubleCompletionWithNoPrefix(Version version)
+        {
+            DoNamedTest2(version);
+        }
+
+        [Test]
+        [TestCaseSource(typeof (AngularJsTestVersions), "Versions")]
+        public void TestShowMatchingItemsOnDoubleCompletionWithPrefix(Version version)
+        {
+            DoNamedTest2(version);
+        }
+
+        private void DoNamedTest2(Version version)
+        {
+            currentVersion = version;
+            DoNamedTest2(AngularJsTestVersions.GetAngularJsVersion(BaseTestDataPath, version));
+        }
     }
 }
