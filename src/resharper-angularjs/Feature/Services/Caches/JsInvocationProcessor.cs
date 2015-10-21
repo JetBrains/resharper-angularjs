@@ -14,11 +14,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
         public void ProcessInvocationExpression(IInvocationExpression invocationExpression)
         {
-            if (invocationExpression.Arguments.Count <= 1)
+            if (invocationExpression.Arguments.Count != 2)
                 return;
 
             var stringLiteralExpression = invocationExpression.Arguments[0];
-            var identifier = GetStringLiteralValue(stringLiteralExpression);
+            var identifier = stringLiteralExpression.GetStringLiteralValue();
             if (identifier == null)
                 return;
 
@@ -32,15 +32,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                     ProcessDirective(invocationExpression, identifier, stringLiteralExpression.GetTreeStartOffset().Offset);
                     break;
             }
-        }
-
-        private static string GetStringLiteralValue(IExpressionOrSpread expresion)
-        {
-            var literalExpression = expresion as IJavaScriptLiteralExpression;
-            if (literalExpression != null && literalExpression.IsStringLiteral())
-                return literalExpression.GetStringValue();
-
-            return null;
         }
 
         private void ProcessDirective(IInvocationExpression invokedExpression, string identifier, int offset)
@@ -104,7 +95,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             foreach (var initializer in objectLiteral.Properties.OfType<IObjectPropertyInitializer>())
             {
                 if (initializer.DeclaredName == "restrict")
-                    return GetStringLiteralValue(initializer.Value) ?? defaultRestrictions;
+                    return initializer.Value.GetStringLiteralValue() ?? defaultRestrictions;
             }
             return defaultRestrictions;
         }

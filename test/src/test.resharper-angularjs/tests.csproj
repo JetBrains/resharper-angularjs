@@ -16,7 +16,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JetBrains.ReSharper.Plugins.AngularJS</RootNamespace>
     <AssemblyName>JetBrains.ReSharper.Plugins.AngularJS.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -29,6 +29,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -38,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="antlr.runtime">
@@ -169,10 +171,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Feature\Services\CodeCompletion\AngularJsAttributesDoubleCompletionListTest.cs" />
-    <Compile Include="Psi\AngularJs\AngularJsLanguageTests.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\AngularJsLexerTest.cs" />
-    <Compile Include="Psi\AngularJs\Parsing\AngularJsParserTest.cs" />
     <Compile Include="Psi\Html\AngularJsHtmlElementsProviderTest.cs" />
+    <Compile Include="Psi\JavaScript\DependencyInjectionTest.cs" />
+    <Compile Include="Psi\JavaScript\JavaScriptResolveTestBase.cs" />
     <Compile Include="TestEnvironment.cs" />
   </ItemGroup>
   <ItemGroup>
