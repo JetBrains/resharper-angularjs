@@ -15,10 +15,7 @@
 #endregion
 
 using System.Collections.Generic;
-using System.Linq;
 using JetBrains.ReSharper.Psi.Cpp.Util;
-using JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve;
-using JetBrains.ReSharper.Psi.Html.Impl.References;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Resolve;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Resolve;
@@ -53,10 +50,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
                 {
                     var acceptReference = AcceptReference(owner.Reference);
                     if (acceptReference)
-                        return acceptReference;
+                        return true;
                 }
             }
-            //reference.Owner
             return acceptableReferenceNames.IsEmpty() || acceptableReferenceNames.ContainsAny(reference.GetAllNames());
         }
 
@@ -73,7 +69,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
         [Test] public void TestInjectFunctionValue() { DoNamedTest2("myValueFunc");}
         [Test] public void TestInjectFactory() { DoNamedTest2("myFactory");}
         [Test] public void TestInjectService() { DoNamedTest2("myService");}
-        [Test] public void TestInjectProvider() { DoNamedTest2("greeter");}
+        [Test] public void TestInjectProviderValue() { DoNamedTest2("greeter");}
 
         // TODO: Decorator...
 
