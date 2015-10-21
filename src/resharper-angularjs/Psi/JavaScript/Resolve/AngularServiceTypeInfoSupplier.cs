@@ -133,7 +133,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                             // TODO: $get might be an injectable function, that is wrapped in an array literal...
                             var constructedFactoryType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.EmptyList);
                             serviceType = constructedFactoryType.GetPropertyReferenceType("$get").GetReturnType();
-                            serviceOffset = factoryFunction.GetTreeStartOffset().Offset;
+                            serviceOffset = context.GetDocumentStartOffset(factoryFunction);
                         }
                         break;
 
@@ -142,7 +142,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                         {
                             // The return type of the factory function
                             serviceType = factoryFunction.GetFunctionImplicitReturnType(context);
-                            serviceOffset = factoryFunction.GetTreeStartOffset().Offset;
+                            serviceOffset = context.GetDocumentStartOffset(factoryFunction);
                         }
                         break;
 
@@ -152,7 +152,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                             // The factory function is a constructor, use the constructed type
                             // TODO: Is this right? What invocation info should I use?
                             serviceType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.EmptyList);
-                            serviceOffset = factoryFunction.GetTreeStartOffset().Offset;
+                            serviceOffset = context.GetDocumentStartOffset(factoryFunction);
                         }
                         break;
 
@@ -160,7 +160,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                     case "constant":
                         // The type of the second argument - function, value, etc.
                         serviceType = secondArgument.GetJsType(context);
-                        serviceOffset = secondArgument.GetTreeStartOffset().Offset;
+                        serviceOffset = context.GetDocumentStartOffset(secondArgument);
                         break;
 
                     // TODO: "decorator" - override an existing service
