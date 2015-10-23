@@ -70,6 +70,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 
         public bool IsForAnyTag()
         {
+            if (Tags.Length == 0)
+                return true;
             foreach (var t in Tags)
             {
                 if (t.Equals(AnyTagName, StringComparison.InvariantCultureIgnoreCase))
