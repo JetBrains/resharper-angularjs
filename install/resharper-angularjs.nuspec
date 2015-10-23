@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS (for ReSharper 9)</title>
-    <version>1.2.2</version>
+    <version>1.3.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,12 +12,16 @@
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
     <releaseNotes>
-&#8226; Support for ReSharper 9.1
+&#8226; Support for ReSharper 9.2 (#33)
+&#8226; HTML elements and attributes dynamically parsed from ngDoc comments (#6, #30, #32)
+&#8226; Improve code completion for injected services (#7)
+
+From 1.2.2:
 &#8226; Tweaked sort order to put ng- items above data-ng-
 &#8226; Added angular icons to the code completion items
     </releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[2.0]" />
+      <dependency id="Wave" version="[3.0]" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
