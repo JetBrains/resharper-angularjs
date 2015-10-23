@@ -56,35 +56,55 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
             return acceptableReferenceNames.IsEmpty() || acceptableReferenceNames.ContainsAny(reference.GetAllNames());
         }
 
-        private void DoNamedTest2(params string[] names)
+        private void DoNamedTestForReferences(params string[] names)
         {
             SetInterestingReferences(names);
-            base.DoNamedTest2();
+            DoNamedTest2();
         }
 
-        [Test] public void TestInjectNumberConstant() { DoNamedTest2("myConstant");}
-        [Test] public void TestInjectStringConstant() { DoNamedTest2("myConstant");}
-        [Test] public void TestInjectFunctionConstant() { DoNamedTest2("myConstantFunc");}
-        [Test] public void TestInjectStringValue() { DoNamedTest2("myValue");}
-        [Test] public void TestInjectFunctionValue() { DoNamedTest2("myValueFunc");}
-        [Test] public void TestInjectFactory() { DoNamedTest2("myFactory");}
-        [Test] public void TestInjectService() { DoNamedTest2("myService");}
-        [Test] public void TestInjectProviderValue() { DoNamedTest2("greeter");}
+        [Test] public void TestInjectNumberConstant() { DoNamedTestForReferences("myConstant");}
+        [Test] public void TestInjectStringConstant() { DoNamedTestForReferences("myConstant");}
+        [Test] public void TestInjectFunctionConstant() { DoNamedTestForReferences("myConstantFunc");}
+        [Test] public void TestInjectStringValue() { DoNamedTestForReferences("myValue");}
+        [Test] public void TestInjectFunctionValue() { DoNamedTestForReferences("myValueFunc");}
+        [Test] public void TestInjectFactory() { DoNamedTestForReferences("myFactory");}
+        [Test] public void TestInjectService() { DoNamedTestForReferences("myService");}
+        [Test] public void TestInjectProviderValue() { DoNamedTestForReferences("greeter");}
+
+        [Test] public void TestInjectProvider() { DoNamedTestForReferences("greeter", "greeterProvider"); }
 
         // TODO: Decorator...
 
-        [Test] public void TestInjectByStringLiteral() { DoNamedTest2("v", "f", "s"); }
+        [Test] public void TestInjectByStringLiteral() { DoNamedTestForReferences("v", "f", "s"); }
 
-        [Test] public void TestInjectIntoController() { DoNamedTest2("myFactory"); }
-        [Test] public void TestInjectIntoDirective() { DoNamedTest2("myFactory"); }
-        [Test] public void TestInjectIntoFilter() { DoNamedTest2("greet"); }
-        [Test] public void TestInjectIntoAnimation() { DoNamedTest2("myOpacity"); }
+        [Test] public void TestInjectIntoController() { DoNamedTestForReferences("myFactory"); }
+        [Test] public void TestInjectIntoDirective() { DoNamedTestForReferences("myFactory"); }
+        [Test] public void TestInjectIntoFilter() { DoNamedTestForReferences("greet"); }
+        [Test] public void TestInjectIntoAnimation() { DoNamedTestForReferences("myOpacity"); }
 
-        [Test] public void TestInjectIntoConfig() { DoNamedTest2("myConstant"); }
-        [Test] public void TestInjectIntoRun() { DoNamedTest2("myConstant"); }
+        [Test] public void TestInjectIntoConfig() { DoNamedTestForReferences("myConstant"); }
+        [Test] public void TestInjectIntoRun() { DoNamedTestForReferences("myConstant"); }
 
-        [Test] public void TestInjectIntoFactory() { DoNamedTest2("defaultGreeting"); }
-        [Test] public void TestInjectIntoService() { DoNamedTest2("defaultGreeting"); }
-        [Test] public void TestInjectIntoProvider() { DoNamedTest2("defaultSalutation"); }
+        [Test] public void TestInjectIntoFactory() { DoNamedTestForReferences("defaultGreeting"); }
+        [Test] public void TestInjectIntoService() { DoNamedTestForReferences("defaultGreeting"); }
+        [Test] public void TestInjectIntoProvider() { DoNamedTestForReferences("defaultSalutation"); }
+
+        [Test]
+        public void TestInjectBuiltinServices()
+        {
+            SetInterestingReferences(
+                "$cacheFactory", "$cacheFactoryProvider",
+                "$anchorScroll", "$anchorScrollProvider",
+                "$animate", "$animateProvider",
+                "$templateCache");
+            DoNamedTest2(@"..\..\..\..\angular.1.4.0.js");
+        }
+
+        [Test]
+        public void TestInjectBuiltinServicesByStringLiteral()
+        {
+            SetInterestingReferences("l", "lp");
+            DoNamedTest2(@"..\..\..\..\angular.1.4.0.js");
+        }
     }
 }
