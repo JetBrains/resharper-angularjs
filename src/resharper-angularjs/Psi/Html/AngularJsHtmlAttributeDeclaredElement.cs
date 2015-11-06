@@ -90,6 +90,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public IHtmlAttributeValueType ValueType { get; private set; }
         public IHtmlTagDeclaredElement Tag { get; private set; }
 
+        // Canonical DOM name, for e.g. HTML in JSX, which needs to be case sensitive onClick vs onclick
+        public string DomName { get { return null; } }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(this, obj)) return true;

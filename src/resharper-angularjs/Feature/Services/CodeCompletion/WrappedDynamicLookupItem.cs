@@ -106,7 +106,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool IgnoreSoftOnSpace
         {
             get { return Item.IgnoreSoftOnSpace; }
-            set { Item.IgnoreSoftOnSpace = value; }
         }
 
         public int Identity
@@ -150,12 +149,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         {
             get { return Item.Mode; }
             set { Item.Mode = value; }
-        }
-
-        public bool IsStable
-        {
-            get { return Item.IsStable; }
-            set { Item.IsStable = value; }
         }
 
         public LookupItemPlacement Placement

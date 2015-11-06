@@ -98,7 +98,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public IType GetType(IHtmlTag treeTag)
         {
             // This is used by asp.net, to map tags to controls, I think
-            return TypeFactory.CreateUnknownType(treeTag.GetPsiModule(), treeTag.GetResolveContext());
+            return TypeFactory.CreateUnknownType(treeTag);
         }
 
         public TagClosingRequirement ClosingRequirement { get { return TagClosingRequirement.REGULAR_TAG_CLOSING_REQUIRED; } }
