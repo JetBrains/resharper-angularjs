@@ -22,6 +22,8 @@ using JetBrains.ReSharper.Features.Intellisense.CodeCompletion.Html;
 using JetBrains.ReSharper.Plugins.AngularJS.Psi.Html;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html;
+using JetBrains.ReSharper.Psi.Html.Tree;
+using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.Text;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
@@ -37,7 +39,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
     {
         protected override bool IsAvailable(HtmlCodeCompletionContext context)
         {
-            return context.BasicContext.Parameters.IsAutomaticCompletion;
+            if (context.BasicContext.Parameters.IsAutomaticCompletion)
+            {
+                if (context.TreeNode != null && context.TreeNode.GetContainingNode<IHtmlTagFooter>() != null)
+                    return false;
+                return context.Reference is ICompleteableReference;
+            }
+            return false;
         }
 
         protected override bool AddLookupItems(HtmlCodeCompletionContext context, GroupedItemsCollector collector)
