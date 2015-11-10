@@ -24,7 +24,7 @@ From 1.2.2:
 &#8226; Added angular icons to the code completion items
     </releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[3.0]" />
+      <dependency id="Wave" version="[4.0]" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
