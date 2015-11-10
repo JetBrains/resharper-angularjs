@@ -23,6 +23,7 @@ using JetBrains.ReSharper.Plugins.AngularJS.Psi.Html;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html;
 using JetBrains.ReSharper.Psi.Html.Tree;
+using JetBrains.ReSharper.Psi.HtmlInJsx;
 using JetBrains.ReSharper.Psi.Resolve;
 using JetBrains.Text;
 
@@ -41,6 +42,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
         {
             if (context.BasicContext.Parameters.IsAutomaticCompletion)
             {
+                // JSX works correctly, but it looks like the other HTML languages (e.g. Razor) don't
+                if (context.Language.IsExactly<HtmlInJsxLanguage>())
+                    return false;
                 if (context.TreeNode != null && context.TreeNode.GetContainingNode<IHtmlTagFooter>() != null)
                     return false;
                 return context.Reference is ICompleteableReference;
