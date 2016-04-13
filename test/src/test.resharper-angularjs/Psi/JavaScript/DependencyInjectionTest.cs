@@ -97,7 +97,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
                 "$anchorScroll", "$anchorScrollProvider",
                 "$animate", "$animateProvider",
                 "$templateCache");
-            DoNamedTest2(@"..\..\..\..\angular.1.4.0.js");
+            var path = BaseTestDataPath.Combine("angular.1.4.0.js");
+            DoNamedTest2(path.FullPath);//@"..\..\..\..\angular.1.4.0.js");
         }
 
         [Test]

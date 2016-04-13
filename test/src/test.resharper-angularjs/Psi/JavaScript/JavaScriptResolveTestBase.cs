@@ -14,6 +14,8 @@
 // limitations under the License.
 #endregion
 
+using System;
+using System.Collections.Generic;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.JavaScript.LanguageImpl;
@@ -52,7 +54,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
         {
             var testMethodName2 = TestMethodName2;
             NUnit.Framework.Assert.IsNotNull(testMethodName2, "TestMethodName2 == null");
-            DoTest(testMethodName2 + Extension, otherFiles);
+            var files = new List<string> {testMethodName2 + Extension};
+            files.AddRange(otherFiles);
+            DoTestSolution(files.ToArray());
         }
 
         protected override string Format(IDeclaredElement declaredElement, ISubstitution substitution, PsiLanguageType languageType,

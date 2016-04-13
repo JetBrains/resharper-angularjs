@@ -20,6 +20,8 @@ using JetBrains.TestFramework;
 using JetBrains.TestFramework.Application.Zones;
 using NUnit.Framework;
 
+[assembly: RequiresSTA]
+
 [ZoneDefinition]
 public interface IAngularJsTestZone : ITestsZone, IRequire<PsiFeatureTestZone>
 {

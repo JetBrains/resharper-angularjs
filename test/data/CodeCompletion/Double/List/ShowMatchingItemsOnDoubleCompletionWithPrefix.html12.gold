@@ -1,4 +1,4 @@
-﻿# 18 ITEMS #
+﻿# 24 ITEMS #
 
 + ng-class
 + ng-class-even
@@ -18,3 +18,9 @@ x-ng-class-odd
 x-ng-click
 x-ng-cloak
 x-ng-controller
++ ng-class
++ ng-class-even
++ ng-class-odd
++ ng-click
++ ng-cloak
++ ng-controller

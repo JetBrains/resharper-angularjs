@@ -15,9 +15,11 @@
 #endregion
 
 using System;
+using System.Collections.Generic;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.FeaturesTestFramework.Completion;
 using JetBrains.ReSharper.TestFramework;
+using JetBrains.Util;
 using NUnit.Framework;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
@@ -57,7 +59,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         private void DoNamedTest2(Version version)
         {
             currentVersion = version;
-            DoNamedTest2(AngularJsTestVersions.GetAngularJsVersion(BaseTestDataPath, version));
+            DoNamedTest2();
+        }
+
+        protected override IEnumerable<FileSystemPath> GetFilesToIncludeInSolution(IEnumerable<FileSystemPath> files)
+        {
+            return files.Concat(FileSystemPath.Parse(AngularJsTestVersions.GetAngularJsVersion(BaseTestDataPath, currentVersion)));
         }
     }
 }
