@@ -50,15 +50,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
             base.DoTest();
         }
 
-        protected void DoNamedTest2(params string[] otherFiles)
-        {
-            var testMethodName2 = TestMethodName2;
-            NUnit.Framework.Assert.IsNotNull(testMethodName2, "TestMethodName2 == null");
-            var files = new List<string> {testMethodName2 + Extension};
-            files.AddRange(otherFiles);
-            DoTestSolution(files.ToArray());
-        }
-
         protected override string Format(IDeclaredElement declaredElement, ISubstitution substitution, PsiLanguageType languageType,
             DeclaredElementPresenterStyle presenter, IReference reference)
         {

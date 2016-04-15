@@ -43,7 +43,7 @@ void)
 Function)
 7: result=OK declaredElem=parameter $animateProvider : any ($animate/
 void)
-8: result=DYNAMIC_OK declaredElem=property register : any ((name: any, factory: any) => void)
+8: result=DYNAMIC_OK declaredElem=property register : any ((name: string, factory: any (Function)) => void)
 9: result=OK declaredElem=parameter $animate : any ({
     on; 
     off; 
@@ -65,4 +65,4 @@ void)
     destroy; 
     info; 
 })
-12: result=DYNAMIC_OK declaredElem=property remove : any ((key: any) => void)
+12: result=DYNAMIC_OK declaredElem=property remove : any ((key: string) => void)

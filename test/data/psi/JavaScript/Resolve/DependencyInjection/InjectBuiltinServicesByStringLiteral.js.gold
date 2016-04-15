@@ -6,7 +6,7 @@
 ------------------------------------------------
 0: result=OK declaredElem=parameter lp : any ($log/
 void)
-1: result=DYNAMIC_OK declaredElem=property debugEnabled : any ((flag: any) => any (debugEnabled/void/...))
+1: result=DYNAMIC_OK declaredElem=property debugEnabled : any ((flag?: boolean) => any (debugEnabled/void/...))
 2: result=OK declaredElem=parameter l : any ({
     log; 
     info; 

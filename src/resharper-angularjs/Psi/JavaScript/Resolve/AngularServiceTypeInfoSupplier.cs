@@ -282,8 +282,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                     return;
 
                 // The factory function is a constructor, use the constructed type
-                // TODO: Is this right? What invocation info should I use?
-                var serviceType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.EmptyList);
+                var serviceType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var serviceOffset = context.GetDocumentStartOffset(factoryFunction);
                 AssociateToServiceGlobalType(serviceName, serviceType, serviceOffset);
             }
@@ -422,7 +421,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                 // injectable array literal. Create a composite type that we can populate later, when
                 // we see a provider-like function (e.g. a function ending in Provider)
                 var constructedFactoryType = providerExpression.GetJsType(context).
-                    GetConstructedType(JsUnresolvedTypeArray.EmptyList);
+                    GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var providerFunctionGlobalType = GetProviderFunctionGlobalType(providerFunctionName);
                 var providerType = JavaScriptType.CreateCompositeType(JsCombinedTypeKind.JsDynamic,
                     constructedFactoryType, providerFunctionGlobalType);
@@ -433,7 +432,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
 
             private void AssociateToProviderFunction(string providerFunctionName, IFunctionExpression factoryFunction)
             {
-                var constructedFactoryType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.EmptyList);
+                var constructedFactoryType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var providerFunctionGlobalType = GetProviderFunctionGlobalType(providerFunctionName);
                 var offset = context.GetDocumentStartOffset(factoryFunction);
                 CreateAssignmentAssociation(providerFunctionGlobalType, constructedFactoryType, offset);
@@ -450,7 +449,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
             private void AssociateToServiceGlobalType(string serviceName, string providerFunctionName, IExpressionOrSpread providerExpression)
             {
                 var constructedFactoryType = providerExpression.GetJsType(context).
-                    GetConstructedType(JsUnresolvedTypeArray.EmptyList);
+                    GetConstructedType(JsUnresolvedTypeArray.NoList);
 
                 // The type of the service is the return type of the $get property, if it's a function.
                 // If it's an array literal injectable, we need to add the association later, so create
