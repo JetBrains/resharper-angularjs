@@ -35,6 +35,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
     {
         private readonly AngularJsCache cache;
         private readonly ISolution solution;
+        private readonly HtmlStandardDeclaredElementsProvider standardProvider;
         private readonly object lockObject = new object();
         private readonly IHtmlAttributeValueType cdataAttributeValueType;
         private readonly Dictionary<string, IHtmlTagDeclaredElement> tags = new Dictionary<string, IHtmlTagDeclaredElement>(); 
@@ -43,11 +44,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         private ISymbolTable commonAttributesSymbolTable;
         private ISymbolTable allAttributesSymbolTable;
         private ISymbolTable allTagsSymbolTable;
+        private JetHashSet<string> allTags;
+        private JetHashSet<string> allAttributes;
 
-        public AngularJsHtmlElementsProvider(Lifetime lifetime, AngularJsCache cache, ISolution solution)
+        public AngularJsHtmlElementsProvider(Lifetime lifetime, AngularJsCache cache, ISolution solution, HtmlStandardDeclaredElementsProvider standardProvider)
         {
             this.cache = cache;
             this.solution = solution;
+            this.standardProvider = standardProvider;
 
             // TODO: Finer grained caching?
             // This will clear the cache of elements whenever the AngularJs cache changes, which will be
@@ -131,10 +135,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         {
             lock (lockObject)
             {
-                var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
-
                 var tagDeclaredElements = from d in cache.Directives
-                    where d.IsElement && string.Equals(d.Name, name, StringComparison.InvariantCultureIgnoreCase) && !IsOverridingTag(d.Name, providers)
+                    where d.IsElement && string.Equals(d.Name, name, StringComparison.InvariantCultureIgnoreCase) && !IsOverridingTag(d.Name)
                     select GetOrCreateTagLocked(d.Name);
                 return tagDeclaredElements.FirstOrDefault();
             }
@@ -151,10 +153,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 if (allTagsSymbolTable == null)
                 {
                     var psiServices = solution.GetComponent<IPsiServices>();
-                    var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
 
                     var tagDeclaredElements = from d in cache.Directives
-                        where d.IsElement && !IsOverridingTag(d.Name, providers)
+                        where d.IsElement && !IsOverridingTag(d.Name)
                         from n in GetPrefixedNames(d.Name)
                         select GetOrCreateTagLocked(n);
                     allTagsSymbolTable = new DeclaredElementsSymbolTable<IHtmlTagDeclaredElement>(psiServices, tagDeclaredElements);
@@ -207,8 +208,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                         from n in GetPrefixedNames(p.Name)
                         select GetOrCreateAttributeLocked(n, d.Name);
 
-                    var attributes = attributeDeclaredElements.Concat(parameterAttributeDeclaredElements);
-                    allAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributes);
+                    var attrs = attributeDeclaredElements.Concat(parameterAttributeDeclaredElements);
+                    allAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attrs);
                 }
                 return allAttributesSymbolTable;
             }
@@ -248,15 +249,44 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return true;
         }
 
-        private bool IsOverridingTag(string name, IEnumerable<IHtmlDeclaredElementsProvider> providers)
+        private bool IsOverridingTag(string name)
         {
-            // This feels a little rude...
-            return providers.Where(p => p != this).Any(p => p.GetTag(name) != null);
+            // This is horrible. We can't override existing tags and attributes, but we calling the
+            // other providers dynamically causes serious perf issues. We'll just make do with
+            // caching the standard HTML attributes and hope for the best. We also can't do this
+            // in the constructor, or we get a nasty circular instantiation issue. I'll file a YT
+            // ticket to handle this better in a future version.
+            if (allTags == null)
+            {
+                lock (lockObject)
+                {
+                    if (allTags == null)
+                    {
+                        allTags = standardProvider.GetAllTagsSymbolTable().Names().ToHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
+                    }
+                }
+            }
+            return allTags.Contains(name);
         }
 
         private bool IsKnownCommonAttribute(string name, IEnumerable<IHtmlDeclaredElementsProvider> providers)
         {
-            return providers.Where(p => p != this).Any(p => p.GetAttributes(name).Any());
+            // This is horrible. We can't override existing tags and attributes, but we calling the
+            // other providers dynamically causes serious perf issues. We'll just make do with
+            // caching the standard HTML attributes and hope for the best. We also can't do this
+            // in the constructor, or we get a nasty circular instantiation issue. I'll file a YT
+            // ticket to handle this better in a future version.
+            if (allAttributes == null)
+            {
+                lock (lockObject)
+                {
+                    if (allAttributes == null)
+                    {
+                        allAttributes = standardProvider.GetAllAttributesSymbolTable().Names().ToHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
+                    }
+                }
+            }
+            return allAttributes.Contains(name);
         }
 
         private static string StripPrefix(string name)
