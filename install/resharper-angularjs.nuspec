@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS</title>
-    <version>1.5.0-EAP10</version>
+    <version>1.5.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -13,6 +13,7 @@
     <description>Code completion and live templates for AngularJS</description>
     <releaseNotes>
 &#8226; Support for ReSharper 2016.1
+&#8226; Addressing performance issues while typing (#45)
 
 From 1.4.1:
 &#8226; Support for ReSharper 10 (#39)
