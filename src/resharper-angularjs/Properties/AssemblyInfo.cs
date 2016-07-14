@@ -29,5 +29,5 @@ using System.Reflection;
 [assembly: AssemblyCulture("")]
 
 // Use a static version value so that ReSharper Build won't rebuild referencing assemblies
-[assembly: AssemblyVersion("1.5.0.0")]
+[assembly: AssemblyVersion("1.5.1.0")]
 
