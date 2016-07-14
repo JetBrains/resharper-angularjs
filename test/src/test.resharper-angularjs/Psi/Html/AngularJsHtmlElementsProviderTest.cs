@@ -155,7 +155,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
-                    var tag = cache.GetTag("body", null);
+                    // Ugh. The API changed between 2016.1 and 2016.1.2...
+                    IHtmlTagDeclaredElement tag;
+                    var methodInfo = cache.GetType().GetMethod("GetTag");
+                    if (methodInfo.GetParameters().Length == 3)
+                        tag = (IHtmlTagDeclaredElement) methodInfo.Invoke(cache, new object[] {null, "body", null});
+                    else
+                        tag = (IHtmlTagDeclaredElement) methodInfo.Invoke(cache, new object[] { "body", null });
+                    //var tag = cache.GetTag("body", null);
                     Assert.IsNotNull(tag);
                     var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);
@@ -177,7 +184,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     var provider = solution.GetComponent<AngularJsHtmlElementsProvider>();
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
-                    var tag = cache.GetTag("input", null);
+                    var tag = cache.GetTag(null, "input");
                     Assert.IsNotNull(tag);
                     var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);

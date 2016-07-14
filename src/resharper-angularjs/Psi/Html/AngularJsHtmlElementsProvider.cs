@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using JetBrains.DataFlow;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches;
@@ -40,6 +41,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         private readonly IHtmlAttributeValueType cdataAttributeValueType;
         private readonly Dictionary<string, IHtmlTagDeclaredElement> tags = new Dictionary<string, IHtmlTagDeclaredElement>(); 
         private readonly Dictionary<string, IHtmlAttributeDeclaredElement> attributes = new Dictionary<string, IHtmlAttributeDeclaredElement>();
+        private readonly MethodInfo getTagMethodInfo;
         private IList<AttributeInfo> commonAttributeInfos = new List<AttributeInfo>();
         private ISymbolTable commonAttributesSymbolTable;
         private ISymbolTable allAttributesSymbolTable;
@@ -60,6 +62,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
             // TODO: Is this the right value for angular attributes?
             cdataAttributeValueType = new HtmlAttributeValueType("CDATA");
+
+            // The API for HtmlDeclareElementsCache.GetTag changed between 2016.1 and 2016.1.2
+            getTagMethodInfo = typeof(HtmlDeclaredElementsCache).GetMethod("GetTag");
         }
 
         // Gets a symbol table that contains all common attributes, that is, all attributes that apply to any tag.
@@ -131,6 +136,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         // so providers other than the standard HtmlDeclaredElementsProvider should only return
         // new, non-standard HTML tags
         // Used all over the place to get a declared element for a named tag
+        public IHtmlTagDeclaredElement GetTag(string name, string parentTag)
+        {
+            return GetTag(name);
+        }
+
         public IHtmlTagDeclaredElement GetTag(string name)
         {
             lock (lockObject)
@@ -394,7 +404,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 // Using IHtmlDeclaredElementsProvider to add elements and attributes is surprisingly
                 // tricky. Perhaps I should be creating all attributes and tags at once, rather than
                 // doing it piecemeal. Would definitely be nice to get more fine grained caching for that.
-                tag = solution.GetComponent<HtmlDeclaredElementsCache>().GetTag(tagName, null);
+
+                var htmlDeclaredElementsCache = solution.GetComponent<HtmlDeclaredElementsCache>();
+                // Ugh. The API changed between 2016.1 and 2016.1.2...
+                //tag = htmlDeclaredElementsCache.GetTag(null, tagName);
+                if (getTagMethodInfo.GetParameters().Length == 3)
+                    tag = (IHtmlTagDeclaredElement) getTagMethodInfo.Invoke(htmlDeclaredElementsCache, new object[] {null, tagName, null});
+                else
+                    tag = (IHtmlTagDeclaredElement) getTagMethodInfo.Invoke(htmlDeclaredElementsCache, new object[] {tagName, null});
                 attribute = GetAttributeLocked(key);
                 if (attribute != null)
                     return attribute;
