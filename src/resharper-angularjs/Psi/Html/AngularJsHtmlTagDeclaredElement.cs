@@ -84,7 +84,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         }
 
         public string ShortName { get; private set; }
-        public bool CaseSensistiveName { get { return false; } }
+        public bool CaseSensitiveName { get { return false; } }
         public PsiLanguageType PresentationLanguage { get { return HtmlLanguage.Instance; } }
         public bool Obsolete { get { return false; } }
         public bool NonStandard { get { return false; } }

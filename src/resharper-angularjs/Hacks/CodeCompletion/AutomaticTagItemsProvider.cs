@@ -47,7 +47,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
                     return false;
                 if (context.TreeNode != null && context.TreeNode.GetContainingNode<IHtmlTagFooter>() != null)
                     return false;
-                return context.Reference is ICompleteableReference;
+                return context.Reference is ICompletableReference;
             }
             return false;
         }

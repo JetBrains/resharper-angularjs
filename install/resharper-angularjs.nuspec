@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS</title>
-    <version>1.5.1</version>
+    <version>1.6.1</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,6 +12,10 @@
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
     <releaseNotes>
+&#8226; Updated to ReSharper 2016.2
+&#8226; Initial 1.6.0 release was incorrect, re-compiled and re-released as 1.6.1
+
+From 1.5.1:
 &#8226; Fixed exceptions in ReSharper 2016.1.2
 &#8226; Fixed warning if directive is declared in code and JSDoc
 
@@ -33,16 +37,16 @@ From 1.2.2:
 &#8226; Added angular icons to the code completion items
     </releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[5.0]" />
+      <dependency id="Wave" version="[6.0]" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
   <files>
-    <file src="..\src\resharper-angularjs\bin\Debug\JetBrains.ReSharper.Plugins.AngularJS.dll"
+    <file src="..\src\resharper-angularjs\bin\Release\JetBrains.ReSharper.Plugins.AngularJS.dll"
           target="dotFiles\" />
 
     <!-- Templates -->
-    <file src="..\src\resharper-angularjs\bin\Debug\templates.dotSettings"
+    <file src="..\src\resharper-angularjs\bin\Release\templates.dotSettings"
           target="dotFiles\Extensions\JetBrains.AngularJS\settings\" />
   </files>
 </package>

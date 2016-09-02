@@ -38,6 +38,20 @@ using JetBrains.Util;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 {
+    // TODO: Use ReSharper 2016.2's AbbreviatedItemsProviderOfSymbolTableBase<T>
+    // I'm not using it right now, as it doesn't behave in quite the same way. Namely, it will
+    // hide items that match the typed prefix if there are more than one with the same abbreviation.
+    // E.g. if the prefix is `mbox`, it would display `-ms-box-decoration-break`, because that's the
+    // only item in `-ms` that matches. It will also display `-moz-...` because there is more than
+    // one item in `-moz-` that matches. But when you select `-moz-...`, the prefix is overwritten
+    // and your context is lost. I think it should expand whenever there's a match.
+    // It would also make things a lot easier if HtmlReferencedItemsProvider derived from this
+    // class and we could extend the list of abbreviations with an interface.
+    // It would require changes here - when adding items from the symbol table in `GetElement`,
+    // add a user data item to the generated lookup item. In `TransformItems`, remove anything
+    // that matches but doesn't have the user data item. This will remove our items from the completion
+    // provided by `HtmlReferencedItemsProvider` (ideally, HRIP would derive from `AbbreviatedItemsProvider...`)
+    // See notes on RSRP-458780
     [Language(typeof(HtmlLanguage))]
     public class AbbreviatedItemsProvider : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
@@ -341,8 +355,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
 
         private ISymbolTable GetSymbolTable(HtmlCodeCompletionContext context)
         {
-            var completeableReference = context.Reference as ICompleteableReference;
-            var smartCompleteableReference = completeableReference as IHtmlSmartCompleteableReference;
+            var completeableReference = context.Reference as ICompletableReference;
+            var smartCompleteableReference = completeableReference as IHtmlSmartCompletableReference;
 
             ISymbolTable symbolTable;
             if (context.BasicContext.CodeCompletionType == CodeCompletionType.SmartCompletion
