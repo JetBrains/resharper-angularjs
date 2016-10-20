@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS</title>
-    <version>1.6.1</version>
+    <version>1.6.2</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,6 +12,9 @@
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
     <releaseNotes>
+&#8226; Address performance issue with many directives.
+
+From 1.6.1:
 &#8226; Updated to ReSharper 2016.2
 &#8226; Initial 1.6.0 release was incorrect, re-compiled and re-released as 1.6.1
 

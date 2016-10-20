@@ -17,7 +17,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using JetBrains.DataFlow;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches;
@@ -41,7 +40,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         private readonly IHtmlAttributeValueType cdataAttributeValueType;
         private readonly Dictionary<string, IHtmlTagDeclaredElement> tags = new Dictionary<string, IHtmlTagDeclaredElement>(); 
         private readonly Dictionary<string, IHtmlAttributeDeclaredElement> attributes = new Dictionary<string, IHtmlAttributeDeclaredElement>();
-        private readonly MethodInfo getTagMethodInfo;
         private IList<AttributeInfo> commonAttributeInfos = new List<AttributeInfo>();
         private ISymbolTable commonAttributesSymbolTable;
         private ISymbolTable allAttributesSymbolTable;
@@ -62,9 +60,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
             // TODO: Is this the right value for angular attributes?
             cdataAttributeValueType = new HtmlAttributeValueType("CDATA");
-
-            // The API for HtmlDeclareElementsCache.GetTag changed between 2016.1 and 2016.1.2
-            getTagMethodInfo = typeof(HtmlDeclaredElementsCache).GetMethod("GetTag");
         }
 
         // Gets a symbol table that contains all common attributes, that is, all attributes that apply to any tag.
@@ -83,7 +78,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 if (commonAttributesSymbolTable == null)
                 {
                     var psiServices = solution.GetComponent<IPsiServices>();
-                    var attributeDeclaredElements = from ai in GetCommonAttributeInfosLocked()
+                    var directives = cache.Directives;
+                    var attributeDeclaredElements = from ai in GetCommonAttributeInfosLocked(directives)
                         select ai.AttributeDeclaredElement;
                     commonAttributesSymbolTable = new DeclaredElementsSymbolTable<IHtmlAttributeDeclaredElement>(psiServices, attributeDeclaredElements);
                 }
@@ -105,8 +101,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 if (tag is IAngularJsDeclaredElement)
                     return EmptyArray<AttributeInfo>.Instance;
 
+                var directives = cache.Directives.ToList();
+
                 // Note that this includes common attributes
-                var attributeInfos = from d in cache.Directives
+                var attributeInfos = from d in directives
                     where d.IsAttribute && d.IsForTag(tag.ShortName)
                     from n in GetPrefixedNames(d.Name)
                     select
@@ -115,12 +113,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 // Get any elements that have the same name as the tag, and add the parameters as attributes
                 // Don't include any attributes that are aleady defined by other providers (this causes the
                 // HTML description cache component to crash)
-                var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
-
-                var parameterAttributeInfos = from d in cache.Directives
+                var parameterAttributeInfos = from d in directives
                     where d.IsElement && d.Name == tag.ShortName
                     from p in d.Parameters
-                    where !IsKnownCommonAttribute(p.Name, providers)
+                    where !IsKnownCommonAttribute(p.Name)
                     from n in GetPrefixedNames(p.Name)
                     select
                         new AttributeInfo(GetOrCreateAttributeLocked(n, tag),
@@ -145,9 +141,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         {
             lock (lockObject)
             {
-                var tagDeclaredElements = from d in cache.Directives
+                var directives = cache.Directives.ToList();
+                var tagDeclaredElements = from d in directives
                     where d.IsElement && string.Equals(d.Name, name, StringComparison.InvariantCultureIgnoreCase) && !IsOverridingTag(d.Name)
-                    select GetOrCreateTagLocked(d.Name);
+                    select GetOrCreateTagLocked(d.Name, directives);
                 return tagDeclaredElements.FirstOrDefault();
             }
         }
@@ -164,10 +161,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     var psiServices = solution.GetComponent<IPsiServices>();
 
-                    var tagDeclaredElements = from d in cache.Directives
+                    var directives = cache.Directives.ToList();
+                    var tagDeclaredElements = from d in directives
                         where d.IsElement && !IsOverridingTag(d.Name)
                         from n in GetPrefixedNames(d.Name)
-                        select GetOrCreateTagLocked(n);
+                        select GetOrCreateTagLocked(n, directives);
                     allTagsSymbolTable = new DeclaredElementsSymbolTable<IHtmlTagDeclaredElement>(psiServices, tagDeclaredElements);
                 }
                 return allTagsSymbolTable;
@@ -203,18 +201,19 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 if (allAttributesSymbolTable == null)
                 {
                     var psiServices = solution.GetComponent<IPsiServices>();
-                    var providers = solution.GetComponents<IHtmlDeclaredElementsProvider>();
 
-                    var attributeDeclaredElements = from d in cache.Directives
+                    var directives = cache.Directives.ToList();
+
+                    var attributeDeclaredElements = from d in directives
                         where d.IsAttribute
                         from n in GetPrefixedNames(d.Name)
                         from t in d.Tags
                         select GetOrCreateAttributeLocked(n, t);
 
-                    var parameterAttributeDeclaredElements = from d in cache.Directives
+                    var parameterAttributeDeclaredElements = from d in directives
                         where d.IsElement
                         from p in d.Parameters
-                        where !IsKnownCommonAttribute(p.Name, providers)
+                        where !IsKnownCommonAttribute(p.Name)
                         from n in GetPrefixedNames(p.Name)
                         select GetOrCreateAttributeLocked(n, d.Name);
 
@@ -279,7 +278,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return allTags.Contains(name);
         }
 
-        private bool IsKnownCommonAttribute(string name, IEnumerable<IHtmlDeclaredElementsProvider> providers)
+        private bool IsKnownCommonAttribute(string name)
         {
             // This is horrible. We can't override existing tags and attributes, but we calling the
             // other providers dynamically causes serious perf issues. We'll just make do with
@@ -315,7 +314,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return new[] {root};
         }
 
-        private IHtmlTagDeclaredElement GetOrCreateTagLocked(string name)
+        private IHtmlTagDeclaredElement GetOrCreateTagLocked(string name, IList<Directive> directives)
         {
             IHtmlTagDeclaredElement tag;
             if (!tags.TryGetValue(name, out tag))
@@ -330,14 +329,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
 
                 // Stupid circular references. Populate the attributes after creating the tag, so
                 // that the attribute can reference the tag
-                var ownAttributeInfos = GetParameterAttributeInfosLocked(tag)
-                    .Concat(GetSpecificAttributeInfosLocked(tag)
+                var ownAttributeInfos = GetParameterAttributeInfosLocked(tag, directives)
+                    .Concat(GetSpecificAttributeInfosLocked(tag, directives)
                     .Distinct(ai => ai.AttributeDeclaredElement.ShortName));
                 ownAttributes.AddRange(ownAttributeInfos);
 
                 // Only include common attributes if they're not already part of the own attributes
                 var ownAttributeNames = ownAttributes.ToHashSet(a => a.AttributeDeclaredElement.ShortName);
-                var inheritedAttributeInfos = GetCommonAttributeInfosLocked()
+                var inheritedAttributeInfos = GetCommonAttributeInfosLocked(directives)
                     .Where(ai => !ownAttributeNames.Contains(ai.AttributeDeclaredElement.ShortName));
                 inheritedAttributes.AddRange(inheritedAttributeInfos);
 
@@ -346,28 +345,28 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
             return tag;
         }
 
-        private IEnumerable<AttributeInfo> GetParameterAttributeInfosLocked(IHtmlTagDeclaredElement tag)
+        private IEnumerable<AttributeInfo> GetParameterAttributeInfosLocked(IHtmlTagDeclaredElement tag, IEnumerable<Directive> directives)
         {
-            return from d in cache.Directives
+            return from d in directives
                 where d.IsElement && d.Name.Equals(tag.ShortName, StringComparison.InvariantCultureIgnoreCase)
                 from p in d.Parameters
                 from n in GetPrefixedNames(p.Name)
                 select new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
         }
 
-        private IEnumerable<AttributeInfo> GetSpecificAttributeInfosLocked(IHtmlTagDeclaredElement tag)
+        private IEnumerable<AttributeInfo> GetSpecificAttributeInfosLocked(IHtmlTagDeclaredElement tag, IEnumerable<Directive> directives)
         {
-            return from d in cache.Directives
+            return from d in directives
                 where d.IsAttribute && d.IsForTagSpecific(tag.ShortName)
                 from n in GetPrefixedNames(d.Name)
                 select new AttributeInfo(GetOrCreateAttributeLocked(n, tag), DefaultAttributeValueType.IMPLIED, null);
         }
 
-        private IEnumerable<AttributeInfo> GetCommonAttributeInfosLocked()
+        private IEnumerable<AttributeInfo> GetCommonAttributeInfosLocked(IEnumerable<Directive> directives)
         {
             if (commonAttributeInfos == null)
             {
-                commonAttributeInfos = new List<AttributeInfo>(from d in cache.Directives
+                commonAttributeInfos = new List<AttributeInfo>(from d in directives
                     where d.IsAttribute && d.IsForAnyTag()
                     from n in GetPrefixedNames(d.Name)
                     select
@@ -406,12 +405,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 // doing it piecemeal. Would definitely be nice to get more fine grained caching for that.
 
                 var htmlDeclaredElementsCache = solution.GetComponent<HtmlDeclaredElementsCache>();
-                // Ugh. The API changed between 2016.1 and 2016.1.2...
-                //tag = htmlDeclaredElementsCache.GetTag(null, tagName);
-                if (getTagMethodInfo.GetParameters().Length == 3)
-                    tag = (IHtmlTagDeclaredElement) getTagMethodInfo.Invoke(htmlDeclaredElementsCache, new object[] {null, tagName, null});
-                else
-                    tag = (IHtmlTagDeclaredElement) getTagMethodInfo.Invoke(htmlDeclaredElementsCache, new object[] {tagName, null});
+                tag = htmlDeclaredElementsCache.GetTag(null, tagName);
                 attribute = GetAttributeLocked(key);
                 if (attribute != null)
                     return attribute;

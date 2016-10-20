@@ -24,6 +24,7 @@ using JetBrains.ReSharper.Psi.JavaScript.LanguageImpl;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.Util;
+using JetBrains.Util.Caches;
 
 namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
 {
@@ -37,6 +38,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
             // TODO: Useful for testing. Remove for release
             ClearOnLoad = true;
 #endif
+            // Eumerating the map is expensive, as it will hit the disk cache. Create
+            // an in-memory cache for the enumerator. Items are automatically removed
+            // from the cache when they're removed from the Map. Use an unlimited cache
+            // because we use this data frequently - we enumerate the whole cache whenever
+            // we display code completion (which would touch each item anyway)
+            Map.UseCachingEnumerator = true;
+            Map.Cache = new UnlimitedCache<IPsiSourceFile, AngularJsCacheItems>();
 
             CacheUpdated = new SimpleSignal(lifetime, "AngularJsCache");
         }
