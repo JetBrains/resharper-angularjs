@@ -57,7 +57,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.Caches
                 if (!string.IsNullOrEmpty(name))
                     name = name.Substring(name.IndexOf(':') + 1);
 
+#if WAVE07
+                var nameOffset = nameTag.GetDocumentStartOffset().Offset;
+#else
                 var nameOffset = nameTag.GetDocumentStartOffset().TextRange.StartOffset;
+#endif
 
                 var ngdocValue = ngdocTag.DescriptionText;
                 if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(ngdocValue))

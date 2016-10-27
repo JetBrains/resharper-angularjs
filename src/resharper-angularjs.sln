@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs", "resharper-angularjs\resharper-angularjs.csproj", "{B66C17A3-9499-4AD6-93CE-DC8B2823BEF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "..\test\src\test.resharper-angularjs\tests.csproj", "{8E0BE7C0-CB94-4993-94F3-A91961F8A809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "resharper-angularjs.wave07", "resharper-angularjs\resharper-angularjs.wave07.csproj", "{F50A2291-6669-4B1B-AF18-A63FDE7F9649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.wave07", "..\test\src\test.resharper-angularjs\tests.wave07.csproj", "{BFB236A2-9D68-403D-8CE2-9B4C69B067FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E0BE7C0-CB94-4993-94F3-A91961F8A809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F50A2291-6669-4B1B-AF18-A63FDE7F9649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50A2291-6669-4B1B-AF18-A63FDE7F9649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50A2291-6669-4B1B-AF18-A63FDE7F9649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50A2291-6669-4B1B-AF18-A63FDE7F9649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB236A2-9D68-403D-8CE2-9B4C69B067FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB236A2-9D68-403D-8CE2-9B4C69B067FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB236A2-9D68-403D-8CE2-9B4C69B067FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB236A2-9D68-403D-8CE2-9B4C69B067FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
