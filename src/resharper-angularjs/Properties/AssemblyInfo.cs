@@ -24,10 +24,10 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JetBrains")]
 [assembly: AssemblyProduct("resharper-angularjs")]
-[assembly: AssemblyCopyright("Copyright © JetBrains, 2013")]
+[assembly: AssemblyCopyright("Copyright © JetBrains, 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Use a static version value so that ReSharper Build won't rebuild referencing assemblies
-[assembly: AssemblyVersion("1.6.3.0")]
+[assembly: AssemblyVersion("1.7.0.0")]
 
