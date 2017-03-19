@@ -15,7 +15,7 @@
 #endregion
 
 using System.Collections.Generic;
-using JetBrains.ReSharper.Psi.Cpp.Util;
+using System.Linq;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Resolve;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
 using JetBrains.ReSharper.Psi.Resolve;
@@ -53,7 +53,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
                         return true;
                 }
             }
-            return acceptableReferenceNames.IsEmpty() || acceptableReferenceNames.ContainsAny(reference.GetAllNames());
+            return acceptableReferenceNames.IsEmpty() || reference.GetAllNames().Any(x => acceptableReferenceNames.Contains(x));
         }
 
         private void DoNamedTestForReferences(params string[] names)

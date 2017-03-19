@@ -50,14 +50,19 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript
             base.DoTest();
         }
 
-        protected override string Format(IDeclaredElement declaredElement, ISubstitution substitution, PsiLanguageType languageType,
-            DeclaredElementPresenterStyle presenter, IReference reference)
+        protected override string Format (
+            IDeclaredElement declaredElement,
+            ISubstitution substitution,
+            PsiLanguageType languageType,
+            DeclaredElementPresenterStyle presenter,
+            IProject testProject,
+            IReference reference)
         {
             if (declaredElement == null)
                 return "null";
 
             // Output the element like it is in the QuickDoc - element name + type
-            return DeclaredElementPresenter.Format(JavaScriptLanguage.Instance, XmlDocPresenterUtil.MemberPresentationStyle,
+            return DeclaredElementPresenter.Format (JavaScriptLanguage.Instance, XmlDocPresenterUtil.MemberPresentationStyle,
                 declaredElement, EmptySubstitution.INSTANCE);
         }
     }

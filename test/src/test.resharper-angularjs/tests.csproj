@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2016.3.20161215.134837" />
-    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2016.3.20161215.134837" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.1.20170316.165446-eap05" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.1.20170316.165446-eap05" />
   </ItemGroup>
 
   <ItemGroup>
