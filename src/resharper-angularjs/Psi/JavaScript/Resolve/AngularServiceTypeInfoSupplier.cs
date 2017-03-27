@@ -17,6 +17,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.ReSharper.Psi;
+using JetBrains.ReSharper.Psi.JavaScript.Impl.Resolve;
 using JetBrains.ReSharper.Psi.JavaScript.Impl.Util;
 using JetBrains.ReSharper.Psi.JavaScript.Resolve;
 using JetBrains.ReSharper.Psi.JavaScript.Tree;
@@ -282,7 +283,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                     return;
 
                 // The factory function is a constructor, use the constructed type
-                var serviceType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.NoList);
+                var serviceType = factoryFunction.GetJsType(context, new JsCyclicFlowAccumulator()).GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var serviceOffset = context.GetDocumentStartOffset(factoryFunction);
                 AssociateToServiceGlobalType(serviceName, serviceType, serviceOffset);
             }
@@ -290,7 +291,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
             private void ProcessModuleValueRegistration(string serviceName, IExpressionOrSpread expression)
             {
                 // The type of the second argument - function, value, etc.
-                var serviceType = expression.GetJsType(context);
+                var serviceType = expression.GetJsType(context, new JsCyclicFlowAccumulator());
                 var serviceOffset = context.GetDocumentStartOffset(expression);
                 AssociateToServiceGlobalType(serviceName, serviceType, serviceOffset);
             }
@@ -420,7 +421,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
                 // function. But the referenced expression might not be a factory function, but an
                 // injectable array literal. Create a composite type that we can populate later, when
                 // we see a provider-like function (e.g. a function ending in Provider)
-                var constructedFactoryType = providerExpression.GetJsType(context).
+                var constructedFactoryType = providerExpression.GetJsType(context, new JsCyclicFlowAccumulator ()).
                     GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var providerFunctionGlobalType = GetProviderFunctionGlobalType(providerFunctionName);
                 var providerType = JavaScriptType.CreateCompositeType(JsCombinedTypeKind.JsDynamic,
@@ -432,7 +433,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
 
             private void AssociateToProviderFunction(string providerFunctionName, IFunctionExpression factoryFunction)
             {
-                var constructedFactoryType = factoryFunction.GetJsType(context).GetConstructedType(JsUnresolvedTypeArray.NoList);
+                var constructedFactoryType = factoryFunction.GetJsType(context, new JsCyclicFlowAccumulator()).GetConstructedType(JsUnresolvedTypeArray.NoList);
                 var providerFunctionGlobalType = GetProviderFunctionGlobalType(providerFunctionName);
                 var offset = context.GetDocumentStartOffset(factoryFunction);
                 CreateAssignmentAssociation(providerFunctionGlobalType, constructedFactoryType, offset);
@@ -440,7 +441,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
 
             private void AssociateToProviderGet(string providerFunctionName, IFunctionExpression providerGetFactoryFunction)
             {
-                var serviceType = providerGetFactoryFunction.GetJsType(context).GetReturnType();
+                var serviceType = providerGetFactoryFunction.GetJsType(context, new JsCyclicFlowAccumulator()).GetReturnType();
                 var providerGetGlobalType = GetProviderGetGlobalType(providerFunctionName);
                 var offset = context.GetDocumentStartOffset(providerGetFactoryFunction);
                 CreateAssignmentAssociation(providerGetGlobalType, serviceType, offset);
@@ -448,7 +449,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.JavaScript.Resolve
 
             private void AssociateToServiceGlobalType(string serviceName, string providerFunctionName, IExpressionOrSpread providerExpression)
             {
-                var constructedFactoryType = providerExpression.GetJsType(context).
+                var constructedFactoryType = providerExpression.GetJsType(context, new JsCyclicFlowAccumulator()).
                     GetConstructedType(JsUnresolvedTypeArray.NoList);
 
                 // The type of the service is the return type of the $get property, if it's a function.
