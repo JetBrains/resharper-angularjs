@@ -372,8 +372,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             if (context.Reference is IHtmlAttributeReference && context.TreeNode != null)
             {
                 var header = context.TreeNode.GetContainingNode<IHtmlTagHeader>();
-                var node = context.BasicContext.File.FindNodeAt(context.BasicContext.Document,
-                    new TextRange(context.Ranges.InsertRange.StartOffset));
+                var node = context.BasicContext.File.FindNodeAt(context.BasicContext.CaretDocumentRange);
                 if (node != null && header != null)
                 {
                     node = node.GetContainingNode<ITagAttribute>(true);
