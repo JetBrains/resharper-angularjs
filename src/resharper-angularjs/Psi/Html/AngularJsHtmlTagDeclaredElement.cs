@@ -109,6 +109,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public IEnumerable<AttributeInfo> InheritedAttributes { get; private set; }
 
         public bool OnlyOnce { get { return false; } }
+        public bool CanBeRenamed { get { return false; } }
 
         public override bool Equals(object obj)
         {
