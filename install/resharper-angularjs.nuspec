@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS</title>
-    <version>1.7.0</version>
+    <version>1.8.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,9 +12,12 @@
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
     <releaseNotes>
+&#8226; Updated to ReSharper 2017.1
+
+From 1.7.0:
 &#8226; Updated to ReSharper 2016.3
 
-From 1.6.1:
+From 1.6.2:
 &#8226; Address performance issue with many directives.
 
 From 1.6.1:
@@ -43,7 +46,7 @@ From 1.2.2:
 &#8226; Added angular icons to the code completion items
     </releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[7.0]" />
+      <dependency id="Wave" version="[8.0]" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>
