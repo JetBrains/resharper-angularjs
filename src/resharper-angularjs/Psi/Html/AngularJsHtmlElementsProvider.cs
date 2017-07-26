@@ -93,7 +93,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         // Used by HtmlDeclaredElementsCache.GetAdditionalAttributesForTag so a provider can add additional
         // attributes to a known tag (e.g. angular attributes to a standard HTML tag)
         // Also used when generating descriptions for tags
-        public IEnumerable<AttributeInfo> GetAttributeInfos(IPsiSourceFile sourceFile, IHtmlTagDeclaredElement tag, bool strict)
+        public IEnumerable<AttributeInfo> GetAttributeInfos(IPsiSourceFile sourceFile, IHtmlTagDeclaredElement tag, int offset, bool strict)
         {
             lock (lockObject)
             {

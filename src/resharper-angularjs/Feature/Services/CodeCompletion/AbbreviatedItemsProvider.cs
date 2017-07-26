@@ -97,7 +97,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         //      (e.g. "ngc" matches "ng-controller" but not "data-ng-controller". "dnc" matches "data-ng-controller")
         // 4. Double completion...
         protected override bool AddLookupItems(HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             var completionPrefix = GetCompletionPrefix(context);
 
@@ -132,7 +132,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             // we only ever see the whole "word" (e.g. "ng-contr") and so miss out on other
             // expansion items we should be showing (e.g. "ng-*", "data-ng-*", etc). So,
             // we use the InsertRange start offset and the current caret position
-            var range = new TextRange(context.Ranges.InsertRange.StartOffset,
+            var range = new TextRange(context.Ranges.InsertRange.StartOffset.Offset,
                 context.BasicContext.CaretDocumentRange.TextRange.StartOffset);
 
             return context.BasicContext.Document.GetText(range);
@@ -141,7 +141,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add all abbreviations if no prefix
 
         private bool TryAddAllAbbreviations(string prefix, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             if (HasNoPrefix(prefix))
             {
@@ -161,7 +161,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add all items for an abbreviation if prefix matches exact abbreviation
 
         private bool TryAddAllItemsForExactAbbreviation(string prefix, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             return MatchesExactAbbreviation(prefix)
                 && AddAllItemsForSpecificAbbreviation(prefix, context, collector);
@@ -177,7 +177,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add all items for an abbreviation if prefix pattern matches to end of abbreviation
 
         private bool TryAddAllItemsForMatchedAbbreviation(IdentifierMatcher matcher,
-            HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+            HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             var matchedAbbreviation = GetMatchedAbbreviation(matcher);
             if (matchedAbbreviation != null)
@@ -214,7 +214,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add abbreviation if prefix pattern matches abbreviation
 
         private bool TryAddMatchingAbbreviations(IdentifierMatcher matcher,
-            HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+            HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             if (matcher == null)
                 return false;
@@ -233,7 +233,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add all items where item minus abbreviation pattern matches the prefix
 
         private bool TryAddMatchingUnprefixedItems(string prefix, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             if (string.IsNullOrEmpty(prefix))
                 return false;
@@ -254,7 +254,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #region Add all items where abbreviation and item pattern match prefix
 
         private bool TryAddMatchingItemsForMatchedAbbreviation(string prefix, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             if (string.IsNullOrEmpty(prefix))
                 return false;
@@ -272,13 +272,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         #endregion
 
         private bool AddAllItemsForSpecificAbbreviation(string abbreviation, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             return AddItems(abbreviation, context, collector, _ => true);
         }
 
         private bool AddItems(string abbreviation, HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector, [InstantHandle] Func<string, bool> shouldAdd)
+            IItemsCollector collector, [InstantHandle] Func<string, bool> shouldAdd)
         {
             var added = false;
             var symbolTable = GetSymbolTable(context);
@@ -298,7 +298,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             return added;
         }
 
-        private static void AddItem(string abbreviation, string name, IDeclaredElement declaredElement, HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+        private static void AddItem(string abbreviation, string name, IDeclaredElement declaredElement, HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             // Add the element as an item, but we need it to be dynamic, so we need to decorate it
             var item = new WrappedDynamicLookupItem(context.CreateDeclaredElementLookupItem(name, declaredElement));
@@ -329,13 +329,13 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         }
 
         private static void AddAllAbbreviations(HtmlCodeCompletionContext context,
-            GroupedItemsCollector collector)
+            IItemsCollector collector)
         {
             foreach (var abbreviation in Abbreviations)
                 AddAbbreviation(context, collector, abbreviation);
         }
 
-        private static bool AddAbbreviation(HtmlCodeCompletionContext context, GroupedItemsCollector collector,
+        private static bool AddAbbreviation(HtmlCodeCompletionContext context, IItemsCollector collector,
             string text)
         {
             collector.Add(CreateAbbreviatedLookupItem(text, context.Ranges, context.BasicContext));
@@ -388,12 +388,12 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             }));
         }
 
-        protected override void TransformItems(HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+        protected override void TransformItems(HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             RemoveItemsToAbbreviate(collector);
         }
 
-        private static void RemoveItemsToAbbreviate(GroupedItemsCollector collector)
+        private static void RemoveItemsToAbbreviate(IItemsCollector collector)
         {
             // Remove all items that begin with a prefix that we're abbreviating, unless they've
             // got our key to say they've been explicitly added

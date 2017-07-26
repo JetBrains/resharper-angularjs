@@ -32,7 +32,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
             Prefix = CalcPrefix(document, caretOffset);
         }
 
-        public override string CalcPrefix(IDocument document, int caretOffset)
+
+        public override string CalcPrefix (DocumentOffset caretOffset)
         {
             return document == null ? string.Empty : LiveTemplatesManager.GetPrefix(document, caretOffset, allowedPrefixChars);
         }

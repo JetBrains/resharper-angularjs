@@ -52,7 +52,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             return false;
         }
 
-        protected override bool AddLookupItems(HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+        protected override bool AddLookupItems(HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             var elementProvider = context.BasicContext.Solution.GetComponent<AngularJsHtmlElementsProvider>();
             var matcher = GetIdentifierMatcher(context.BasicContext, context.Ranges);
@@ -84,7 +84,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 
         private IdentifierMatcher GetIdentifierMatcher(CodeCompletionContext context, TextLookupRanges ranges)
         {
-            var text = context.Document.GetText(ranges.GetPrefixRange(context));
+            var text = context.Document.GetText(ranges.GetPrefixRange(context).TextRange);
             if (string.IsNullOrEmpty(text))
                 return null;
             return LookupUtil.CreateMatcher(text, context.IdentifierMatchingStyle);

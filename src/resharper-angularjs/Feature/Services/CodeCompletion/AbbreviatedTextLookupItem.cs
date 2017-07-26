@@ -15,6 +15,7 @@
 #endregion
 
 using JetBrains.Application;
+using JetBrains.Application.Threading;
 using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;

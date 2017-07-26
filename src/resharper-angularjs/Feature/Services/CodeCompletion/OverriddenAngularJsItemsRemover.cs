@@ -13,7 +13,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
     [Language(typeof (HtmlLanguage))]
     public class OverriddenAngularJsItemsRemover : ItemsProviderOfSpecificContext<HtmlCodeCompletionContext>
     {
-        protected override void TransformItems(HtmlCodeCompletionContext context, GroupedItemsCollector collector)
+        protected override void TransformItems(HtmlCodeCompletionContext context, IItemsCollector collector)
         {
             var angularItems = (from item in collector.Items
                 let unwrappedItem = GetDeclaredElementLookupItem(item)

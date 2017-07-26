@@ -86,7 +86,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             get { return true; }
         }
 
-        protected override bool AddLookupItems(ISpecificCodeCompletionContext context, GroupedItemsCollector collector)
+        protected override bool AddLookupItems(ISpecificCodeCompletionContext context, IItemsCollector collector)
         {
             var languageCaseProvider = LanguageManager.Instance.TryGetService<LanguageCaseProvider>(language);
             var templateNames = new JetHashSet<string>(languageCaseProvider.IfNotNull(cp => cp.IsCaseSensitive()
@@ -99,7 +99,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             {
                 var caretOffset = context.BasicContext.CaretDocumentRange.TextRange.StartOffset;
                 var prefixRange = new TextRange(caretOffset - prefix.Length, caretOffset);
-                collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange));
+                collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange, context.BasicContext.Document));
             }
 
             if (!string.IsNullOrEmpty(prefix))
@@ -122,7 +122,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             return true;
         }
 
-        protected override void TransformItems(ISpecificCodeCompletionContext context, GroupedItemsCollector collector)
+        protected override void TransformItems(ISpecificCodeCompletionContext context, IItemsCollector collector)
         {
             JetHashSet<string> templateNames = context.BasicContext.GetData(TemplateNamesKey);
             if (templateNames == null || templateNames.Count == 0)
