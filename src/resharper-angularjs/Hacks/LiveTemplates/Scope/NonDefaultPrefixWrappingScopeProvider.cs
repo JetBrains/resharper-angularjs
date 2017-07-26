@@ -45,7 +45,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
         public IEnumerable<ITemplateScopePoint> ProvideScopePoints(TemplateAcceptanceContext context)
         {
             return from scopePoint in originalScopeProvider.ProvideScopePoints(context)
-                select (ITemplateScopePoint) new ReplacingAllowedPrefixCharsScopePoint(scopePoint, context.Document, context.Selection.GetMinOffset(), JsAllowedPrefixes.Chars);
+                select (ITemplateScopePoint) new ReplacingAllowedPrefixCharsScopePoint(scopePoint, context.CaretOffset, JsAllowedPrefixes.Chars);
         }
 
         public ITemplateScopePoint ReadFromXml(XmlElement scopeElement)
