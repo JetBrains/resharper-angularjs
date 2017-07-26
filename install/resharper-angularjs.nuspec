@@ -3,7 +3,7 @@
   <metadata>
     <id>JetBrains.AngularJS</id>
     <title>AngularJS</title>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
     <authors>JetBrains</authors>
     <owners>JetBrains</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -11,7 +11,9 @@
     <licenseUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/license.txt</licenseUrl>
     <iconUrl>https://raw.github.com/JetBrains/resharper-angularjs/master/icon.png</iconUrl>
     <description>Code completion and live templates for AngularJS</description>
-    <releaseNotes>
+    <releaseNotes>&#8226; Updated to ReSharper 2017.2
+
+From 1.8.0:
 &#8226; Updated to ReSharper 2017.1
 
 From 1.7.0:
@@ -46,7 +48,7 @@ From 1.2.2:
 &#8226; Added angular icons to the code completion items
     </releaseNotes>
     <dependencies>
-      <dependency id="Wave" version="[8.0]" />
+      <dependency id="Wave" version="[9.0]" />
     </dependencies>
     <tags>resharper angular angularjs javascript js typescript</tags>
   </metadata>

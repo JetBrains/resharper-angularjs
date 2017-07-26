@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.1.20170403.131543" />
-    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.1.20170403.131543" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.2.0-eap09" />
+    <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="2017.2.0-eap09" />
   </ItemGroup>
 
   <ItemGroup>
