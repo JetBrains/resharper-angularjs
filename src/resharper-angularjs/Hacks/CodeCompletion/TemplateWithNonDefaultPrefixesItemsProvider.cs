@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.DocumentModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.AspectLookupItems.BaseInfrastructure;
@@ -97,9 +98,9 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.Document, context.BasicContext.CaretDocumentRange.TextRange.StartOffset, JsAllowedPrefixes.Chars);
             if (collector.Ranges == null)
             {
-                var caretOffset = context.BasicContext.CaretDocumentRange.TextRange.StartOffset;
-                var prefixRange = new TextRange(caretOffset - prefix.Length, caretOffset);
-                collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange, context.BasicContext.Document));
+                var caretOffset = context.BasicContext.CaretDocumentRange.StartOffset;
+                var prefixRange = new DocumentRange(caretOffset - prefix.Length, caretOffset);
+                collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange));
             }
 
             if (!string.IsNullOrEmpty(prefix))

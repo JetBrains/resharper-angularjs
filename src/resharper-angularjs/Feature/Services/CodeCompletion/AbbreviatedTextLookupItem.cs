@@ -71,8 +71,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             return LookupUtil.FormatLookupString(Text + "…", TextColor);
         }
 
-        protected override void OnAfterComplete(ITextControl textControl, ref TextRange nameRange,
-            ref TextRange decorationRange, TailType tailType, ref Suffix suffix,
+        protected override void OnAfterComplete(ITextControl textControl, ref DocumentRange nameRange,
+            ref DocumentRange decorationRange, TailType tailType, ref Suffix suffix,
             ref IRangeMarker caretPositionRangeMarker)
         {
             // TODO: completion with a space can break this

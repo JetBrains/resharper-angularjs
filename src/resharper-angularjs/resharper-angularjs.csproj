@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.2.0-eap09" />
+    <PackageReference Include="JetBrains.ReSharper.SDK" Version="2017.2.0" />
   </ItemGroup>
 
   <ItemGroup>

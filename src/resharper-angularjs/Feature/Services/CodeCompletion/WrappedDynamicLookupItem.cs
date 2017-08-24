@@ -57,7 +57,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             return Item.AcceptIfOnlyMatched(itemAcceptanceContext);
         }
 
-        public void Accept(ITextControl textControl, TextRange nameRange, LookupItemInsertType lookupItemInsertType, Suffix suffix,
+        public void Accept(ITextControl textControl, DocumentRange nameRange, LookupItemInsertType lookupItemInsertType, Suffix suffix,
             ISolution solution, bool keepCaretStill)
         {
             Item.Accept(textControl, nameRange, lookupItemInsertType, suffix, solution, keepCaretStill);
