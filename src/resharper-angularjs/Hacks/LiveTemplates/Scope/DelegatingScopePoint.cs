@@ -33,19 +33,11 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
             this.innerScopePoint = innerScopePoint;
         }
 
+        public abstract string CalcPrefix (DocumentOffset caretOffset);
+
         public virtual bool IsSubsetOf(ITemplateScopePoint other)
         {
             return innerScopePoint.IsSubsetOf(other);
-        }
-
-        public virtual string CalcPrefix(IDocument document, int caretOffset)
-        {
-            return innerScopePoint.CalcPrefix(document, caretOffset);
-        }
-
-        public virtual XmlElement WriteToXml(XmlElement element)
-        {
-            return innerScopePoint.WriteToXml(element);
         }
 
         public virtual Guid GetDefaultUID()

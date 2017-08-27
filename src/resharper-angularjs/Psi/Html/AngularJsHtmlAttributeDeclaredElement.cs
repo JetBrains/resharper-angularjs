@@ -3,6 +3,7 @@ using System.Xml;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.Html;
 using JetBrains.ReSharper.Psi.Html.Html;
+using JetBrains.ReSharper.Psi.Html.Impl.Html;
 using JetBrains.ReSharper.Psi.Html.Impl.TagPrefixes;
 using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.Web;
@@ -86,12 +87,14 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public AspNetVersion? SupportedVersion { get { return null; } }
         public bool Obsolete { get { return false; } }
         public bool NonStandard { get { return false; } }
-        public bool RequiresValue { get { return true; } }
+        public AttributeValueRequirement ValueRequirement { get { return AttributeValueRequirement.Required; } }
         public IHtmlAttributeValueType ValueType { get; private set; }
         public IHtmlTagDeclaredElement Tag { get; private set; }
 
         // Canonical DOM name, for e.g. HTML in JSX, which needs to be case sensitive onClick vs onclick
         public string DomName { get { return null; } }
+
+        public bool CanBeRenamed { get; private set; }
 
         public override bool Equals(object obj)
         {

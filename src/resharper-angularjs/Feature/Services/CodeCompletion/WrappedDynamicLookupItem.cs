@@ -15,6 +15,7 @@
 #endregion
 
 using System.Collections.Generic;
+using JetBrains.DocumentModel;
 using JetBrains.ProjectModel;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion;
 using JetBrains.ReSharper.Feature.Services.CodeCompletion.Infrastructure.LookupItems;
@@ -56,15 +57,15 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             return Item.AcceptIfOnlyMatched(itemAcceptanceContext);
         }
 
-        public void Accept(ITextControl textControl, TextRange nameRange, LookupItemInsertType lookupItemInsertType, Suffix suffix,
+        public void Accept(ITextControl textControl, DocumentRange nameRange, LookupItemInsertType lookupItemInsertType, Suffix suffix,
             ISolution solution, bool keepCaretStill)
         {
             Item.Accept(textControl, nameRange, lookupItemInsertType, suffix, solution, keepCaretStill);
         }
 
-        public TextRange GetVisualReplaceRange(ITextControl textControl, TextRange nameRange)
+        public DocumentRange GetVisualReplaceRange (DocumentRange nameRange)
         {
-            return Item.GetVisualReplaceRange(textControl, nameRange);
+            return Item.GetVisualReplaceRange(nameRange);
         }
 
         public bool Shrink()
@@ -95,12 +96,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public bool CanShrink
         {
             get { return Item.CanShrink; }
-        }
-
-        public int Multiplier
-        {
-            get { return Item.Multiplier; }
-            set { Item.Multiplier = value; }
         }
 
         public bool IgnoreSoftOnSpace
@@ -143,12 +138,6 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
         public MatchingResult Match(PrefixMatcher prefixMatcher, ITextControl textControl)
         {
             return Item.Match(prefixMatcher, textControl);
-        }
-
-        public EvaluationMode Mode
-        {
-            get { return Item.Mode; }
-            set { Item.Mode = value; }
         }
 
         public LookupItemPlacement Placement

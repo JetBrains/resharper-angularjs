@@ -89,10 +89,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
         public bool Obsolete { get { return false; } }
         public bool NonStandard { get { return false; } }
 
-        public IEnumerable<AttributeInfo> GetAllowedAttributes(IPsiSourceFile sourceFile, bool strict = false)
+        public IEnumerable<AttributeInfo> GetAllowedAttributes(IPsiSourceFile sourceFile, int offset, bool strict = false)
         {
             return CollectionUtil.EnumerateAll(OwnAttributes, InheritedAttributes,
-              declaredElementsCache.GetAdditionalAttributesForTag(sourceFile, this, strict));
+              declaredElementsCache.GetAdditionalAttributesForTag(sourceFile, this, offset, strict));
         }
 
         public IType GetType(IHtmlTag treeTag)

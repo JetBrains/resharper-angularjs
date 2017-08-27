@@ -164,7 +164,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                         tag = (IHtmlTagDeclaredElement) methodInfo.Invoke(cache, new object[] { "body", null });
                     //var tag = cache.GetTag("body", null);
                     Assert.IsNotNull(tag);
-                    var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
+                    var attributeInfos = provider.GetAttributeInfos(null, tag, offset: 0, strict: true).ToList();
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);
                     foreach (var attributeInfo in attributeInfos.OrderBy(a => a.AttributeDeclaredElement.ShortName))
                     {
@@ -186,7 +186,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                     var cache = solution.GetComponent<IHtmlDeclaredElementsCache>();
                     var tag = cache.GetTag(null, "input");
                     Assert.IsNotNull(tag);
-                    var attributeInfos = provider.GetAttributeInfos(null, tag, true).ToList();
+                    var attributeInfos = provider.GetAttributeInfos(null, tag, offset: 0, strict: true).ToList();
                     tw.WriteLine("Attributes: {0}", attributeInfos.Count);
                     foreach (var attributeInfo in attributeInfos.OrderBy(a => a.AttributeDeclaredElement.ShortName))
                     {

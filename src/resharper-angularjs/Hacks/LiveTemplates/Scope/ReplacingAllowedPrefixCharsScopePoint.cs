@@ -24,17 +24,18 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.LiveTemplates.Scope
     {
         private readonly char[] allowedPrefixChars;
 
-        public ReplacingAllowedPrefixCharsScopePoint(ITemplateScopePoint innerScopePoint, IDocument document, int caretOffset, char[] allowedPrefixChars)
+        public ReplacingAllowedPrefixCharsScopePoint(ITemplateScopePoint innerScopePoint, DocumentOffset caretOffset, char[] allowedPrefixChars)
             : base(innerScopePoint)
         {
             this.allowedPrefixChars = allowedPrefixChars;
 
-            Prefix = CalcPrefix(document, caretOffset);
+            Prefix = CalcPrefix(caretOffset);
         }
 
-        public override string CalcPrefix(IDocument document, int caretOffset)
+
+        public override string CalcPrefix (DocumentOffset caretOffset)
         {
-            return document == null ? string.Empty : LiveTemplatesManager.GetPrefix(document, caretOffset, allowedPrefixChars);
+            return LiveTemplatesManager.GetPrefix(caretOffset, allowedPrefixChars);
         }
     }
 }
