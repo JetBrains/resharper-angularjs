@@ -1,6 +1,8 @@
+[![official JetBrains project](http://jb.gg/badges/official-flat-square.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+
 # resharper-angularjs
 
-A plugin for ReSharper 10 that adds support for AngularJS. 
+A plugin for ReSharper that adds support for AngularJS. 
 
 ## What does it do?
 
@@ -16,5 +18,5 @@ The Live Templates are based on the IntelliJ templates by [Pawel Kozlowski](http
 
 You can install directly into ReSharper via the Extension Manager in the ReSharper menu.
 
-Packages for previous versions (8.2, 9.0, 9.1 and 9.2) are still available on the Extension Manager.
+Packages for previous versions are still available on the Extension Manager.
 
