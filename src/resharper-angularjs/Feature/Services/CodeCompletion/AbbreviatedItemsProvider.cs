@@ -133,7 +133,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             // expansion items we should be showing (e.g. "ng-*", "data-ng-*", etc). So,
             // we use the InsertRange start offset and the current caret position
             var range = new TextRange(context.Ranges.InsertRange.StartOffset.Offset,
-                context.BasicContext.CaretDocumentRange.TextRange.StartOffset);
+                context.BasicContext.CaretDocumentOffset.Offset);
 
             return context.BasicContext.Document.GetText(range);
         }
@@ -372,7 +372,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
             if (context.Reference is IHtmlAttributeReference && context.TreeNode != null)
             {
                 var header = context.TreeNode.GetContainingNode<IHtmlTagHeader>();
-                var node = context.BasicContext.File.FindNodeAt(context.BasicContext.CaretDocumentRange);
+                var node = context.BasicContext.File.FindNodeAt(context.BasicContext.CaretDocumentOffset);
                 if (node != null && header != null)
                 {
                     node = node.GetContainingNode<ITagAttribute>(true);

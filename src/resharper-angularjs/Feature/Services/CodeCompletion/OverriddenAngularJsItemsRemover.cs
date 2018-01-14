@@ -20,8 +20,8 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Feature.Services.CodeCompletion
                 where
                     unwrappedItem != null &&
                     unwrappedItem.GetPreferredDeclaredElement().Element is IAngularJsDeclaredElement
-                select item).ToHashSet();
-            var angularItemNames = angularItems.ToHashSet(i => i.DisplayName.Text);
+                select item).ToJetHashSet();
+            var angularItemNames = angularItems.ToJetHashSet(i => i.DisplayName.Text);
             var toRemove = from item in collector.Items
                 where !angularItems.Contains(item) && angularItemNames.Contains(item.DisplayName.Text)
                 select item;

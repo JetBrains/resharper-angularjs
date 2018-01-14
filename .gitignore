@@ -5,3 +5,4 @@ obj/
 *.suo
 
 _ReSharper.*
+/src/.vs/resharper-angularjs/v15/*

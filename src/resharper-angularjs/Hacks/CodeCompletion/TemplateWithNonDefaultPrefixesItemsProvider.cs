@@ -64,7 +64,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
             if (!CanNormalProviderWork(context))
                 return false;
 
-            var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.Document, context.BasicContext.CaretDocumentRange.TextRange.StartOffset, JsAllowedPrefixes.Chars);
+            var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.CaretDocumentOffset, JsAllowedPrefixes.Chars);
             return prefix.Length > 0 && prefix.TrimStart(JsAllowedPrefixes.Chars).Length != prefix.Length;
         }
 
@@ -95,10 +95,10 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
                 : StringComparer.OrdinalIgnoreCase));
             IEnumerable<TemplateLookupItem> templateItems = TemplateActionsUtil.GetLookupItems(context.BasicContext.TextControl, context.BasicContext.CompletionManager.Solution, false, false);
 
-            var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.Document, context.BasicContext.CaretDocumentRange.TextRange.StartOffset, JsAllowedPrefixes.Chars);
+            var prefix = LiveTemplatesManager.GetPrefix(context.BasicContext.CaretDocumentOffset, JsAllowedPrefixes.Chars);
             if (collector.Ranges == null)
             {
-                var caretOffset = context.BasicContext.CaretDocumentRange.StartOffset;
+                var caretOffset = context.BasicContext.CaretDocumentOffset;
                 var prefixRange = new DocumentRange(caretOffset - prefix.Length, caretOffset);
                 collector.AddRanges(new TextLookupRanges(prefixRange, prefixRange));
             }
