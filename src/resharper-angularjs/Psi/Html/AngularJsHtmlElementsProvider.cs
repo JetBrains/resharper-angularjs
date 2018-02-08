@@ -271,7 +271,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     if (allTags == null)
                     {
-                        allTags = standardProvider.GetAllTagsSymbolTable().Names().ToHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
+                        allTags = standardProvider.GetAllTagsSymbolTable().Names().ToJetHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
                     }
                 }
             }
@@ -291,7 +291,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 {
                     if (allAttributes == null)
                     {
-                        allAttributes = standardProvider.GetAllAttributesSymbolTable().Names().ToHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
+                        allAttributes = standardProvider.GetAllAttributesSymbolTable().Names().ToJetHashSet(IdentityFunc<string>.Instance, StringComparer.InvariantCultureIgnoreCase);
                     }
                 }
             }
@@ -335,7 +335,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Psi.Html
                 ownAttributes.AddRange(ownAttributeInfos);
 
                 // Only include common attributes if they're not already part of the own attributes
-                var ownAttributeNames = ownAttributes.ToHashSet(a => a.AttributeDeclaredElement.ShortName);
+                var ownAttributeNames = ownAttributes.ToJetHashSet(a => a.AttributeDeclaredElement.ShortName);
                 var inheritedAttributeInfos = GetCommonAttributeInfosLocked(directives)
                     .Where(ai => !ownAttributeNames.Contains(ai.AttributeDeclaredElement.ShortName));
                 inheritedAttributes.AddRange(inheritedAttributeInfos);

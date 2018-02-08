@@ -84,7 +84,7 @@ namespace JetBrains.ReSharper.Plugins.AngularJS.Hacks.CodeCompletion
 
         private IdentifierMatcher GetIdentifierMatcher(CodeCompletionContext context, TextLookupRanges ranges)
         {
-            var text = context.Document.GetText(ranges.GetPrefixRange(context).TextRange);
+            var text = context.Document.GetText(ranges.InsertRange.TextRange);
             if (string.IsNullOrEmpty(text))
                 return null;
             return LookupUtil.CreateMatcher(text, context.IdentifierMatchingStyle);
